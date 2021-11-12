@@ -11,11 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: snok/install-poetry@v1
       - run: |
-          poetry install --no-root -n
-          poetry run coverage run -m pytest 
-          poetry run coverage xml
+          pip install -r requirements.txt
+          coverage run -m pytest 
+          coverage xml
           
       - name: 'Upload coverage to Codecov'
         uses: codecov/codecov-action@v2
