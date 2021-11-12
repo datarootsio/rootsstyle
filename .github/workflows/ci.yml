@@ -16,9 +16,7 @@ jobs:
           path: ~/.cache/pip
           key: ${{ hashFiles('requirements.txt') }}
       - run: |
-          pip install --upgrade --upgrade-strategy eager -r requirements.txt -e .
-          coverage run -m pytest 
-          coverage xml
+          pip install -r requirements.txt
           
       - name: 'Upload coverage to Codecov'
         uses: codecov/codecov-action@v2
