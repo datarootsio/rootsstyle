@@ -11,14 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: Gr1N/setup-poetry@v7
+      - uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: false
       - run: |
           poetry install
           coverage run -m pytest 
           coverage xml
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
-
+          
       - name: 'Upload coverage to Codecov'
         uses: codecov/codecov-action@v2
         with:
