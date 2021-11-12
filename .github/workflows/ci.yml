@@ -16,7 +16,7 @@ jobs:
           version: latest
           virtualenvs-create: false
       - run: |
-          poetry install --no-root
+          poetry install --no-root -n
           coverage run -m pytest 
           coverage xml
           
