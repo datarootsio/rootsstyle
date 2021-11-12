@@ -11,21 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: actions/cache@v2
-        id: cache-venv  # name for referring later
-        with:
-          path: ./.venv/
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
-      - run: python -m venv ./.venv && . ./.venv/bin/activate && 
-            pip install -r requirements.txt
-        if: steps.cache-venv.outputs.cache-hit != 'true'
+      - run: |
+          pip install -r requirements.txt
 
       - run: |
           pytest --cov=./ --cov-report=xml
-
       - name: 'Upload coverage to Codecov'
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
