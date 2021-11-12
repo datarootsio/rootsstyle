@@ -25,10 +25,10 @@ jobs:
           poetry config virtualenvs.create false
           poetry install --no-root
 
-      - name: Test with tox
+      - name: 'Run pytest with coverage'
         run: |
-          pip install tox
-          tox -- --cov dufte --cov-report xml --cov-report term
+          coverage run -m pytest 
+          coverage xml
 
       - name: 'Upload coverage to Codecov'
         uses: codecov/codecov-action@v2

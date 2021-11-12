@@ -1,12 +1,11 @@
 import rootsstyle
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 import seaborn as sns
 
 
 def test_version():
-    assert rootsstyle.__version__ == "0.1.2"
+    assert rootsstyle.__version__ == "0.1.0"
 
 
 nb_series = 4
@@ -36,7 +35,7 @@ def test_barplot_seaborn():
 
     with plt.style.context(rootsstyle.style):
         sns.barplot(x="day", y="total_bill", hue="sex", data=tips)
-        plt.title("A bar plot with rootsstyle")
+        plt.title("Average total bill per day per gender")
         plt.xlabel("Day")
         plt.ylabel("Total bill [$]")
         assert plt.gcf().number == 1
@@ -48,14 +47,14 @@ def test_lineplot_seaborn():
     tips = (
         sns.load_dataset("tips")
         .groupby(["day"])["total_bill", "tip"]
-        .mean()
+        .sum()
         .reset_index()
     )
 
     with plt.style.context(rootsstyle.style):
         sns.lineplot(x="day", y="total_bill", data=tips)
         sns.lineplot(x="day", y="tip", data=tips)
-        plt.title("A line plot with rootsstyle")
+        plt.title("Total income per day")
         plt.legend(["total bill", "tip"], labelcolor="linecolor")
         plt.xlabel("Day")
         plt.ylabel("USD")
@@ -66,10 +65,9 @@ def test_lineplot_seaborn():
 
 def test_violin_plot():
     tips = sns.load_dataset("tips")
-
     with plt.style.context(rootsstyle.style):
         sns.violinplot(x="day", y="total_bill", hue="smoker", data=tips)
-        plt.title("A violin plot with rootsstyle")
+        plt.title("Tip distribution per day")
         plt.xlabel("Day")
         plt.ylabel("USD")
         assert plt.gcf().number == 1
