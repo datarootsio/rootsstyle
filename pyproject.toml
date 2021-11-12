@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "rootstyle"
+version = "0.1.2"
+description = "A dataroots inspired theme for matplotlib."
+authors = ["YannouRavoet <yannou.ravoet@dataroots.io>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/yannouravoet"
+
+include = [
+    "LICENSE",
+    "fonts/**/*.ttf",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+matplotlib = "^3.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pandas = "^1.3.4"
+seaborn = "^0.11.2"
+black = "^21.10b0"
+
+[tool.poetry.scripts]
+rootstyle = 'rootstyle:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

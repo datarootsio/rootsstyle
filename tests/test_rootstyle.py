@@ -1,0 +1,77 @@
+import rootsstyle
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+
+def test_version():
+    assert rootsstyle.__version__ == "0.1.2"
+
+
+nb_series = 4
+
+
+def test_scatterplot():
+    with plt.style.context(rootsstyle.style):
+        x = np.arange(start=0, stop=20, step=1)
+        y = np.random.rand(20, nb_series)
+        plt.plot(x, y, linestyle="none", marker="o")
+        plt.title("A scatter plot with rootsstyle")
+        plt.xlabel("range from 0 to 20")
+        plt.ylabel("random values from 0 to 1")
+        plt.legend([f"series {i}" for i in range(nb_series)])
+        assert plt.gcf().number == 1
+        plt.savefig("images/scatterplot.png", transparent=True)
+        plt.close()
+
+
+def test_barplot_seaborn():
+    tips = (
+        sns.load_dataset("tips")
+        .groupby(["day", "sex"])["total_bill"]
+        .mean()
+        .reset_index()
+    )
+
+    with plt.style.context(rootsstyle.style):
+        sns.barplot(x="day", y="total_bill", hue="sex", data=tips)
+        plt.title("A bar plot with rootsstyle")
+        plt.xlabel("Day")
+        plt.ylabel("Total bill [$]")
+        assert plt.gcf().number == 1
+        plt.savefig("images/barplot.png", transparent=True)
+        plt.close()
+
+
+def test_lineplot_seaborn():
+    tips = (
+        sns.load_dataset("tips")
+        .groupby(["day"])["total_bill", "tip"]
+        .mean()
+        .reset_index()
+    )
+
+    with plt.style.context(rootsstyle.style):
+        sns.lineplot(x="day", y="total_bill", data=tips)
+        sns.lineplot(x="day", y="tip", data=tips)
+        plt.title("A line plot with rootsstyle")
+        plt.legend(["total bill", "tip"], labelcolor="linecolor")
+        plt.xlabel("Day")
+        plt.ylabel("USD")
+        assert plt.gcf().number == 1
+        plt.savefig("images/violinplot.png", transparent=True)
+        plt.close()
+
+
+def test_violin_plot():
+    tips = sns.load_dataset("tips")
+
+    with plt.style.context(rootsstyle.style):
+        sns.violinplot(x="day", y="total_bill", hue="smoker", data=tips)
+        plt.title("A violin plot with rootsstyle")
+        plt.xlabel("Day")
+        plt.ylabel("USD")
+        assert plt.gcf().number == 1
+        plt.savefig("images/lineplot.png", transparent=True)
+        plt.close()
