@@ -59,7 +59,7 @@ def test_lineplot_seaborn():
         plt.xlabel("Day")
         plt.ylabel("USD")
         assert plt.gcf().number == 1
-        plt.savefig("images/violinplot.png", transparent=True)
+        plt.savefig("images/lineplot.png", transparent=True)
         plt.close()
 
 
@@ -71,5 +71,5 @@ def test_violin_plot():
         plt.xlabel("Day")
         plt.ylabel("USD")
         assert plt.gcf().number == 1
-        plt.savefig("images/lineplot.png", transparent=True)
+        plt.savefig("images/violinplot.png", transparent=True)
         plt.close()
