@@ -24,7 +24,7 @@ jobs:
           path: ~/.cache
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - run: poetry install --no-interaction --no-root -vvv --no-dev
-      - run: poetry build .
+      - run: poetry build 
 
       # Publish to PyPI
       - name: Publish package
