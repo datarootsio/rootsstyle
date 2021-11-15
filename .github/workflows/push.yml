@@ -48,16 +48,17 @@ jobs:
       - uses: actions/cache@v2.1.3
         id: cached-poetry-dependencies
         with:
-          path: ~/.cache
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
           poetry config experimental.new-installer false
           poetry install --no-interaction --no-root -vvv
 
       #Run tests
       - run: |
-          source $VENV
+          source .venv/bin/activate
           pytest -vvv --cov-report xml --cov=./
       - name: 'upload coverage to Codecov'
         uses: codecov/codecov-action@v2
