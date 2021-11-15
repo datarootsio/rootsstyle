@@ -28,6 +28,7 @@ fonts = {
 font_entries = [fm.FontEntry(fname=path, name=name) for name, path in fonts.items()]
 fm.fontManager.ttflist.extend(font_entries)
 
+#SOURCE: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
 style = {
     # FONT
     "font.family": "Arvo",

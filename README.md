@@ -38,5 +38,13 @@ with plt.style.context(rootsstyle.style):
     # ...
 ```
 
+## TODO
+
+- GitHub workflow to publish on pull-request
+- Add more colors
+- Add python badge to show which python versions are supported
+- Auto install matplotlib with package installation
+- Using poetry install in ci.yml 
+
 
 
