@@ -40,12 +40,15 @@ with plt.style.context(rootsstyle.style):
 
 ## TODO
 
-- Find better spot/visualization for legend
-- Auto install matplotlib with package installation
+### VISUALS
 - Add more colors
+- Legend for line graphs (next to lines)
+
+### TECHNICALITIES
+- Auto install matplotlib with package installation
 - Add python badge to show which python versions are supported
 - GitHub workflow to publish on pull-request
-- Using poetry install in ci.yml 
+- Using poetry install in ci.yml
 
 
 

@@ -15,11 +15,11 @@ def test_scatterplot():
     with plt.style.context(rootsstyle.style):
         x = np.arange(start=0, stop=nb_dots, step=1)
         y = np.random.rand(nb_dots, nb_series)
-        plt.plot(x, y, linestyle="none", marker="o")
+        plt.plot(x, y, linestyle="none", marker="o", label=[f"series {i}" for i in range(nb_series)])
         plt.title("A scatter plot with rootsstyle")
         plt.xlabel(f"range from 0 to {nb_dots}")
         plt.ylabel("random values from 0 to 1")
-        plt.legend([f"series {i}" for i in range(nb_series)])
+        rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/scatterplot.png", transparent=True)
         plt.close()
@@ -38,6 +38,7 @@ def test_barplot_seaborn():
         plt.title("Average total bill per day per gender")
         plt.xlabel("Day")
         plt.ylabel("Total bill [$]")
+        rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/barplot_tips.png", transparent=True)
         plt.close()
@@ -81,6 +82,7 @@ def test_violin_plot():
         plt.title("Tip distribution per day")
         plt.xlabel("Day")
         plt.ylabel("USD")
+        rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/violinplot.png", transparent=True)
         plt.close()
