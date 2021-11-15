@@ -49,13 +49,16 @@ jobs:
         with:
           path: ~/.cache
           key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-      - run: poetry install --no-interaction --no-root -vvv
+      - name: poetry install
+        run: |
+          poetry config experimental.new-installer false
+          poetry install --no-interaction --no-root -vvv
 
       #Run tests
       - run: |
           source $VENV
           pytest -vvv --cov-report xml --cov=./
-      - name: 'Upload coverage to Codecov'
+      - name: 'upload coverage to Codecov'
         uses: codecov/codecov-action@v2
         if: ${{ matrix.python-version == '3.8' }}
         with:
