@@ -8,16 +8,16 @@ def test_version():
     assert rootsstyle.__version__ == "0.1.0"
 
 
-nb_series = 4
 
 
 def test_scatterplot():
+    nb_series, nb_dots = 5, 15
     with plt.style.context(rootsstyle.style):
-        x = np.arange(start=0, stop=20, step=1)
-        y = np.random.rand(20, nb_series)
+        x = np.arange(start=0, stop=nb_dots, step=1)
+        y = np.random.rand(nb_dots, nb_series)
         plt.plot(x, y, linestyle="none", marker="o")
         plt.title("A scatter plot with rootsstyle")
-        plt.xlabel("range from 0 to 20")
+        plt.xlabel(f"range from 0 to {nb_dots}")
         plt.ylabel("random values from 0 to 1")
         plt.legend([f"series {i}" for i in range(nb_series)])
         assert plt.gcf().number == 1
@@ -39,9 +39,20 @@ def test_barplot_seaborn():
         plt.xlabel("Day")
         plt.ylabel("Total bill [$]")
         assert plt.gcf().number == 1
-        plt.savefig("images/barplot.png", transparent=True)
+        plt.savefig("images/barplot_tips.png", transparent=True)
         plt.close()
 
+def test_barplot_seaborn2():
+    diamonds = sns.load_dataset("diamonds")
+    diamonds_cut = diamonds.groupby('cut')['price'].count().reset_index().rename(columns={'price': 'count'})
+    with plt.style.context(rootsstyle.style):
+        sns.barplot(x="cut", y="count", data=diamonds_cut, order=list(diamonds['cut'].unique())[::-1])
+        plt.title("Sparkly Stones")
+        plt.xlabel("Cut")
+        plt.ylabel("Count")
+        assert plt.gcf().number == 1
+        plt.savefig("images/barplot_sparklystones.png", transparent=True)
+        plt.close()
 
 def test_lineplot_seaborn():
     tips = (

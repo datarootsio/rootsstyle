@@ -40,10 +40,11 @@ with plt.style.context(rootsstyle.style):
 
 ## TODO
 
-- GitHub workflow to publish on pull-request
+- Find better spot/visualization for legend
+- Auto install matplotlib with package installation
 - Add more colors
 - Add python badge to show which python versions are supported
-- Auto install matplotlib with package installation
+- GitHub workflow to publish on pull-request
 - Using poetry install in ci.yml 
 
 

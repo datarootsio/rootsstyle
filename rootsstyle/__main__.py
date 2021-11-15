@@ -9,14 +9,12 @@ import matplotlib as mpl
 import matplotlib.font_manager as fm
 
 colors = {
-    "green_light": "38b580",
-    "green_dark": "005921",
-    "blue_dark": "445ba7",
-    "blue_light": "bfc7e2",
-    "black": "212121",
+    "green_light": "52BE7F",
+    "green_dark": "27AE60",
+    "blue_dark": "2980B9",
+    "blue_light": "3498DB",
+    "blue_navy": "34495D",
     "gray": "969696",
-    "pink": "ff6361",
-    "yellow": "ffa600",
 }
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
@@ -28,7 +26,7 @@ fonts = {
 font_entries = [fm.FontEntry(fname=path, name=name) for name, path in fonts.items()]
 fm.fontManager.ttflist.extend(font_entries)
 
-#SOURCE: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
+# SOURCE: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
 style = {
     # FONT
     "font.family": "Arvo",
@@ -58,10 +56,9 @@ style = {
         color=[
             colors["green_light"],
             colors["blue_dark"],
-            colors["blue_light"],
             colors["green_dark"],
-            colors["black"],
-            colors["yellow"],
+            colors["blue_navy"],
+            colors["blue_light"],
         ],
     ),
 }
