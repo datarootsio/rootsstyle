@@ -10,13 +10,14 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
 colors = {
-    "green_light": "#52BE7F",
+    "green_light": "#4CE38C",
     "green_dark": "#27AE60",
     "blue_dark": "#2980B9",
     "blue_light": "#3498DB",
     "blue_navy": "#34495D",
     "gray": "#969696",
     "gray_light": "#bfc7e2",
+    "green_light+": "#CCE1B5",
 }
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
@@ -62,6 +63,8 @@ style = {
             colors["blue_navy"],
             colors["blue_light"],
             colors["gray_light"],
+            colors["gray"],
+            colors["green_light+"],
         ],
     ),
 }
