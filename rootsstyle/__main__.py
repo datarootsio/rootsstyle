@@ -1,4 +1,4 @@
-"""Main file of the rootsstyle repository. 
+"""Main file of the rootsstyle repository.
 - defines the color palette
 - loads the necessary fonts
 - defines the style dictionary
@@ -66,13 +66,14 @@ style = {
     ),
 }
 
-#Inspiration: https://github.com/nschloe/dufte
+
+# Inspiration: https://github.com/nschloe/dufte
 def legend_line():
     ax = plt.gca()
-    lines = [child for child in ax.get_children() if type(child)==mpl.lines.Line2D]
-    if len(lines)==0:
+    lines = [child for child in ax.get_children() if type(child) == mpl.lines.Line2D]
+    if len(lines) == 0:
         return
-    #Removing existing legend
+    # Removing existing legend
     if ax.legend_ is not None:
         ax.legend_ = None
     labels = [line.get_label() for line in lines]
@@ -80,10 +81,11 @@ def legend_line():
 
     last_y = [line.get_ydata()[~np.isnan(line.get_ydata())][-1] for line in lines]
     last_x = [line.get_xdata()[~np.isnan(line.get_xdata())][-1] for line in lines]
-    targets = [(x*1.03, y) for x, y in zip(last_x, last_y)]
+    targets = [(x * 1.03, y) for x, y in zip(last_x, last_y)]
 
-    for label, (x,y), color in zip(labels, targets, colors):
+    for label, (x, y), color in zip(labels, targets, colors):
         plt.text(x, y, label, verticalalignment="center", color=color)
+
 
 def legend(title=None):
     """Displays the legend to the left of the plot.
@@ -92,12 +94,12 @@ def legend(title=None):
     ax = plt.gca()
     box = ax.get_position()
     ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-    if ax.legend_ is not None: #e.g. seaborn already set legend
-        existing_title = ax.legend_.get_title()._text 
+    if ax.legend_ is not None:  # e.g. seaborn already set legend
+        existing_title = ax.legend_.get_title()._text
         title = title or existing_title
-    legend = ax.legend(title=title, loc='center left', bbox_to_anchor=(1, 0.5))
-    [text.set_color(colors['gray']) for text in legend.get_texts()]
-    #For seaborn plots, update title
-    legend.get_title().set_color(colors['gray'])
+    legend = ax.legend(title=title, loc="center left", bbox_to_anchor=(1, 0.5))
+    [text.set_color(colors["gray"]) for text in legend.get_texts()]
+    # For seaborn plots, update title
+    legend.get_title().set_color(colors["gray"])
     if title is not None:
         legend.set_title(title)

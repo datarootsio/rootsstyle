@@ -8,14 +8,18 @@ def test_version():
     assert rootsstyle.__version__ == "0.1.0"
 
 
-
-
 def test_scatterplot():
     nb_series, nb_dots = 6, 12
     with plt.style.context(rootsstyle.style):
         x = np.arange(start=0, stop=nb_dots, step=1)
         y = np.random.rand(nb_dots, nb_series)
-        plt.plot(x, y, linestyle="none", marker="o", label=[f"series {i}" for i in range(nb_series)])
+        plt.plot(
+            x,
+            y,
+            linestyle="none",
+            marker="o",
+            label=[f"series {i}" for i in range(nb_series)],
+        )
         plt.title("A scatter plot with rootsstyle")
         plt.xlabel(f"range from 0 to {nb_dots}")
         plt.ylabel("random values from 0 to 1")
@@ -43,17 +47,29 @@ def test_barplot_seaborn():
         plt.savefig("images/barplot_tips.png", transparent=True)
         plt.close()
 
+
 def test_barplot_seaborn2():
     diamonds = sns.load_dataset("diamonds")
-    diamonds_cut = diamonds.groupby('cut')['price'].count().reset_index().rename(columns={'price': 'count'})
+    diamonds_cut = (
+        diamonds.groupby("cut")["price"]
+        .count()
+        .reset_index()
+        .rename(columns={"price": "count"})
+    )
     with plt.style.context(rootsstyle.style):
-        sns.barplot(x="cut", y="count", data=diamonds_cut, order=list(diamonds['cut'].unique())[::-1])
+        sns.barplot(
+            x="cut",
+            y="count",
+            data=diamonds_cut,
+            order=list(diamonds["cut"].unique())[::-1],
+        )
         plt.title("Sparkly Stones")
         plt.xlabel("Cut")
         plt.ylabel("Count")
         assert plt.gcf().number == 1
         plt.savefig("images/barplot_sparklystones.png", transparent=True)
         plt.close()
+
 
 def test_lineplot_seaborn():
     tips = (
@@ -64,8 +80,8 @@ def test_lineplot_seaborn():
     )
 
     with plt.style.context(rootsstyle.style):
-        sns.lineplot(x="day", y="total_bill", data=tips, label='total bill')
-        sns.lineplot(x="day", y="tip", data=tips, label='tip')
+        sns.lineplot(x="day", y="total_bill", data=tips, label="total bill")
+        sns.lineplot(x="day", y="tip", data=tips, label="tip")
         plt.title("Total income per day")
         plt.xlabel("Day")
         plt.ylabel("USD")
