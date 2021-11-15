@@ -33,7 +33,7 @@ style = {
     # FONT
     "font.family": "Arvo",
     # TITLE
-    "axes.titlelocation": "left",
+    "axes.titlelocation": "center",
     "axes.titlesize": 18,
     "axes.titlepad": 12,
     "axes.titlecolor": colors["green_light"],
@@ -67,22 +67,23 @@ style = {
 }
 
 #Inspiration: https://github.com/nschloe/dufte
-def line_legend(ax=None):
-    ax = ax or plt.gca()
+def legend_line():
+    ax = plt.gca()
     lines = [child for child in ax.get_children() if type(child)==mpl.lines.Line2D]
     if len(lines)==0:
         return
+    #Removing existing legend
+    if ax.legend_ is not None:
+        ax.legend_ = None
     labels = [line.get_label() for line in lines]
     colors = [line.get_color() for line in lines]
 
-    targets = [ line.get_ydata()[~np.isnan(line.get_ydata())][-1] for line in lines]
-    ymax = ax.get_ylim()[1]
-    targets = [min(target, ymax) for target in targets]
+    last_y = [line.get_ydata()[~np.isnan(line.get_ydata())][-1] for line in lines]
+    last_x = [line.get_xdata()[~np.isnan(line.get_xdata())][-1] for line in lines]
+    targets = [(x*1.03, y) for x, y in zip(last_x, last_y)]
 
-    axis_to_data = ax.transAxes + ax.transData.inverted()
-    xpos = axis_to_data.transform([1.03, 1.0])[0]
-    for label, ypos, color in zip(labels, targets, colors):
-        plt.text(xpos, ypos, label, verticalalignment="center", color=color)
+    for label, (x,y), color in zip(labels, targets, colors):
+        plt.text(x, y, label, verticalalignment="center", color=color)
 
 def legend(title=None):
     """Displays the legend to the left of the plot.

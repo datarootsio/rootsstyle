@@ -64,12 +64,12 @@ def test_lineplot_seaborn():
     )
 
     with plt.style.context(rootsstyle.style):
-        sns.lineplot(x="day", y="total_bill", data=tips)
-        sns.lineplot(x="day", y="tip", data=tips)
+        sns.lineplot(x="day", y="total_bill", data=tips, label='total bill')
+        sns.lineplot(x="day", y="tip", data=tips, label='tip')
         plt.title("Total income per day")
-        plt.legend(["total bill", "tip"], labelcolor="linecolor")
         plt.xlabel("Day")
         plt.ylabel("USD")
+        rootsstyle.legend_line()
         assert plt.gcf().number == 1
         plt.savefig("images/lineplot.png", transparent=True)
         plt.close()
