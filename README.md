@@ -13,7 +13,7 @@ A dataroots inspired style for Matplotlib. Works with any visualization tools th
     
 </div>
 <div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEHROBJWGRARGALB3A3BTN6PS" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEEIUJKJSOHXIXJYL3TBTOARI" style="height: 300px;">
     <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEHBIIMAROVSLTIWYHLBTN6P6" style="height: 300px;">
 </div>
 
