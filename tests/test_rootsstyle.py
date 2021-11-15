@@ -20,9 +20,9 @@ def test_scatterplot():
             marker="o",
             label=[f"series {i}" for i in range(nb_series)],
         )
-        plt.title("A scatter plot with rootsstyle")
-        plt.xlabel(f"range from 0 to {nb_dots}")
-        plt.ylabel("random values from 0 to 1")
+        plt.title("Randoms")
+        plt.xlabel("Index")
+        rootsstyle.ylabel("Value")
         rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/scatterplot.png", transparent=True)
@@ -39,9 +39,9 @@ def test_barplot_seaborn():
 
     with plt.style.context(rootsstyle.style):
         sns.barplot(x="day", y="total_bill", hue="sex", data=tips)
-        plt.title("Average total bill per day per gender")
+        plt.title("Total income")
         plt.xlabel("Day")
-        plt.ylabel("Total bill [$]")
+        rootsstyle.ylabel("Total bill [$]")
         rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/barplot_tips.png", transparent=True)
@@ -64,7 +64,7 @@ def test_barplot_seaborn2():
             order=list(diamonds["cut"].unique())[::-1],
         )
         plt.title("Sparkly Stones")
-        plt.xlabel("Cut")
+        rootsstyle.ylabel("Cut")
         plt.ylabel("Count")
         assert plt.gcf().number == 1
         plt.savefig("images/barplot_sparklystones.png", transparent=True)
@@ -82,9 +82,9 @@ def test_lineplot_seaborn():
     with plt.style.context(rootsstyle.style):
         sns.lineplot(x="day", y="total_bill", data=tips, label="total bill")
         sns.lineplot(x="day", y="tip", data=tips, label="tip")
-        plt.title("Total income per day")
+        plt.title("Restaurant income")
         plt.xlabel("Day")
-        plt.ylabel("USD")
+        rootsstyle.ylabel("USD")
         rootsstyle.legend_line()
         assert plt.gcf().number == 1
         plt.savefig("images/lineplot.png", transparent=True)
@@ -95,9 +95,9 @@ def test_violin_plot():
     tips = sns.load_dataset("tips")
     with plt.style.context(rootsstyle.style):
         sns.violinplot(x="day", y="total_bill", hue="smoker", data=tips)
-        plt.title("Tip distribution per day")
+        plt.title("Tip income")
         plt.xlabel("Day")
-        plt.ylabel("USD")
+        rootsstyle.ylabel("USD")
         rootsstyle.legend()
         assert plt.gcf().number == 1
         plt.savefig("images/violinplot.png", transparent=True)

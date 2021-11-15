@@ -103,3 +103,16 @@ def legend(title=None):
     legend.get_title().set_color(colors["gray"])
     if title is not None:
         legend.set_title(title)
+
+
+# Inspiration: https://github.com/nschloe/dufte
+def ylabel(ylabel:str):
+    """Adds a ylabel to the plot at the top of the y-axis
+
+    Args:
+        ylabel (str): the name of the label
+    """
+    ax = plt.gca()
+    plt.ylabel(ylabel, horizontalalignment='center').set_rotation(0)
+    #sits 3% above top tick
+    ax.yaxis.set_label_coords(0, 1.03)
