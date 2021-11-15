@@ -10,14 +10,14 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
 colors = {
-    "green_light": "#4CE38C",
-    "green_dark": "#27AE60",
-    "blue_dark": "#2980B9",
-    "blue_light": "#3498DB",
-    "blue_navy": "#34495D",
+    "green_light+": "#A6F09A",
+    "green_light": "#3CE684",
+    "green_dark": "#12AD53",
+    "blue_light": "#4DA7F3",
+    "blue_dark": "#156CA9",
+    "blue_navy": "#1E2B5F",
     "gray": "#969696",
-    "gray_light": "#bfc7e2",
-    "green_light+": "#CCE1B5",
+    "gray_light": "#C5CFD1",
 }
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
@@ -57,14 +57,14 @@ style = {
     # COLORS
     "axes.prop_cycle": mpl.cycler(
         color=[
-            colors["green_light"],
-            colors["blue_dark"],
-            colors["green_dark"],
-            colors["blue_navy"],
-            colors["blue_light"],
-            colors["gray_light"],
-            colors["gray"],
             colors["green_light+"],
+            colors["green_light"],
+            colors["green_dark"],
+            colors["blue_light"],
+            colors["blue_dark"],
+            colors["blue_navy"],
+            colors["gray"],
+            colors["gray_light"],
         ],
     ),
 }
