@@ -1,5 +1,6 @@
 [![maintained by dataroots](https://img.shields.io/badge/maintained%20by-dataroots-%2300b189)](https://dataroots.io)
  ![](https://media-exp1.licdn.com/dms/image/C4D1BAQFJFecNiY6xNA/company-background_10000/0/1606894615032?e=1628604000&v=beta&t=hNYzs9y3EA-620Ck8ip1QaZc77eXlH1ZUl-E-sLI6wo "Logo")
+[![Python Versions](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue.svg)](https://www.python.org/downloads/)
 [![codecov](https://codecov.io/gh/datarootsio/rootsstyle/branch/main/graph/badge.svg?token=4agmmGuhtu)](https://codecov.io/gh/datarootsio/rootsstyle)
 
 
@@ -42,12 +43,3 @@ with plt.style.context(rootsstyle.style):
 
 ### VISUALS
 - Add more colors
-- Legend for line graphs (next to lines)
-- Display y-axis legend horizontal on top of axis (+readability)
-
-### TECHNICALITIES
-- Add python badge to show which python versions are supported
-- GitHub workflow to publish on pull-request
-
-
-

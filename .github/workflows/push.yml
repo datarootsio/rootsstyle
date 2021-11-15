@@ -1,3 +1,6 @@
+# Performs the following checks on every push
+# - Linting
+# - Testing
 name: 'Push: Linting + Testing'
 on:
   push:

@@ -1,3 +1,4 @@
+#Publishes the package to PyPI on a succesfully merged pull-request to the main branch
 name: 'Publishing'
 on:
   push:
