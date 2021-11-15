@@ -41,7 +41,6 @@ jobs:
           path: ~/.cache
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - run: poetry install --no-interaction --no-root -vvv
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
       #Run tests
       - run: |
