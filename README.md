@@ -42,7 +42,7 @@ with plt.style.context(rootsstyle.style):
 
 ## Color Palette
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEELTENS6ATFY7DGBJ3BTN6PI" style="height: 550px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEEQA3IL6WAW655CMKLBTPBFG" style="height: 550px;">
 </div>
 
 
