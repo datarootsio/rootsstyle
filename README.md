@@ -40,6 +40,12 @@ with plt.style.context(rootsstyle.style):
     # ...
 ```
 
+## Color Palette
+<div align="center">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEELTENS6ATFY7DGBJ3BTN6PI" style="height: 550px;">
+</div>
+
+
 ## TODO
 
 ### VISUALS

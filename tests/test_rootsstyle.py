@@ -9,7 +9,8 @@ def test_version():
 
 
 def test_scatterplot():
-    nb_series, nb_dots = 6, 12
+    nb_series = len(rootsstyle.colors)
+    nb_dots = 100//nb_series
     with plt.style.context(rootsstyle.style):
         x = np.arange(start=0, stop=nb_dots, step=1)
         y = np.random.rand(nb_dots, nb_series)
