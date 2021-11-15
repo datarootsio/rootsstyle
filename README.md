@@ -8,13 +8,13 @@
 A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEEHTGQGZ36YXKRSP6TBS7EXG" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/barplot.png?token=AKP7KEE3ZGIH62V66UUTIPLBS7ETK" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEELTENS6ATFY7DGBJ3BTN6PI" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/barplot_tips.png?token=AKP7KEGHGVGHU6EAXBAMEKDBTN6N2" style="height: 300px;">
     
 </div>
 <div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEFL4ZRYC5GWFWFCF5LBS7EVY" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEGIXUDCD3EK3AO3XO3BS7EX6" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEHROBJWGRARGALB3A3BTN6PS" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEHBIIMAROVSLTIWYHLBTN6P6" style="height: 300px;">
 </div>
 
 
@@ -43,12 +43,12 @@ with plt.style.context(rootsstyle.style):
 ### VISUALS
 - Add more colors
 - Legend for line graphs (next to lines)
+- Display y-axis legend horizontal on top of axis (+readability)
 
 ### TECHNICALITIES
 - Auto install matplotlib with package installation
 - Add python badge to show which python versions are supported
 - GitHub workflow to publish on pull-request
-- Using poetry install in ci.yml
 
 
 
