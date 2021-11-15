@@ -15,6 +15,7 @@ colors = {
     "blue_light": "3498DB",
     "blue_navy": "34495D",
     "gray": "969696",
+    "gray_light": "bfc7e2",
 }
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
@@ -59,6 +60,7 @@ style = {
             colors["green_dark"],
             colors["blue_navy"],
             colors["blue_light"],
+            colors["gray_light"],
         ],
     ),
 }
