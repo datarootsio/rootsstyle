@@ -106,7 +106,7 @@ def legend(title=None):
 
 
 # Inspiration: https://github.com/nschloe/dufte
-def ylabel(ylabel:str):
+def ylabel(ylabel: str):
     """Adds a ylabel to the plot at the top of the y-axis
 
     Args:
@@ -114,5 +114,5 @@ def ylabel(ylabel:str):
     """
     ax = plt.gca()
     plt.ylabel(ylabel, horizontalalignment='center').set_rotation(0)
-    #sits 3% above top tick
+    # sits 3% above top tick
     ax.yaxis.set_label_coords(0, 1.03)
