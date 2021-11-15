@@ -1,11 +1,16 @@
+#Publishes the package to PyPI on a succesfully merged pull-request to the main branch
 name: 'Publishing'
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   publish:
+    if: |
+      github.event_name == 'pull_request' && 
+      github.event.action == 'closed' && 
+      github.event.pull_request.merged == true
     name: Publish to PyPi
     runs-on: ubuntu-latest
     steps:
