@@ -46,7 +46,6 @@ with plt.style.context(rootsstyle.style):
 - Display y-axis legend horizontal on top of axis (+readability)
 
 ### TECHNICALITIES
-- Auto install matplotlib with package installation
 - Add python badge to show which python versions are supported
 - GitHub workflow to publish on pull-request
 

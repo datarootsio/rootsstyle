@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 def test_version():
-    assert rootsstyle.__version__ == "0.1.1"
+    assert rootsstyle.__version__ == "0.1.2"
 
 
 def test_scatterplot():
