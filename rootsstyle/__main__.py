@@ -57,11 +57,11 @@ style = {
     # COLORS
     "axes.prop_cycle": mpl.cycler(
         color=[
-            colors["green_light+"],
             colors["green_light"],
-            colors["green_dark"],
             colors["blue_light"],
+            colors["green_light+"],
             colors["blue_dark"],
+            colors["green_dark"],
             colors["blue_navy"],
             colors["gray"],
             colors["gray_light"],
