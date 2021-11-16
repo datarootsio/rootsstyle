@@ -56,5 +56,5 @@ with plt.style.context(rootsstyle.style):
 ## TODO
 
 ### VISUALS
-- Add more colors
+- Fine tune colors
 - barplots: add values in bars + remove y-axis
