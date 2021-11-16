@@ -9,8 +9,7 @@ homepage = "https://github.com/yannouravoet"
 
 include = [
     "LICENSE",
-    "fonts/**/*.ttf",
-    "images/*.png"
+    "fonts/**/*.ttf"
 ]
 
 [tool.poetry.dependencies]

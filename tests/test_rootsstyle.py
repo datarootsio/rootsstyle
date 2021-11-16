@@ -9,6 +9,19 @@ def test_version():
     assert rootsstyle.__version__ == "0.1.2"
 
 
+def test_empty_plot():
+    with plt.style.context(rootsstyle.style):
+        plt.plot([], [], linestyle="none")
+        plt.title("Empty scatterplot")
+        assert plt.gcf().number == 1
+        plt.close()
+
+        plt.plot([], [])
+        plt.title("Empty lineplot")
+        assert plt.gcf().number == 1
+        plt.close()
+
+
 def test_scatterplot():
     nb_series = len(rootsstyle.colors)
     nb_dots = 100//nb_series
@@ -27,7 +40,7 @@ def test_scatterplot():
         rootsstyle.ylabel("Value")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig(f"{output_dir}/scatterplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/scatterplot.png")
         plt.close()
 
 
@@ -46,7 +59,7 @@ def test_barplot_seaborn():
         rootsstyle.ylabel("Total bill [$]")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig(f"{output_dir}/barplot_tips.png", transparent=True)
+        plt.savefig(f"{output_dir}/barplot_tips.png")
         plt.close()
 
 
@@ -69,7 +82,7 @@ def test_barplot_seaborn2():
         rootsstyle.ylabel("Cut")
         plt.ylabel("Count")
         assert plt.gcf().number == 1
-        plt.savefig(f"{output_dir}/barplot_sparklystones.png", transparent=True)
+        plt.savefig(f"{output_dir}/barplot_sparklystones.png")
         plt.close()
 
 
@@ -87,9 +100,21 @@ def test_lineplot_seaborn():
         plt.title("Restaurant income")
         plt.xlabel("Day")
         rootsstyle.ylabel("USD")
-        rootsstyle.legend_line()
+        rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig(f"{output_dir}/lineplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/lineplot.png")
+        plt.close()
+
+    
+    with plt.style.context(rootsstyle.style):
+        sns.lineplot(x="day", y="total_bill", data=tips)
+        sns.lineplot(x="day", y="tip", data=tips)
+        plt.title("Restaurant income")
+        plt.xlabel("Day")
+        rootsstyle.ylabel("USD")
+        rootsstyle.legend(labels=['total bill', 'tip'])
+        assert plt.gcf().number == 1
+        plt.savefig(f"{output_dir}/lineplot_2.png")
         plt.close()
 
 
@@ -102,5 +127,5 @@ def test_violin_plot():
         rootsstyle.ylabel("USD")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig(f"{output_dir}/violinplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/violinplot.png")
         plt.close()
