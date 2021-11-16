@@ -8,7 +8,7 @@
 !poetry.lock
 !.gitignore
 !.github/workflows/*.yml
-!requirements.txt
+!.flake8
 
 #README
 !README.md

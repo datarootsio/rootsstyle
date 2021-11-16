@@ -10,14 +10,15 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
 colors = {
-    "green_light+": "#A6F09A",
-    "green_light": "#3CE684",
-    "green_dark": "#12AD53",
-    "blue_light": "#4DA7F3",
-    "blue_dark": "#156CA9",
+    "green_light+": "#A3F6B4",
+    "green_light": "#3DF29A",
+    "green_dark": "#38B580",
+    "blue_light": "#BFC6E2",
+    "blue_dark": "#445BA7",
     "blue_navy": "#1E2B5F",
+    "black": "#212121",
     "gray": "#969696",
-    "gray_light": "#C5CFD1",
+    "gray_light": "#C0C2C2",
 }
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
@@ -57,12 +58,13 @@ style = {
     # COLORS
     "axes.prop_cycle": mpl.cycler(
         color=[
-            colors["green_light"],
-            colors["blue_light"],
-            colors["green_light+"],
-            colors["blue_dark"],
             colors["green_dark"],
+            colors["blue_dark"],
+            colors["blue_light"],
+            colors["green_light"],
             colors["blue_navy"],
+            colors["blue_light"],
+            colors["black"],
             colors["gray"],
             colors["gray_light"],
         ],
@@ -116,6 +118,6 @@ def ylabel(ylabel: str):
         ylabel (str): the name of the label
     """
     ax = plt.gca()
-    plt.ylabel(ylabel, horizontalalignment='center').set_rotation(0)
+    plt.ylabel(ylabel, horizontalalignment="center").set_rotation(0)
     # sits 3% above top tick
     ax.yaxis.set_label_coords(0, 1.03)
