@@ -1,8 +1,9 @@
 import rootsstyle
 import numpy as np
-import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.pyplot as plt
 
+output_dir = "images"
 
 def test_version():
     assert rootsstyle.__version__ == "0.1.2"
@@ -26,7 +27,7 @@ def test_scatterplot():
         rootsstyle.ylabel("Value")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig("images/scatterplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/scatterplot.png", transparent=True)
         plt.close()
 
 
@@ -45,7 +46,7 @@ def test_barplot_seaborn():
         rootsstyle.ylabel("Total bill [$]")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig("images/barplot_tips.png", transparent=True)
+        plt.savefig(f"{output_dir}/barplot_tips.png", transparent=True)
         plt.close()
 
 
@@ -68,7 +69,7 @@ def test_barplot_seaborn2():
         rootsstyle.ylabel("Cut")
         plt.ylabel("Count")
         assert plt.gcf().number == 1
-        plt.savefig("images/barplot_sparklystones.png", transparent=True)
+        plt.savefig(f"{output_dir}/barplot_sparklystones.png", transparent=True)
         plt.close()
 
 
@@ -88,7 +89,7 @@ def test_lineplot_seaborn():
         rootsstyle.ylabel("USD")
         rootsstyle.legend_line()
         assert plt.gcf().number == 1
-        plt.savefig("images/lineplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/lineplot.png", transparent=True)
         plt.close()
 
 
@@ -101,5 +102,5 @@ def test_violin_plot():
         rootsstyle.ylabel("USD")
         rootsstyle.legend()
         assert plt.gcf().number == 1
-        plt.savefig("images/violinplot.png", transparent=True)
+        plt.savefig(f"{output_dir}/violinplot.png", transparent=True)
         plt.close()

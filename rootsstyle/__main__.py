@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
 colors = {
-    "green_light+": "#A3F6B4",
-    "green_light": "#3DF29A",
+    "green_light": "#A3F6B4",
+    "green_bright": "#3DF29A",
     "green_dark": "#38B580",
     "blue_light": "#BFC6E2",
     "blue_dark": "#445BA7",
@@ -38,7 +38,7 @@ style = {
     "axes.titlelocation": "center",
     "axes.titlesize": 18,
     "axes.titlepad": 12,
-    "axes.titlecolor": colors["green_light"],
+    "axes.titlecolor": colors["green_dark"],
     # LABELS
     "axes.labelsize": 12,
     "axes.labelpad": 6,
@@ -50,7 +50,7 @@ style = {
     "ytick.color": colors["gray"],
     # AXES
     "axes.linewidth": 1.6,
-    "axes.edgecolor": colors["green_light"],
+    "axes.edgecolor": colors["green_dark"],
     "axes.spines.top": False,
     "axes.spines.right": False,
     # LEGEND
@@ -63,10 +63,10 @@ style = {
             colors["blue_light"],
             colors["green_light"],
             colors["blue_navy"],
-            colors["blue_light"],
-            colors["black"],
             colors["gray"],
             colors["gray_light"],
+            colors["green_bright"],
+            colors["black"],
         ],
     ),
 }
