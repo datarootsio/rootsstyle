@@ -1,33 +1,16 @@
 """Main file of the rootsstyle repository.
-- defines the color palette
-- loads the necessary fonts
 - defines the style dictionary
+- defines the optional extra functionalities
 """
+from .fonts import fonts
+from .colors import colors
+from .utils import is_line_plot
 import numpy as np
-from pathlib import Path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from .utils import is_line_plot
 import matplotlib.font_manager as fm
 
-colors = {
-    "green_light": "#A3F6B4",
-    "green_bright": "#48DF88",
-    "green_dark": "#38B580",
-    "blue_light": "#BFC6E2",
-    "blue_dark": "#445BA7",
-    "blue_navy": "#34495D",
-    "black": "#212121",
-    "gray": "#969696",
-    "gray_light": "#C0C2C2",
-}
-
-_fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
-fonts = {
-    "Nunito": Path(_fonts_dir, "Nunito_Sans", "NunitoSans-Regular.ttf"),
-    "Arvo": Path(_fonts_dir, "Arvo", "Arvo-Regular.ttf"),
-    "Inconsolata": Path(_fonts_dir, "Inconsolata", "Inconsolata-Regular.ttf"),
-}
+# Add fonts to matplotlib global fontManager
 font_entries = [fm.FontEntry(fname=path, name=name) for name, path in fonts.items()]
 fm.fontManager.ttflist.extend(font_entries)
 
@@ -89,24 +72,33 @@ style = {
 # Inspiration: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax, labels=None):
+    """Displays the legend next to the line
+
+    Args:
+        ax ([type]): [description]
+        labels ([type], optional): [description]. Defaults to None.
+    """
     # Removing existing legend (e.g. default of seaborn)
     if ax.legend_ is not None:
         ax.legend_ = None
 
-    handles = [h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D]
-    colors = [line.get_color() for line in handles]
+    handles = [
+        h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D
+    ]
+    colors = [h.get_color() for h in handles]
     if labels is None:
-        labels = [line.get_label() for line in handles]
+        labels = [h.get_label() for h in handles]
 
-    last_y = [line.get_ydata()[~np.isnan(line.get_ydata())][-1] for line in handles]
-    last_x = [line.get_xdata()[~np.isnan(line.get_xdata())][-1] for line in handles]
+    last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
+    last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
     targets = [(x * 1.03, y) for x, y in zip(last_x, last_y)]
 
     for label, (x, y), color in zip(labels, targets, colors):
         plt.text(x, y, label, verticalalignment="center", color=color)
+    return {"labels": labels, "handles": handles}
 
 
-def legend(handles=None, labels=None, title: str = None):
+def legend(handles=None, labels=None, title = None):
     """Displays the legend to the left of the plot.
     For lineplots, displays each line legend next to the line.
 
@@ -123,7 +115,7 @@ def legend(handles=None, labels=None, title: str = None):
         handles = handles or ax.legend_.legendHandles
 
     if is_line_plot(ax, labels):
-        _legend_line(ax, labels)
+        legend = _legend_line(ax, labels)
     else:
         # Shrink box to fit legend to the right
         box = ax.get_position()
@@ -138,6 +130,7 @@ def legend(handles=None, labels=None, title: str = None):
         )
         [text.set_color(colors["gray"]) for text in legend.get_texts()]
         legend.get_title().set_color(colors["gray"])
+    return {"labels": labels, "handles": handles}
 
 
 # Inspiration: https://github.com/nschloe/dufte

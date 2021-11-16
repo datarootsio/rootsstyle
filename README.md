@@ -39,11 +39,10 @@ plt.style.use(rootsstyle.style)
 with plt.style.context(rootsstyle.style):
     # ...
 ```
+
 ```python
 #More functionalities
-
 'Place the legend to the left of the graph': rootsstyle.legend()
-'Place the legend of each line next to the line': rootsstyle.legend_line()
 'Horizontal label of y-axis above the yaxis': rootsstyle.ylabel()
 ```
 

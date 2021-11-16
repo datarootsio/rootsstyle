@@ -4,8 +4,6 @@ import matplotlib as mpl
 # pyplot.legend() -> gca().legend()
 # axes.legend() -> legend._parse_legend_args()
 # legend._parse_legend_args() -> labels!=None and handles==None:
-
-
 def get_line_handles(ax):
     return [
         h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D
@@ -25,9 +23,8 @@ def is_line_plot(ax: mpl.axes.Axes, labels) -> bool:
     if len(handles) == 0:
         return False  # No lines in plot
     if labels != None and len(handles) != len(labels):
-        return (
-            False  # Some plots (e.g. violin plots also use Line2D object for some data)
-        )
+        # Some plots (e.g. violin plots also use Line2D object for some data)
+        return False
     linestyles = [h._linestyle for h in handles]
     return "None" not in linestyles  # linestyle 'None' is used for scatterplots
 

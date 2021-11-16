@@ -1,6 +1,9 @@
+
 import rootsstyle
 import numpy as np
+import pandas as pd
 import seaborn as sns
+from datetime import datetime
 import matplotlib.pyplot as plt
 
 output_dir = "images"
@@ -11,15 +14,31 @@ def test_version():
 
 def test_empty_plot():
     with plt.style.context(rootsstyle.style):
-        plt.plot([], [], linestyle="none")
-        plt.title("Empty scatterplot")
+        plt.plot([], [])
         assert plt.gcf().number == 1
         plt.close()
 
-        plt.plot([], [])
-        plt.title("Empty lineplot")
+
+def test_legend():
+    df_penguins = sns.load_dataset("penguins")
+    df_flights = sns.load_dataset("flights")
+    df_flights['month'] = pd.to_datetime(df_flights['month'], format="%B").dt.month
+    with plt.style.context(rootsstyle.style):
+        sns.scatterplot(x='body_mass_g', y='flipper_length_mm', marker='+', data=df_penguins, hue='sex')
+        legend = rootsstyle.legend()
+        assert len(legend.items()) == 2
+        assert set(legend.keys()) == set(['labels', 'handles'])
+        assert set(legend['labels']) == set(['Adelie', 'Chinstrap', 'Gentoo'])
         assert plt.gcf().number == 1
         plt.close()
+
+        sns.lineplot(x='month', y='passengers', data=df_flights, hue='year')
+        legend = rootsstyle.legend()
+        assert len(legend.items()) == 2
+        assert set(legend.keys()) == set(['labels', 'handles'])
+        assert plt.gcf().number == 1
+        plt.close()
+
 
 
 def test_scatterplot():
