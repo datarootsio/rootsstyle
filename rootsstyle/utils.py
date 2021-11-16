@@ -10,7 +10,7 @@ def get_line_handles(ax):
     ]
 
 
-def is_line_plot(ax: mpl.axes.Axes, labels) -> bool:
+def is_line_plot(ax, labels) -> bool:
     """Determines whether the plot is a pure line plot or if it contains other types of data visualizations.
 
     Args:

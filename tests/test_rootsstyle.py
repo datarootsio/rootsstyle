@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 output_dir = "images"
 
 def test_version():
-    assert rootsstyle.__version__ == "0.1.2"
+    assert rootsstyle.__version__ == "0.1.3"
 
 
 def test_empty_plot():
