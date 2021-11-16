@@ -10,13 +10,13 @@
 A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEELTENS6ATFY7DGBJ3BTN6PI" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/barplot_tips.png?token=AKP7KEGHGVGHU6EAXBAMEKDBTN6N2" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEFCSSICSNHNGSGFFW3BTSXZQ" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/barplot_tips.png?token=AKP7KECKGAFZSPYGCG3RM5TBTSX4S" style="height: 300px;">
     
 </div>
 <div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEEIUJKJSOHXIXJYL3TBTOARI" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEHBIIMAROVSLTIWYHLBTN6P6" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEG6SBVNRHP5OIPUEH3BTSX5Y" style="height: 300px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEDIOGU4MCJWRPYW7VLBTSX6A" style="height: 300px;">
 </div>
 
 
@@ -49,7 +49,7 @@ with plt.style.context(rootsstyle.style):
 
 ## Color Palette
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEEQA3IL6WAW655CMKLBTPBFG" style="height: 550px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEFDLA75X3SATBDRQ63BTSX7Q" style="height: 550px;">
 </div>
 
 
