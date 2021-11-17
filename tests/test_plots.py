@@ -156,7 +156,7 @@ def test_pieplot():
     df_penguins = df_penguins.groupby("species").size().to_frame("count").reset_index()
     with plt.style.context(rootsstyle.style):
         plt.pie(df_penguins["count"], labels=df_penguins["species"], autopct="%.0f%%")
-        plt.title("Pinguin distribution")
+        plt.title("Penguin distribution")
         rootsstyle.legend()
         plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/pieplot.png")
