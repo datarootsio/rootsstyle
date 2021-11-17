@@ -4,6 +4,7 @@ import scipy.optimize
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
+
 # pyplot.legend() -> gca().legend()
 # axes.legend() -> legend._parse_legend_args()
 # legend._parse_legend_args() -> labels!=None and handles==None:
@@ -12,13 +13,13 @@ def get_dataline_handles(ax):
 
     Args:
         ax (Axes): the axis of the graph to look in
-        handles (list[mpl.artist.Artist], optional): A list of Artists (lines, patches) to be added to the legend. Defaults to None.
-        
     Returns:
         list[handle]: list of handles that correspond to datalines
     """
     return [
-        h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D and not np.all(np.isnan(h.get_ydata()))
+        h
+        for h in mpl.legend._get_legend_handles([ax])
+        if type(h) == mpl.lines.Line2D and not np.all(np.isnan(h.get_ydata()))
     ]
 
 
@@ -28,26 +29,25 @@ def is_line_plot(ax, labels=None) -> bool:
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
         labels (list[str], optional): list of labels to use. Defaults to None.
-
     Returns:
         bool: True if the plot is a pure lineplot, False otherwise
     """
     handles = get_dataline_handles(ax)
     if len(handles) == 0:
         return False  # No lines in plot
-    if labels != None and len(handles) != len(labels):
+    if labels is not None and len(handles) != len(labels):
         # Some plots (e.g. violin plots) also use Line2D object for some data (e.g. errorlines))
         return False
     # Filter scatterplots
     linestyles = [h._linestyle for h in handles]
-    return "None" not in linestyles  
+    return "None" not in linestyles
 
 
 def get_handle_color(handle):
     """Returns the color of the handle
 
     Args:
-        handle ([type]): The handle that contains the color property
+        handle (mpl.artist.Artist): The handle (line, patch,...) that contains the color property
 
     Returns:
         str: color of the handle
@@ -61,24 +61,29 @@ def get_handle_color(handle):
 def get_linelegend_ypositions(ax, handles, labels=None):
     """Calculates the positions of the legendentries.
     Ensures that there is no vertical overlap between entires.
-    src: https://github.com/nschloe/dufte/blob/fa94fcc7277993942a1cbb909301105cd154644a/src/dufte/main.py#L96
+    https://github.com/nschloe/dufte?src/dufte/main.py
 
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
         handles (list[mpl.lines.Line2D]): list of handles representing the datalines we are making a legend for.
-        labels (list[str], optional): list of labels to use. Defaults to None.
+        labels (list[str], optional): list of labels to use.
+            Defaults to None.
     Returns:
-        list[(float, float)]: a list of (x,y) coordinates for the legend entries 
+        list[(float, float)]: a list of (x,y) coordinates for the legend entries
     """
     fontsize_inches = mpl.rcParams["font.size"] / 72
     fig_height_inches = plt.gcf().get_size_inches()[1]
-    yaxis_height_inches = (ax.get_position().y1 - ax.get_position().y0) * fig_height_inches
+    yaxis_height_inches = (
+        ax.get_position().y1 - ax.get_position().y0
+    ) * fig_height_inches
     if ax.get_yscale() == "log":
         yaxis_range = math.log10(ax.get_ylim()[1]) - math.log10(ax.get_ylim()[0])
     else:
         yaxis_range = ax.get_ylim()[1] - ax.get_ylim()[0]
     spacing_between_lines = 1.1
-    line_height = fontsize_inches / yaxis_height_inches * yaxis_range * spacing_between_lines
+    line_height = (
+        fontsize_inches / yaxis_height_inches * yaxis_range * spacing_between_lines
+    )
 
     # Find position heights and adjust so that there is no overlap
     last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
@@ -90,9 +95,11 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     n = len(targets)
     lines_away_from_first_label = np.arange(n, dtype=float)
     for i in range(1, len(labels)):
-        distance_to_prev_label = (2+f"{labels[i-1]}_{labels[i]}".count('\n'))/2
-        lines_away_from_first_label[i] = lines_away_from_first_label[i-1]+distance_to_prev_label
-    
+        distance_to_prev_label = (2 + f"{labels[i-1]}_{labels[i]}".count("\n")) / 2
+        lines_away_from_first_label[i] = (
+            lines_away_from_first_label[i - 1] + distance_to_prev_label
+        )
+
     y0_min = targets[0] - lines_away_from_first_label[-1] * line_height
     A = np.tril(np.ones([n, n]))
     b = targets - (y0_min + lines_away_from_first_label * line_height)
@@ -107,6 +114,6 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
     xaxis_range = ax.get_xlim()[1] - ax.get_xlim()[0]
-    targets = [(x + xaxis_range*0.03, y) for x, y in zip(last_x, last_y)]
+    targets = [(x + xaxis_range * 0.03, y) for x, y in zip(last_x, last_y)]
 
     return targets

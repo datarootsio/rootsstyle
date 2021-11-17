@@ -5,7 +5,6 @@
 from .fonts import fonts
 from .colors import colors
 from .utils import is_line_plot, get_dataline_handles, get_linelegend_ypositions
-import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -16,23 +15,23 @@ fm.fontManager.ttflist.extend(font_entries)
 
 # DOCS: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
 style = {
-    ## ***************************************************************************
-    ## * FONT                                                                    *
-    ## ***************************************************************************
+    # ***************************************************************************
+    # * FONT                                                                    *
+    # ***************************************************************************
     "font.family": "Arvo",
     "font.size": 10,  # used for line legend
-    ## ***************************************************************************
-    ## * TICKS                                                                   *
-    ## ***************************************************************************
+    # ***************************************************************************
+    # * TICKS                                                                   *
+    # ***************************************************************************
     "xtick.major.width": 0,
     "ytick.major.width": 0,
     "xtick.color": colors["gray"],
     "ytick.color": colors["gray"],
     "xtick.labelsize": 10,
     "ytick.labelsize": 10,
-    ## ***************************************************************************
-    ## * AXES                                                                    *
-    ## ***************************************************************************
+    # ***************************************************************************
+    # * AXES                                                                    *
+    # ***************************************************************************
     # DATA COLORS
     "axes.prop_cycle": mpl.cycler(
         color=[
@@ -61,16 +60,22 @@ style = {
     "axes.labelsize": 12,
     "axes.labelpad": 6,
     "axes.labelcolor": colors["gray"],
-    ## ***************************************************************************
-    ## * LEGEND                                                                  *
-    ## ***************************************************************************
+    # ***************************************************************************
+    # * LEGEND                                                                  *
+    # ***************************************************************************
     "legend.frameon": False,
     "legend.fontsize": 10,
-    ## ***************************************************************************
-    ## * SAVING FIGURES                                                          *
-    ## ***************************************************************************
+    # ***************************************************************************
+    # * SAVING FIGURES                                                          *
+    # ***************************************************************************
     "savefig.transparent": True,
 }
+
+
+def shrink_box_to_the_left(width_percentage):
+    ax = plt.gca()
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * width_percentage, box.height])
 
 
 # Inspiration: https://github.com/nschloe/dufte
@@ -105,9 +110,12 @@ def legend(handles=None, labels=None, title=None):
     For lineplots, displays each line legend next to the line.
 
     Args:
-        handles (list[mpl.artist.Artist], optional): A list of Artists (lines, patches) to be added to the legend. Defaults to None.
-        labels (list[str], optional): A list of labels to show next to the artists.. Defaults to None.
-        title (str, optional): The legend's title. Defaults to None.
+        handles (list[mpl.artist.Artist], optional): list of Artists (lines, patches) to be added to the legend.
+            Defaults to None.
+        labels (list[str], optional): A list of labels to show next to the artists.
+            Defaults to None.
+        title (str, optional): The legend's title.
+            Defaults to None.
     """
     ax = plt.gca()
     # Check for existing title
@@ -120,8 +128,7 @@ def legend(handles=None, labels=None, title=None):
         legend = _legend_line(ax, labels)
     else:
         # Shrink box to fit legend to the right
-        box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+        shrink_box_to_the_left(width_percentage=0.80)
         # Set legend
         legend = ax.legend(
             handles=handles,
