@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 OUTPUT_DIR = "images/plots"
 
+
 def test_scatterplot():
     df_penguins = sns.load_dataset("penguins")
     with plt.style.context(rootsstyle.style):
@@ -110,7 +111,6 @@ def test_lineplot():
         plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/lineplot_cpus.png")
         plt.close()
-
 
 
 def test_barplot():
