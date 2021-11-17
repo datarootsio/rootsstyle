@@ -20,4 +20,5 @@
 
 #CODE
 !tests/**/*.py
+!tests/cpus.csv
 !rootsstyle/**/*.py
