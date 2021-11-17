@@ -9,14 +9,8 @@
 
 A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
-<div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/scatterplot.png?token=AKP7KEFCSSICSNHNGSGFFW3BTSXZQ" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/barplot_tips.png?token=AKP7KECKGAFZSPYGCG3RM5TBTSX4S" style="height: 300px;">
-    
-</div>
-<div style="display: flex;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/lineplot.png?token=AKP7KEG6SBVNRHP5OIPUEH3BTSX5Y" style="height: 300px;">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/violinplot.png?token=AKP7KEDIOGU4MCJWRPYW7VLBTSX6A" style="height: 300px;">
+<div align="center">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHDACJ563AUQB4VMYDBTY5PC">
 </div>
 
 
