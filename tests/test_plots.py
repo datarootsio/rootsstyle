@@ -42,41 +42,57 @@ def test_scatterplot():
         plt.savefig(f"{OUTPUT_DIR}/scatterplot.png")
         plt.close()
 
-def test_lineplot():
-    df_flights = sns.load_dataset("flights")
-    with plt.style.context(rootsstyle.style):
-        sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-green'][:12])
-        rootsstyle.legend()
-        rootsstyle.ylabel('passengers')
-        plt.xlabel('month')
-        plt.title("Flights")
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_green.png")
-        plt.close()
-
-
-        sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-blue'][:12])
-        rootsstyle.legend()
-        rootsstyle.ylabel('passengers')
-        plt.xlabel('month')
-        plt.title("Flights")
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_blue.png")
-        plt.close()
+def test_lineplot():    
+    # REGULAR LINEPLOT
+    # df_cars = sns.load_dataset("mpg")
+    # df_usa = df_cars[df_cars['origin']=='usa'].groupby('model_year').mean().reset_index()
+    # df_japan = df_cars[df_cars['origin']=='japan'].groupby('model_year').mean().reset_index()
+    # df_europe = df_cars[df_cars['origin']=='europe'].groupby('model_year').mean().reset_index()
+    # with plt.style.context(rootsstyle.style):
+    #     sns.lineplot(x='model_year', y='mpg', data=df_usa, label='USA')
+    #     sns.lineplot(x='model_year', y='mpg', data=df_japan, label='Japan')
+    #     sns.lineplot(x='model_year', y='mpg', data=df_europe, label='Europe')
+    #     rootsstyle.legend()
+    #     rootsstyle.ylabel('mpg')
+    #     plt.xlabel('model year')
+    #     plt.title("Cars")
+    #     plt.savefig(f"{OUTPUT_DIR}/lineplot_cars.png")
+    #     plt.close()
     
-    df_cars = sns.load_dataset("mpg")
-    df_usa = df_cars[df_cars['origin']=='usa'].groupby('model_year').mean().reset_index()
-    df_japan = df_cars[df_cars['origin']=='japan'].groupby('model_year').mean().reset_index()
-    df_europe = df_cars[df_cars['origin']=='europe'].groupby('model_year').mean().reset_index()
-    with plt.style.context(rootsstyle.style):
-        sns.lineplot(x='model_year', y='mpg', data=df_usa, label='USA')
-        sns.lineplot(x='model_year', y='mpg', data=df_japan, label='Japan')
-        sns.lineplot(x='model_year', y='mpg', data=df_europe, label='Europe')
-        rootsstyle.legend()
-        rootsstyle.ylabel('mpg')
-        plt.xlabel('model year')
-        plt.title("Cars")
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_cars.png")
-        plt.close()
+    # # LINEPLOT WITH HUE PALETTE
+    # df_flights = sns.load_dataset("flights")
+    # with plt.style.context(rootsstyle.style):
+    #     sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-green'][:12])
+    #     rootsstyle.legend()
+    #     rootsstyle.ylabel('passengers')
+    #     plt.xlabel('month')
+    #     plt.title("Flights")
+    #     plt.savefig(f"{OUTPUT_DIR}/lineplot_green.png")
+    #     plt.close()
 
+
+    #     sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-blue'][:12])
+    #     rootsstyle.legend()
+    #     rootsstyle.ylabel('passengers')
+    #     plt.xlabel('month')
+    #     plt.title("Flights")
+    #     plt.savefig(f"{OUTPUT_DIR}/lineplot_blue.png")
+    #     plt.close()
+
+    # LOGARITMIC LINEPLOT
+    # https://github.com/karlrupp/microprocessor-trend-data
+    df_cpus = pd.read_csv("tests/cpus.csv")
+    with plt.style.context(rootsstyle.style):
+        g = sns.lineplot(x='year', y='transistors', data=df_cpus, label='transistors\n[1000s]')
+        g = sns.lineplot(x='year', y='watts', data=df_cpus, label='watts')
+        g = sns.lineplot(x='year', y='frequency', data=df_cpus, label='frequency\n[MHz]')
+        g = sns.lineplot(x='year', y='cores', data=df_cpus, label='logical\ncores')
+        g.set_yscale('log')
+        rootsstyle.legend()
+        plt.xlabel('Year')
+        plt.title("48 Years of Microprocessor Trends")
+        plt.savefig(f"{OUTPUT_DIR}/lineplot_cpus.png")
+        plt.close()
 
 def test_barplot():    
     df_cars = sns.load_dataset("mpg")

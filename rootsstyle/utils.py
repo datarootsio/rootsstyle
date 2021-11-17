@@ -58,16 +58,15 @@ def get_handle_color(handle):
         return handle.get_facecolor()
 
 
-def get_linelegend_ypositions(ax, handles):
+def get_linelegend_ypositions(ax, handles, labels=None):
     """Calculates the positions of the legendentries.
     Ensures that there is no vertical overlap between entires.
-
     src: https://github.com/nschloe/dufte/blob/fa94fcc7277993942a1cbb909301105cd154644a/src/dufte/main.py#L96
 
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
         handles (list[mpl.lines.Line2D]): list of handles representing the datalines we are making a legend for.
-
+        labels (list[str], optional): list of labels to use. Defaults to None.
     Returns:
         list[(float, float)]: a list of (x,y) coordinates for the legend entries 
     """
@@ -78,7 +77,8 @@ def get_linelegend_ypositions(ax, handles):
         yaxis_range = math.log10(ax.get_ylim()[1]) - math.log10(ax.get_ylim()[0])
     else:
         yaxis_range = ax.get_ylim()[1] - ax.get_ylim()[0]
-    min_distance = fontsize_inches / yaxis_height_inches * yaxis_range
+    spacing_between_lines = 1.1
+    line_height = fontsize_inches / yaxis_height_inches * yaxis_range * spacing_between_lines
 
     # Find position heights and adjust so that there is no overlap
     last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
@@ -86,19 +86,23 @@ def get_linelegend_ypositions(ax, handles):
         last_y = [math.log10(y) for y in last_y]
     idx = np.argsort(last_y)
     targets = np.sort(last_y)
+    labels = np.array(labels)[idx]
     n = len(targets)
-
-    y0_min = targets[0] - n * min_distance
+    lines_away_from_first_label = np.arange(n, dtype=float)
+    for i in range(1, len(labels)):
+        distance_to_prev_label = (2+f"{labels[i-1]}_{labels[i]}".count('\n'))/2
+        lines_away_from_first_label[i] = lines_away_from_first_label[i-1]+distance_to_prev_label
+    
+    y0_min = targets[0] - lines_away_from_first_label[-1] * line_height
     A = np.tril(np.ones([n, n]))
-    b = targets - (y0_min + np.arange(n) * min_distance)
+    b = targets - (y0_min + lines_away_from_first_label * line_height)
 
     out, _ = scipy.optimize.nnls(A, b)
-    sol = np.cumsum(out) + y0_min + np.arange(n) * min_distance
+    sol = np.cumsum(out) + y0_min + lines_away_from_first_label * line_height
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
     if ax.get_yscale() == "log":
         last_y = [10 ** y for y in last_y]
-    
 
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]

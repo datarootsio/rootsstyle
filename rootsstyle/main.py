@@ -20,7 +20,7 @@ style = {
     ## * FONT                                                                    *
     ## ***************************************************************************
     "font.family": "Arvo",
-    "font.size": 10, #used for line legend
+    "font.size": 10,  # used for line legend
     ## ***************************************************************************
     ## * TICKS                                                                   *
     ## ***************************************************************************
@@ -93,14 +93,14 @@ def _legend_line(ax, labels=None):
     if labels is None:
         labels = [h.get_label() for h in handles]
 
-    targets = get_linelegend_ypositions(ax, handles)
+    targets = get_linelegend_ypositions(ax, handles, labels)
 
     for label, (x, y), color in zip(labels, targets, colors):
         plt.text(x, y, label, verticalalignment="center", color=color)
     return {"labels": labels, "handles": handles}
 
 
-def legend(handles=None, labels=None, title = None):
+def legend(handles=None, labels=None, title=None):
     """Displays the legend to the left of the plot.
     For lineplots, displays each line legend next to the line.
 
