@@ -1,9 +1,11 @@
 import rootsstyle
 import pandas as pd
 import seaborn as sns
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 OUTPUT_DIR = "images/plots"
+Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
 
 def test_scatterplot():
