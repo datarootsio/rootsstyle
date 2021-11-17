@@ -3,7 +3,7 @@
 - defines the optional extra functionalities
 """
 from .fonts import fonts
-from .colors import colors
+from .colors import colors, palettes
 from .utils import is_line_plot, get_dataline_handles, get_linelegend_ypositions
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -36,17 +36,7 @@ style = {
     # ***************************************************************************
     # DATA COLORS
     "axes.prop_cycle": mpl.cycler(
-        color=[
-            colors["green_dark"],
-            colors["blue_dark"],
-            colors["blue_light"],
-            colors["green_light"],
-            colors["blue_navy"],
-            colors["gray"],
-            colors["gray_light"],
-            colors["green_bright"],
-            colors["black"],
-        ],
+        color=palettes['dataroots-default'],
     ),
     # EDGES
     "axes.linewidth": 1.6,
