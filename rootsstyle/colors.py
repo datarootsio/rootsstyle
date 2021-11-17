@@ -11,7 +11,7 @@ colors = {
 }
 
 palettes = {
-    "dataroots": list(colors.values()),
+    "dataroots-default": list(colors.values()),
     "dataroots-green": [
         "#C3E9D9",
         "#AFE1CC",

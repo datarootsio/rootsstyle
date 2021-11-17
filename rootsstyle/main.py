@@ -23,8 +23,10 @@ style = {
     # ***************************************************************************
     # * TICKS                                                                   *
     # ***************************************************************************
-    "xtick.major.width": 0,
-    "ytick.major.width": 0,
+    "xtick.minor.width": 0,
+    "ytick.minor.width": 0,
+    "xtick.major.width": 0.2,
+    "ytick.major.width": 0.2,
     "xtick.color": colors["gray"],
     "ytick.color": colors["gray"],
     "xtick.labelsize": 10,
@@ -70,12 +72,6 @@ style = {
     # ***************************************************************************
     "savefig.transparent": True,
 }
-
-
-def shrink_box_to_the_left(width_percentage):
-    ax = plt.gca()
-    box = ax.get_position()
-    ax.set_position([box.x0, box.y0, box.width * width_percentage, box.height])
 
 
 # Inspiration: https://github.com/nschloe/dufte
@@ -127,8 +123,6 @@ def legend(handles=None, labels=None, title=None):
     if is_line_plot(ax, labels):
         legend = _legend_line(ax, labels)
     else:
-        # Shrink box to fit legend to the right
-        shrink_box_to_the_left(width_percentage=0.80)
         # Set legend
         legend = ax.legend(
             handles=handles,

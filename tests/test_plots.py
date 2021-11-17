@@ -1,45 +1,9 @@
-import random
-import itertools
 import rootsstyle
 import pandas as pd
 import seaborn as sns
-from rootsstyle import colors
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 
-OUTPUT_DIR = "images"
-
-
-def test_palette():
-    color_values = list(colors.values())
-    nb_colors = len(color_values)
-    plt.figure(figsize=(8, 8))
-    ax = plt.gca()
-
-    # Plot ordered palette
-    ax.set_ylim(0, 6)
-    ax.set_xlim(0, nb_colors)
-    for i in range(nb_colors):
-        ax.add_patch(
-            patches.Rectangle(
-                (i, 5.05), width=1, height=0.92, linewidth=0, facecolor=color_values[i]
-            )
-        )
-
-    # Plot random spots next to each other
-    for x, y in itertools.product(list(range(nb_colors)), list(range(5))):
-        color = color_values[random.randint(0, nb_colors - 1)]
-        height = 0.92 if y == 4 else 1
-        ax.add_patch(
-            patches.Rectangle(
-                (x, y), width=1, height=height, linewidth=0, facecolor=color
-            )
-        )
-
-    plt.axis("off")
-    plt.savefig(f"{OUTPUT_DIR}/palette.png", transparent=True)
-    plt.close()
-
+OUTPUT_DIR = "images/plots"
 
 def test_scatterplot():
     df_penguins = sns.load_dataset("penguins")
@@ -55,6 +19,7 @@ def test_scatterplot():
         rootsstyle.ylabel("flipper length\n[mm]")
         plt.xlabel("body mass [g]")
         plt.title("Penguins")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/scatterplot.png")
         plt.close()
 
@@ -82,6 +47,7 @@ def test_lineplot():
         rootsstyle.ylabel("mpg")
         plt.xlabel("model year")
         plt.title("Cars")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/lineplot_cars.png")
         plt.close()
 
@@ -99,6 +65,7 @@ def test_lineplot():
         rootsstyle.ylabel("passengers")
         plt.xlabel("month")
         plt.title("Flights")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/lineplot_green.png")
         plt.close()
 
@@ -113,6 +80,7 @@ def test_lineplot():
         rootsstyle.ylabel("passengers")
         plt.xlabel("month")
         plt.title("Flights")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/lineplot_blue.png")
         plt.close()
 
@@ -137,13 +105,12 @@ def test_lineplot():
         g.set_yscale("log")
         plt.ylabel("")
         plt.xlabel("Year")
-        ax = plt.gca()
-        box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.92, box.height])
-        rootsstyle.legend()
         plt.title("48 Years of Microprocessor Trends")
+        rootsstyle.legend()
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/lineplot_cpus.png")
         plt.close()
+
 
 
 def test_barplot():
@@ -155,6 +122,7 @@ def test_barplot():
         plt.xlabel("model year")
         rootsstyle.legend()
         plt.title("Cars")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/barplot_mpg.png")
         plt.close()
 
@@ -163,6 +131,7 @@ def test_barplot():
         plt.xlabel("model year")
         rootsstyle.legend()
         plt.title("Cars")
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/barplot_horsepower.png")
         plt.close()
 
@@ -175,6 +144,7 @@ def test_violinplot():
         plt.xlabel("Day")
         rootsstyle.ylabel("USD")
         rootsstyle.legend()
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/violinplot.png")
         plt.close()
 
@@ -186,5 +156,6 @@ def test_pieplot():
         plt.pie(df_penguins["count"], labels=df_penguins["species"], autopct="%.0f%%")
         plt.title("Pinguin distribution")
         rootsstyle.legend()
+        plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/pieplot.png")
         plt.close()
