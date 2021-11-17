@@ -78,16 +78,26 @@ def test_lineplot():
         plt.close()
 
 
-def test_barplot():
-    df_penguins = sns.load_dataset("penguins")
-    df_penguins = df_penguins.groupby(["island", "species"]).size().to_frame('count').reset_index()
+def test_barplot():    
+    df_cars = sns.load_dataset("mpg")
+    df_cars['model_year']="' "+df_cars['model_year'].astype(str)
     with plt.style.context(rootsstyle.style):
-        sns.barplot(x='island', y='count',data=df_penguins, hue='species')
-        rootsstyle.ylabel('Penguins')
-        plt.xlabel('Island')
+        sns.barplot(x='model_year', y='mpg',data=df_cars, hue='origin',  ci=None)
+        rootsstyle.ylabel('mpg')
+        plt.xlabel('model year')
         rootsstyle.legend()
-        plt.savefig(f"{OUTPUT_DIR}/barplot.png")
+        plt.title("Cars")
+        plt.savefig(f"{OUTPUT_DIR}/barplot_mpg.png")
         plt.close()
+
+        sns.barplot(x='model_year', y='horsepower',data=df_cars, hue='origin',  ci=None)
+        rootsstyle.ylabel('horsepower')
+        plt.xlabel('model year')
+        rootsstyle.legend()
+        plt.title("Cars")
+        plt.savefig(f"{OUTPUT_DIR}/barplot_horsepower.png")
+        plt.close()
+
 
 def test_violinplot():
     df_tips = sns.load_dataset("tips")

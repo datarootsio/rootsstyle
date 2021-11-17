@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import scipy.optimize
 import matplotlib as mpl
@@ -73,11 +74,16 @@ def get_linelegend_ypositions(ax, handles):
     fontsize_inches = mpl.rcParams["font.size"] / 72
     fig_height_inches = plt.gcf().get_size_inches()[1]
     yaxis_height_inches = (ax.get_position().y1 - ax.get_position().y0) * fig_height_inches
-    yaxis_range = ax.get_ylim()[1] - ax.get_ylim()[0]
+    if ax.get_yscale() == "log":
+        yaxis_range = math.log10(ax.get_ylim()[1]) - math.log10(ax.get_ylim()[0])
+    else:
+        yaxis_range = ax.get_ylim()[1] - ax.get_ylim()[0]
     min_distance = fontsize_inches / yaxis_height_inches * yaxis_range
 
     # Find position heights and adjust so that there is no overlap
     last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
+    if ax.get_yscale() == "log":
+        last_y = [math.log10(y) for y in last_y]
     idx = np.argsort(last_y)
     targets = np.sort(last_y)
     n = len(targets)
@@ -90,6 +96,9 @@ def get_linelegend_ypositions(ax, handles):
     sol = np.cumsum(out) + y0_min + np.arange(n) * min_distance
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
+    if ax.get_yscale() == "log":
+        last_y = [10 ** y for y in last_y]
+    
 
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
