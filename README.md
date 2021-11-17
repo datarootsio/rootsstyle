@@ -46,7 +46,7 @@ with plt.style.context(rootsstyle.style):
 </div>
 
 
-## TODO
+## ROADMAP
 ### VISUALS
 - Fine tune colors
 - barplots: add values in bars + remove y-axis
