@@ -32,7 +32,7 @@ def test_legend():
         assert plt.gcf().number == 1
         plt.close()
 
-        sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-blue'][:12])
+        sns.lineplot(x='month', y='passengers', data=df_flights, hue='year', palette=rootsstyle.palettes['dataroots-green'][:12])
         legend = rootsstyle.legend()
         assert len(legend.items()) == 2
         assert set(legend.keys()) == set(['labels', 'handles'])

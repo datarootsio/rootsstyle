@@ -4,7 +4,7 @@
 """
 from .fonts import fonts
 from .colors import colors
-from .utils import is_line_plot
+from .utils import is_line_plot, get_dataline_handles, get_linelegend_ypositions
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -20,6 +20,7 @@ style = {
     ## * FONT                                                                    *
     ## ***************************************************************************
     "font.family": "Arvo",
+    "font.size": 10, #used for line legend
     ## ***************************************************************************
     ## * TICKS                                                                   *
     ## ***************************************************************************
@@ -27,6 +28,8 @@ style = {
     "ytick.major.width": 0,
     "xtick.color": colors["gray"],
     "ytick.color": colors["gray"],
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
     ## ***************************************************************************
     ## * AXES                                                                    *
     ## ***************************************************************************
@@ -62,6 +65,7 @@ style = {
     ## * LEGEND                                                                  *
     ## ***************************************************************************
     "legend.frameon": False,
+    "legend.fontsize": 10,
     ## ***************************************************************************
     ## * SAVING FIGURES                                                          *
     ## ***************************************************************************
@@ -72,26 +76,24 @@ style = {
 # Inspiration: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax, labels=None):
-    """Displays the legend next to the line
+    """Displays the legendentries next to the line in the same color as the line
 
     Args:
-        ax ([type]): [description]
-        labels ([type], optional): [description]. Defaults to None.
+        ax (mpl.axes.Axes): Axes object of the graph
+        labels (list[str], optional): list of labels to use. Defaults to None.
+    Returns:
+        dict: a dictionary containing entries for 'labels' and 'handles' used by the legend.
     """
     # Removing existing legend (e.g. default of seaborn)
     if ax.legend_ is not None:
         ax.legend_ = None
 
-    handles = [
-        h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D
-    ]
+    handles = get_dataline_handles(ax)
     colors = [h.get_color() for h in handles]
     if labels is None:
         labels = [h.get_label() for h in handles]
 
-    last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
-    last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
-    targets = [(x * 1.03, y) for x, y in zip(last_x, last_y)]
+    targets = get_linelegend_ypositions(ax, handles)
 
     for label, (x, y), color in zip(labels, targets, colors):
         plt.text(x, y, label, verticalalignment="center", color=color)
