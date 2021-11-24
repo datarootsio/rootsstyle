@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - '**'
-      
+
 jobs:
   run-linting:
     name: 'Linting'
@@ -19,12 +19,9 @@ jobs:
       - run: |
           python -m pip install --no-cache-dir --upgrade pip
           pip install flake8 black
-      - name: linting commands
-        run: |
-          black tests/
-          flake8 tests/
-          black rootsstyle/
-          flake8 rootsstyle/
+      - run: black tests/ rootsstyle/
+      - uses: stefanzweifel/git-auto-commit-action@v4
+      - run: flake8 tests/ rootsstyle/
 
   run-tests:
     name: 'Testing'
