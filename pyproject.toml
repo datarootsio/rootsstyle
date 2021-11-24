@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootsstyle"
-version = "0.1.4"
+version = "0.1.5"
 description = "A dataroots inspired theme for matplotlib."
 authors = ["YannouRavoet <yannou.ravoet@dataroots.io>"]
 license = "MIT"
@@ -13,8 +13,9 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.11"
 matplotlib = "^3.5.0"
+scipy = "^1.7.2"
 
 [tool.poetry.dev-dependencies]
 pandas = "^1.3.4"

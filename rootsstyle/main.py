@@ -36,7 +36,7 @@ style = {
     # ***************************************************************************
     # DATA COLORS
     "axes.prop_cycle": mpl.cycler(
-        color=palettes['dataroots-default'],
+        color=palettes["dataroots-default"],
     ),
     # EDGES
     "axes.linewidth": 1.6,
