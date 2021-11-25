@@ -10,18 +10,18 @@ def test_palette():
     dataroots_cmaps = dict()
     for cmap_name, cmap in mpl_cmaps.items():
         if "dataroots" in cmap_name:
-            dataroots_cmaps[cmap_name]=cmap
+            dataroots_cmaps[cmap_name] = cmap
     max_colors = 256.0
     _, axes = plt.subplots(nrows=len(dataroots_cmaps.items()))
 
     for p, (cmap_name, cmap) in enumerate(dataroots_cmaps.items()):
         ax = axes[p]
         ax.set_xlim(0, max_colors)
-        width = max_colors /  cmap.N
+        width = max_colors / cmap.N
         for i in range(cmap.N):
             ax.add_patch(
                 patches.Rectangle(
-                    (i*width, 0),
+                    (i * width, 0),
                     width=width,
                     height=1,
                     linewidth=0,
