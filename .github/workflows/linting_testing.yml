@@ -16,12 +16,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: |
-          echo ${{ github.ref }}
-          echo github.head.ref
-          echo ${{ github.head.ref }}
-          echo github.head_ref
-          echo ${{ github.head_ref }}
-      - run: |
           python -m pip install --no-cache-dir --upgrade pip
           pip install flake8 black
       - run: black tests/ rootsstyle/
@@ -67,7 +61,7 @@ jobs:
           pytest -vvv --cov-report xml --cov=./
       # upload to codecov
       - name: upload coverage to Codecov
-        if: github.head_ref == 'main' && ${{ matrix.python-version == '3.8' }}
+        if: ${{ github.ref }} == 'refs/heads/main' && ${{ matrix.python-version == '3.8' }}
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
