@@ -1,6 +1,5 @@
 # Performs the following checks on every push
 # - Linting
-# - Testing
 name: Linting
 on:
   push:

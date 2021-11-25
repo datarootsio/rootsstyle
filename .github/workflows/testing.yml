@@ -3,8 +3,9 @@ name: Testing
 
 on:
   workflow_run:
-    workflows: [Linting]
-    types: [completed]
+    workflows: ["Linting"]
+    types: 
+     - completed
 
 jobs:
   run-tests:
