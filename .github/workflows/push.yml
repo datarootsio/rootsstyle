@@ -1,7 +1,7 @@
 # Performs the following checks on every push
 # - Linting
 # - Testing
-name: 'Push: Linting + Testing'
+name: Linting + Testing
 on:
   push:
     branches:
@@ -59,10 +59,3 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest -vvv --cov-report xml --cov=./
-      - name: upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        if: github.ref == 'refs/heads/main' && ${{ matrix.python-version == '3.8' }}
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage.xml
-          fail_ci_if_error: true
