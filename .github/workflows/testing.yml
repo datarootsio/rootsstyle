@@ -4,9 +4,7 @@ name: Testing
 on:
   workflow_run:
     workflows: [Linting]
-    branches: ['**']
-    types: 
-     - completed
+    types: [completed]
 
 jobs:
   run-tests:
