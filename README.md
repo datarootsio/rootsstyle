@@ -10,7 +10,7 @@
 A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHDACJ563AUQB4VMYDBTY5PC">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEG5WOE2WQF4XBGEE33BVCBNK">
 </div>
 
 
