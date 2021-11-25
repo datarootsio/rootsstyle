@@ -3,12 +3,10 @@ name: Testing
 
 on:
   workflow_run:
-    workflows: 
-     - Linting
+    workflows: [Linting]
+    branches: ['**']
     types: 
      - completed
-    branches: 
-      - '**'
 
 jobs:
   run-tests:
