@@ -108,7 +108,7 @@ def legend(handles=None, labels=None, title=None):
     if ax.legend_ is not None:  # e.g. seaborn already set legend
         title = title or ax.legend_.get_title().get_text()
         handles = handles or ax.legend_.legendHandles
-        labels = labels or [h.get_label() for h in handles]
+        labels = labels or [t.get_text() for t in ax.legend_.get_texts()]
         ax.legend_ = None
 
     if is_line_plot(ax, labels):
