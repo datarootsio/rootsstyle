@@ -1,8 +1,8 @@
 import math
 import numpy as np
-import scipy.optimize
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from .scipy_optimize_nnls import nnls
 
 
 # pyplot.legend() -> gca().legend()
@@ -104,7 +104,7 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     A = np.tril(np.ones([n, n]))
     b = targets - (y0_min + lines_away_from_first_label * line_height)
 
-    out, _ = scipy.optimize.nnls(A, b)
+    out = nnls(A, b)
     sol = np.cumsum(out) + y0_min + lines_away_from_first_label * line_height
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
