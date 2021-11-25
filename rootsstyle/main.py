@@ -3,15 +3,18 @@
 - defines the optional extra functionalities
 """
 from .fonts import fonts
-from .colors import colors, palettes
+from .colors import layout_colors, palettes
 from .utils import is_line_plot, get_dataline_handles, get_linelegend_ypositions
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
-# Add fonts to matplotlib global fontManager
+
+# Register fonts in global FontManager
 font_entries = [fm.FontEntry(fname=path, name=name) for name, path in fonts.items()]
 fm.fontManager.ttflist.extend(font_entries)
+# Register colormaps in global ColorMap manager
+[mpl.cm.register_cmap(cmap_name, cmap) for cmap_name, cmap in palettes.items()]
 
 # DOCS: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
 style = {
@@ -27,8 +30,8 @@ style = {
     "ytick.minor.width": 0,
     "xtick.major.width": 0.2,
     "ytick.major.width": 0.2,
-    "xtick.color": colors["gray"],
-    "ytick.color": colors["gray"],
+    "xtick.color": layout_colors["text"],
+    "ytick.color": layout_colors["text"],
     "xtick.labelsize": 10,
     "ytick.labelsize": 10,
     # ***************************************************************************
@@ -36,22 +39,22 @@ style = {
     # ***************************************************************************
     # DATA COLORS
     "axes.prop_cycle": mpl.cycler(
-        color=palettes["dataroots-default"],
+        color=palettes["dataroots-default"].colors,
     ),
     # EDGES
     "axes.linewidth": 1.6,
-    "axes.edgecolor": colors["green_dark"],
+    "axes.edgecolor": layout_colors["edges"],
     "axes.spines.top": False,
     "axes.spines.right": False,
     # TITLE
     "axes.titlelocation": "center",
     "axes.titlesize": 18,
     "axes.titlepad": 12,
-    "axes.titlecolor": colors["green_dark"],
+    "axes.titlecolor": layout_colors["edges"],
     # LABELS
     "axes.labelsize": 12,
     "axes.labelpad": 6,
-    "axes.labelcolor": colors["gray"],
+    "axes.labelcolor": layout_colors["text"],
     # ***************************************************************************
     # * LEGEND                                                                  *
     # ***************************************************************************
@@ -64,7 +67,7 @@ style = {
 }
 
 
-# Inspiratisnon: https://github.com/nschloe/dufte
+# Inspiration: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax, labels=None):
     """Displays the legendentries next to the line in the same color as the line
@@ -76,12 +79,9 @@ def _legend_line(ax, labels=None):
         dict: a dictionary containing entries for 'labels' and 'handles' used by the legend.
     """
     # Removing existing legend (e.g. default of seaborn)
-    if ax.legend_ is not None:
-        ax.legend_ = None
-
     handles = get_dataline_handles(ax)
     colors = [h.get_color() for h in handles]
-    if labels is None:
+    if labels is None or len(labels) != len(handles):
         labels = [h.get_label() for h in handles]
 
     targets = get_linelegend_ypositions(ax, handles, labels)
@@ -107,8 +107,9 @@ def legend(handles=None, labels=None, title=None):
     # Check for existing title
     if ax.legend_ is not None:  # e.g. seaborn already set legend
         title = title or ax.legend_.get_title().get_text()
-        labels = labels or [t.get_text() for t in ax.legend_.get_texts()]
         handles = handles or ax.legend_.legendHandles
+        labels = labels or [h.get_label() for h in handles]
+        ax.legend_ = None
 
     if is_line_plot(ax, labels):
         legend = _legend_line(ax, labels)
@@ -121,8 +122,8 @@ def legend(handles=None, labels=None, title=None):
             loc="center left",
             bbox_to_anchor=(1, 0.5),
         )
-        [text.set_color(colors["gray"]) for text in legend.get_texts()]
-        legend.get_title().set_color(colors["gray"])
+        [text.set_color(layout_colors["text"],) for text in legend.get_texts()]
+        legend.get_title().set_color(layout_colors["text"],)
     return {"labels": labels, "handles": handles}
 
 

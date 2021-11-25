@@ -47,7 +47,14 @@ with plt.style.context(rootsstyle.style):
 
 
 ## ROADMAP
-### VISUALS
-- Fine tune colors
-- barplots: add values in bars + remove y-axis
-- Once public: reset image links in README to be readable in PyPI
+### v0.1.7
+- Add green-to-blue and blue-to-green gradients
+- rootsstyle.barplot_show_values: shows values in bars and (optionally) removes y-axis
+- Formatting of x-tick labels so that there is no overlap (rotate if necessary)
+### v0.1.X
+- Open-source
+  - Cleanup repository
+  - Update image-src in README
+  - Publish to PyPi instead of Test PyPi
+- rootsstyle.publish(): allows you to publish an example .png with the corresponding code sample
+- rootsstyle.data_label(): labels a specific datapoint with some text

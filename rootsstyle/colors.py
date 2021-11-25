@@ -1,61 +1,39 @@
-colors = {
-    "green_light": "#A3F6B4",
-    "green_bright": "#48DF88",
-    "green_dark": "#38B580",
-    "blue_light": "#BFC6E2",
-    "blue_dark": "#445BA7",
-    "blue_navy": "#34495D",
-    "black": "#212121",
-    "gray": "#969696",
-    "gray_light": "#C0C2C2",
+from matplotlib.colors import ListedColormap, LinearSegmentedColormap
+
+layout_colors = {
+    "text": "#969696",
+    "edges": "#38B580"
 }
 
 palettes = {
-    "dataroots-default": [
-        colors["green_dark"],
-        colors["blue_dark"],
-        colors["blue_light"],
-        colors["green_light"],
-        colors["blue_navy"],
-        colors["gray"],
-        colors["gray_light"],
-        colors["green_bright"],
-        colors["black"],
-    ],
-    "dataroots-green": [
-        "#C3E9D9",
-        "#AFE1CC",
-        "#9CDAC0",
-        "#88D3B3",
-        "#74CBA6",
-        "#60C499",
-        "#4CBC8D",
-        "#38B580",
-        "#32A373",
-        "#2D9166",
-        "#277F5A",
-        "#226D4D",
-        "#1C5B40",
-        "#164833",
-        "#113626",
-        "#0B241A",
-    ],
-    "dataroots-blue": [
-        "#DADEED",
-        "#C7CEE5",
-        "#B4BDDC",
-        "#A2ADD3",
-        "#8F9DCA",
-        "#7C8CC1",
-        "#697CB9",
-        "#576BB0",
-        "#445BA7",
-        "#3D5296",
-        "#364986",
-        "#304075",
-        "#293764",
-        "#222E54",
-        "#1B2443",
-        "#141B32",
-    ],
+    "dataroots-default": ListedColormap(
+        name="dataroots-default",
+        colors=[
+            "#38B580",
+            "#445BA7",
+            "#BFC6E2",
+            "#48DF88",
+            "#34495D",
+            "#A3F6B4",
+            "#212121",
+            "#969696",
+            "#C0C2C2",
+        ],
+    ),
+    "dataroots-green": LinearSegmentedColormap.from_list(
+        name="dataroots-green", colors=["#C3E9D9", "#38B580", "#04441C"], gamma=1.0
+    ),
+    "dataroots-blue": LinearSegmentedColormap.from_list(
+        name="dataroots-blue", colors=["#C9CFE5", "#445BA7", "#19213E"], gamma=1.0
+    ),
+    "dataroots-blue-to-green": LinearSegmentedColormap.from_list(
+        name="dataroots-blue-to-green",
+        colors=["#19213E", "#38B580", "#B4E3CF"],
+        gamma=1.5,
+    ),
+    "dataroots-green-to-blue": LinearSegmentedColormap.from_list(
+        name="dataroots-green-to-blue",
+        colors=["#044110", "#7C91D5", "#BFC6E2"],
+        gamma=1.5,
+    ),
 }
