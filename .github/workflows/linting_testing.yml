@@ -1,7 +1,8 @@
 # Performs the following checks on every push
 # - Linting
 # - Testing
-name: 'Push: Linting + Testing'
+# - Upload report to codecoverage (if main branch)
+name: Linting + Testing + Codecov
 on:
   push:
     branches:
@@ -9,13 +10,11 @@ on:
 
 jobs:
   run-linting:
-    name: 'Linting'
+    name: Linting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
       - run: |
           python -m pip install --no-cache-dir --upgrade pip
           pip install flake8 black
@@ -25,18 +24,20 @@ jobs:
           commit_message: Automated commit of reformatting done by black
       - run: flake8 tests/ rootsstyle/
 
-  run-tests:
-    name: 'Testing'
+  run-tests-and-upload-codecov:
+    name: Testing
     needs: run-linting
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+
       # setup poetry and caching
       - uses: snok/install-poetry@v1
         with:
@@ -53,14 +54,15 @@ jobs:
         run: |
           poetry config experimental.new-installer false
           poetry install --no-interaction --no-root -vvv
-
-      #Run tests
-      - run: |
+      # run the tests
+      - name: run tests
+        run: |
           source .venv/bin/activate
           pytest -vvv --cov-report xml --cov=./
-      - name: 'upload coverage to Codecov'
+      # upload to codecov
+      - name: upload coverage to Codecov
+        if: ${{ github.ref == 'refs/heads/main' && matrix.python-version == '3.8' }}
         uses: codecov/codecov-action@v2
-        if: ${{ matrix.python-version == '3.8' }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage.xml

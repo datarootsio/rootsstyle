@@ -64,7 +64,7 @@ style = {
 }
 
 
-# Inspiration: https://github.com/nschloe/dufte
+# Inspiratisnon: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax, labels=None):
     """Displays the legendentries next to the line in the same color as the line

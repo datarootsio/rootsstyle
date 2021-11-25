@@ -1,8 +1,8 @@
 import math
 import numpy as np
-import scipy.optimize
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from .scipy_optimize_nnls import nnls
 
 
 # pyplot.legend() -> gca().legend()
@@ -41,21 +41,6 @@ def is_line_plot(ax, labels=None) -> bool:
     # Filter scatterplots
     linestyles = [h._linestyle for h in handles]
     return "None" not in linestyles
-
-
-def get_handle_color(handle):
-    """Returns the color of the handle
-
-    Args:
-        handle (mpl.artist.Artist): The handle (line, patch,...) that contains the color property
-
-    Returns:
-        str: color of the handle
-    """
-    if type(handle) == mpl.lines.Line2D:
-        return handle.get_color()
-    if type(handle) == mpl.patches.Rectangle:
-        return handle.get_facecolor()
 
 
 def get_linelegend_ypositions(ax, handles, labels=None):
@@ -104,7 +89,7 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     A = np.tril(np.ones([n, n]))
     b = targets - (y0_min + lines_away_from_first_label * line_height)
 
-    out, _ = scipy.optimize.nnls(A, b)
+    out = nnls(A, b)
     sol = np.cumsum(out) + y0_min + lines_away_from_first_label * line_height
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
