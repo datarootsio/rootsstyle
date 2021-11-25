@@ -3,9 +3,12 @@ name: upload codecoverage
 
 on:
   workflow_run:
-    workflows: Linting + Testing
-    branches: main
-    types: completed
+    workflows: 
+     - Testing
+    types: 
+     - completed
+    branches: 
+     - main
 
 jobs:
   upload-coverage-to-codecov:

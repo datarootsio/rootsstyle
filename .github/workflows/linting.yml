@@ -1,0 +1,24 @@
+# Performs the following checks on every push
+# - Linting
+# - Testing
+name: Linting
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  run-linting:
+    name: 'Linting'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: |
+          python -m pip install --no-cache-dir --upgrade pip
+          pip install flake8 black
+      - run: black tests/ rootsstyle/
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated commit of reformatting done by black
+      - run: flake8 tests/ rootsstyle/

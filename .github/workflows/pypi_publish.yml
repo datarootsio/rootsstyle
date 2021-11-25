@@ -1,5 +1,5 @@
 #Publishes the package to PyPI on a succesfully merged pull-request to the main branch
-name: 'Publishing'
+name: Publishing
 on:
   pull_request:
     types: [closed]
@@ -31,6 +31,7 @@ jobs:
       - name: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root -vvv --no-dev
+      #build the package
       - run: poetry build 
 
       # Publish to PyPI
