@@ -1,5 +1,6 @@
 import numpy as np
 
+
 # src: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.nnls.html
 # src: https://github.com/nschloe/dufte/blob/main/src/dufte/optimize.py
 def nnls(A, b, eps: float = 1.0e-10, max_steps: int = 100):
