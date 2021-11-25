@@ -43,21 +43,6 @@ def is_line_plot(ax, labels=None) -> bool:
     return "None" not in linestyles
 
 
-def get_handle_color(handle):
-    """Returns the color of the handle
-
-    Args:
-        handle (mpl.artist.Artist): The handle (line, patch,...) that contains the color property
-
-    Returns:
-        str: color of the handle
-    """
-    if type(handle) == mpl.lines.Line2D:
-        return handle.get_color()
-    if type(handle) == mpl.patches.Rectangle:
-        return handle.get_facecolor()
-
-
 def get_linelegend_ypositions(ax, handles, labels=None):
     """Calculates the positions of the legendentries.
     Ensures that there is no vertical overlap between entires.
