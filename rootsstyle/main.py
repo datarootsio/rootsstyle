@@ -122,8 +122,15 @@ def legend(handles=None, labels=None, title=None):
             loc="center left",
             bbox_to_anchor=(1, 0.5),
         )
-        [text.set_color(layout_colors["text"],) for text in legend.get_texts()]
-        legend.get_title().set_color(layout_colors["text"],)
+        [
+            text.set_color(
+                layout_colors["text"],
+            )
+            for text in legend.get_texts()
+        ]
+        legend.get_title().set_color(
+            layout_colors["text"],
+        )
     return {"labels": labels, "handles": handles}
 
 

@@ -37,7 +37,7 @@ def test_lineplot():
             y="mpg",
             data=df_cars,
             hue="origin",
-            palette=sns.color_palette("dataroots-default", as_cmap=True).colors[:3]
+            palette=sns.color_palette("dataroots-default", as_cmap=True).colors[:3],
         )
         rootsstyle.legend()
         rootsstyle.ylabel("mpg")
@@ -56,7 +56,7 @@ def test_lineplot():
             data=df_flights,
             hue="year",
             palette="dataroots-green",
-            legend="full"
+            legend="full",
         )
         rootsstyle.legend()
         rootsstyle.ylabel("passengers")
@@ -72,7 +72,7 @@ def test_lineplot():
             data=df_flights,
             hue="year",
             palette="dataroots-blue",
-            legend="full"
+            legend="full",
         )
         rootsstyle.legend()
         rootsstyle.ylabel("passengers")
@@ -162,18 +162,14 @@ def test_heatmap():
     df_flights = sns.load_dataset("flights")
     df_flights = df_flights.pivot("month", "year", "passengers")
     with plt.style.context(rootsstyle.style):
-        sns.heatmap(
-            data=df_flights, cmap="dataroots-blue-to-green"
-        )
+        sns.heatmap(data=df_flights, cmap="dataroots-blue-to-green")
         rootsstyle.ylabel("month")
         plt.title("Passengers in flights")
         plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/heatmap_blue_to_green.png")
         plt.close()
 
-        sns.heatmap(
-            data=df_flights, cmap="dataroots-green-to-blue"
-        )
+        sns.heatmap(data=df_flights, cmap="dataroots-green-to-blue")
         rootsstyle.ylabel("month")
         plt.title("Passengers in flights")
         plt.tight_layout()

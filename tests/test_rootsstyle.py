@@ -40,7 +40,7 @@ def test_legend():
             data=df_flights,
             hue="year",
             palette="dataroots-green",
-            legend="full"
+            legend="full",
         )
         legend = rootsstyle.legend()
         assert len(legend.items()) == 2
@@ -55,7 +55,7 @@ def test_legend():
             data=df_flights,
             hue="year",
             palette="dataroots-blue",
-            legend=False
+            legend=False,
         )
         legend = rootsstyle.legend(labels=list(map(str, list(range(1949, 1961)))))
         assert len(legend.items()) == 2

@@ -1,9 +1,6 @@
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
-layout_colors = {
-    "text": "#969696",
-    "edges": "#38B580"
-}
+layout_colors = {"text": "#969696", "edges": "#38B580"}
 
 palettes = {
     "dataroots-default": ListedColormap(
