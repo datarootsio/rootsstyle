@@ -61,7 +61,7 @@ jobs:
           pytest -vvv --cov-report xml --cov=./
       # upload to codecov
       - name: upload coverage to Codecov
-        if: ${{ github.ref }} == 'refs/heads/main'
+        if: ${{ github.ref == 'refs/heads/main' && matrix.python-version == '3.8' }}
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
