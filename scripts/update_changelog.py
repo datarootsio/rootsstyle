@@ -45,7 +45,7 @@ def split_logs_into_version_release():
         lines[i]= handle_line(line)
     return lines
 
-write_git_commit_to_log_file()
+#write_git_commit_to_log_file()
 new_lines = split_logs_into_version_release()
 new_lines = [l for l in new_lines if l.strip().lower() not in lines_to_leave_out]
 with open(LOG_FILE, 'w') as f:
