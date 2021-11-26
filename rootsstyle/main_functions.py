@@ -15,6 +15,7 @@ fm.fontManager.ttflist.extend(font_entries)
 # Register colormaps in global ColorMap manager
 [mpl.cm.register_cmap(cmap_name, cmap) for cmap_name, cmap in palettes.items()]
 
+
 # Inspiration: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax, labels=None):
