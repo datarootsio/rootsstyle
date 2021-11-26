@@ -2,14 +2,17 @@ import os
 import re
 
 LOG_FILE = 'CHANGELOG.md'
-lines_to_leave_out = [
+patterns_to_ignore = [
     "- testing gh actions",
-    "- updated gh actions",
-    "- update readme.md",
-    "- updated readme",
-    "- updated version",
+    "- update[d]? gh actions",
+    "- update[d]? readme[.md]?",
+    "- readme[.md]? update[d]?",
+    "- update[d]? version",
     "- linting",
+    "- automated commit of .*",
+    "- merge branch .* of .* into .*"
 ]
+patterns_to_ignore = "(" + ")|(".join(patterns_to_ignore) + ")"
 
 def write_git_commit_to_log_file():
     cmd = f"git log --pretty=format:'- %ad%x09%s' --date=short > {LOG_FILE}"
@@ -47,7 +50,7 @@ def split_logs_into_version_release():
 
 write_git_commit_to_log_file()
 new_lines = split_logs_into_version_release()
-new_lines = [l for l in new_lines if l.strip().lower() not in lines_to_leave_out]
+new_lines = [l for l in new_lines if not re.match(patterns_to_ignore, l.strip().lower())]
 with open(LOG_FILE, 'w') as f:
     [f.write(line) for line in new_lines]
         
