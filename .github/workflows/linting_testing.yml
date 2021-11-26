@@ -22,7 +22,7 @@ jobs:
           git --version
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-      - run: git log --pretty=format:'- %ad%x09%s' --date=short > CHANGELOG.md
+      - run: git log --pretty=format:'- %ad%x09%s' --date=short
       - run: python scripts/update_changelog.py
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
