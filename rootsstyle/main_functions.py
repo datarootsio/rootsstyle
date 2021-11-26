@@ -96,20 +96,21 @@ def ylabel(ylabel: str):
     ax.yaxis.set_label_coords(0, 1.03)
 
 
-def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt='{:.2f}'):
+def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.2f}"):
     ax = plt.gca()
 
     if remove_y_axis:
-        plt.tick_params(axis="y", which="both", left=False, right=False, labelleft=False)
+        plt.tick_params(
+            axis="y", which="both", left=False, right=False, labelleft=False
+        )
         plt.grid(False)
         plt.margins(x=0)
-        ax.spines['left'].set_visible(False)
-        ax.spines['bottom'].set_visible(False)
+        ax.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_visible(False)
 
-    
     for rect in ax.patches:
         height = rect.get_height()
-        ypos = height*0.98 if position=="below" else height*1.01
+        ypos = height * 0.98 if position == "below" else height * 1.01
         ax.text(
             rect.get_x() + rect.get_width() / 2,
             ypos,
@@ -117,6 +118,6 @@ def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt='{:.2
             size=fontsize,
             weight="bold",
             ha="center",
-            va="top" if position=="below" else "bottom",
-            color="white" if position=="below" else layout_colors["text"] ,
+            va="top" if position == "below" else "bottom",
+            color="white" if position == "below" else layout_colors["text"],
         )
