@@ -1,6 +1,6 @@
 [![maintained by dataroots](https://img.shields.io/badge/maintained%20by-dataroots-%2300b189)](https://dataroots.io)
  ![](https://media-exp1.licdn.com/dms/image/C4D1BAQFJFecNiY6xNA/company-background_10000/0/1606894615032?e=1628604000&v=beta&t=hNYzs9y3EA-620Ck8ip1QaZc77eXlH1ZUl-E-sLI6wo "Logo")
-[![PyPI](https://img.shields.io/badge/PyPI-0.1.6-orange.svg)](https://test.pypi.org/project/rootsstyle/)
+[![PyPI](https://img.shields.io/badge/PyPI-0.1.7-orange.svg)](https://test.pypi.org/project/rootsstyle/)
 [![Python Versions](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue.svg)](https://www.python.org/downloads/)
 [![codecov](https://codecov.io/gh/datarootsio/rootsstyle/branch/main/graph/badge.svg?token=4agmmGuhtu)](https://codecov.io/gh/datarootsio/rootsstyle)
 
@@ -38,6 +38,7 @@ with plt.style.context(rootsstyle.style):
 #More functionalities
 'Place the legend to the left of the graph': rootsstyle.legend()
 'Horizontal label of y-axis above the yaxis': rootsstyle.ylabel()
+'Show barvalues inside bars and remove y axis': rootsstyle.show_bar_values()
 ```
 
 ## Color Palette
@@ -46,8 +47,16 @@ with plt.style.context(rootsstyle.style):
 </div>
 
 
+## CHANGELOG
+see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
+
 ## ROADMAP
-### VISUALS
-- Fine tune colors
-- barplots: add values in bars + remove y-axis
-- Once public: reset image links in README to be readable in PyPI
+### v0.1.8
+- Formatting of x-tick labels so that there is no overlap (rotate if necessary)
+### v0.1.X
+- Open-source
+  - Cleanup repository
+  - Update image-src in README
+  - Publish to PyPi instead of Test PyPi
+- rootsstyle.publish(): allows you to publish an example .png with the corresponding code sample
+- rootsstyle.data_label(): labels a specific datapoint with some text

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootsstyle"
-version = "0.1.6"
+version = "0.1.7"
 description = "A dataroots inspired theme for matplotlib."
 authors = ["YannouRavoet <yannou.ravoet@dataroots.io>"]
 license = "MIT"
@@ -23,6 +23,8 @@ seaborn = "^0.11.2"
 black = "^21.11b1"
 flake8 = "^4.0.1"
 pytest-cov = "^3.0.0"
+jupyter = "^1.0.0"
+notebook = "^6.4.6"
 
 [tool.poetry.scripts]
 rootstyle = 'rootstyle:main'

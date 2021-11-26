@@ -30,22 +30,15 @@ def test_scatterplot():
 def test_lineplot():
     # REGULAR LINEPLOT
     df_cars = sns.load_dataset("mpg")
-    df_usa = (
-        df_cars[df_cars["origin"] == "usa"].groupby("model_year").mean().reset_index()
-    )
-    df_japan = (
-        df_cars[df_cars["origin"] == "japan"].groupby("model_year").mean().reset_index()
-    )
-    df_europe = (
-        df_cars[df_cars["origin"] == "europe"]
-        .groupby("model_year")
-        .mean()
-        .reset_index()
-    )
+    df_cars = df_cars.groupby(["origin", "model_year"]).mean().reset_index()
     with plt.style.context(rootsstyle.style):
-        sns.lineplot(x="model_year", y="mpg", data=df_usa, label="USA")
-        sns.lineplot(x="model_year", y="mpg", data=df_japan, label="Japan")
-        sns.lineplot(x="model_year", y="mpg", data=df_europe, label="Europe")
+        sns.lineplot(
+            x="model_year",
+            y="mpg",
+            data=df_cars,
+            hue="origin",
+            palette=sns.color_palette("dataroots-default", as_cmap=True).colors[:3],
+        )
         rootsstyle.legend()
         rootsstyle.ylabel("mpg")
         plt.xlabel("model year")
@@ -62,7 +55,8 @@ def test_lineplot():
             y="passengers",
             data=df_flights,
             hue="year",
-            palette=rootsstyle.palettes["dataroots-green"][:12],
+            palette="dataroots-green",
+            legend="full",
         )
         rootsstyle.legend()
         rootsstyle.ylabel("passengers")
@@ -77,7 +71,8 @@ def test_lineplot():
             y="passengers",
             data=df_flights,
             hue="year",
-            palette=rootsstyle.palettes["dataroots-blue"][:12],
+            palette="dataroots-blue",
+            legend="full",
         )
         rootsstyle.legend()
         rootsstyle.ylabel("passengers")
@@ -116,6 +111,7 @@ def test_lineplot():
 
 
 def test_barplot():
+    df_tips = sns.load_dataset("tips")
     df_cars = sns.load_dataset("mpg")
     df_cars["model_year"] = "' " + df_cars["model_year"].astype(str)
     with plt.style.context(rootsstyle.style):
@@ -128,13 +124,22 @@ def test_barplot():
         plt.savefig(f"{OUTPUT_DIR}/barplot_mpg.png")
         plt.close()
 
-        sns.barplot(x="model_year", y="horsepower", data=df_cars, hue="origin", ci=None)
-        rootsstyle.ylabel("horsepower")
-        plt.xlabel("model year")
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
         rootsstyle.legend()
-        plt.title("Cars")
+        rootsstyle.show_bar_values(position="below")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/barplot_horsepower.png")
+        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_below.png")
+        plt.close()
+
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
+        rootsstyle.legend()
+        rootsstyle.show_bar_values(position="above")
+        plt.tight_layout()
+        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_above.png")
         plt.close()
 
 
@@ -160,4 +165,23 @@ def test_pieplot():
         rootsstyle.legend()
         plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/pieplot.png")
+        plt.close()
+
+
+def test_heatmap():
+    df_flights = sns.load_dataset("flights")
+    df_flights = df_flights.pivot("month", "year", "passengers")
+    with plt.style.context(rootsstyle.style):
+        sns.heatmap(data=df_flights, cmap="dataroots-blue-to-green")
+        rootsstyle.ylabel("month")
+        plt.title("Passengers in flights")
+        plt.tight_layout()
+        plt.savefig(f"{OUTPUT_DIR}/heatmap_blue_to_green.png")
+        plt.close()
+
+        sns.heatmap(data=df_flights, cmap="dataroots-green-to-blue")
+        rootsstyle.ylabel("month")
+        plt.title("Passengers in flights")
+        plt.tight_layout()
+        plt.savefig(f"{OUTPUT_DIR}/heatmap_green_to_blue.png")
         plt.close()

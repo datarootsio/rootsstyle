@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 def test_version():
-    assert rootsstyle.__version__ == "0.1.6"
+    assert rootsstyle.__version__ == "0.1.7"
 
 
 def test_empty_plot():
@@ -39,7 +39,8 @@ def test_legend():
             y="passengers",
             data=df_flights,
             hue="year",
-            palette=rootsstyle.palettes["dataroots-green"][:12],
+            palette="dataroots-green",
+            legend="full",
         )
         legend = rootsstyle.legend()
         assert len(legend.items()) == 2
@@ -53,7 +54,8 @@ def test_legend():
             y="passengers",
             data=df_flights,
             hue="year",
-            palette=rootsstyle.palettes["dataroots-blue"][:12],
+            palette="dataroots-blue",
+            legend=False,
         )
         legend = rootsstyle.legend(labels=list(map(str, list(range(1949, 1961)))))
         assert len(legend.items()) == 2
