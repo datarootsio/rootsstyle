@@ -18,14 +18,19 @@ def plot_example_images():
     nb_images = len(images)
     nb_cols = 3
     nb_rows = math.ceil(nb_images/3)
-    fig, axes = plt.subplots(nrows=nb_rows, ncols=nb_cols, figsize=(15,8))
-    indices = list(itertools.product(list(range(nb_cols)), list(range(nb_rows))))
+    fig, axes = plt.subplots(nrows=nb_rows, ncols=nb_cols, figsize=(30,30))
+    indices = list(itertools.product(list(range(nb_rows)), list(range(nb_cols))))
     for i, image in enumerate(images):
-        y, x = indices[i]
+        x, y = indices[i]
         ax = axes[x,y]
         image = Image.open(image)
         ax.imshow(image)
         ax.axis("off")
+    for i in range(len(images), nb_cols*nb_rows):
+        x, y = indices[i]
+        ax = axes[x,y]
+        ax.axis("off")
+
 
     plt.tight_layout()
     plt.savefig("images/examples.png")

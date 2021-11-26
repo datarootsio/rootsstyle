@@ -111,6 +111,7 @@ def test_lineplot():
 
 
 def test_barplot():
+    df_tips = sns.load_dataset("tips")
     df_cars = sns.load_dataset("mpg")
     df_cars["model_year"] = "' " + df_cars["model_year"].astype(str)
     with plt.style.context(rootsstyle.style):
@@ -123,13 +124,22 @@ def test_barplot():
         plt.savefig(f"{OUTPUT_DIR}/barplot_mpg.png")
         plt.close()
 
-        sns.barplot(x="model_year", y="horsepower", data=df_cars, hue="origin", ci=None)
-        rootsstyle.ylabel("horsepower")
-        plt.xlabel("model year")
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
         rootsstyle.legend()
-        plt.title("Cars")
+        rootsstyle.show_bar_values(position="below")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/barplot_horsepower.png")
+        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_below.png")
+        plt.close()
+
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
+        rootsstyle.legend()
+        rootsstyle.show_bar_values(position="above")
+        plt.tight_layout()
+        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_above.png")
         plt.close()
 
 
