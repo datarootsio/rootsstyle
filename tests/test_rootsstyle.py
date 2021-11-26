@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 def test_version():
-    assert rootsstyle.__version__ == "0.1.7"
+    assert rootsstyle.__version__ == "0.1.8"
 
 
 def test_empty_plot():
