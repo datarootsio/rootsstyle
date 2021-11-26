@@ -7,7 +7,7 @@ from tests.test_plots import OUTPUT_DIR as INPUT_DIR
 import os
 
 def plot_example_images():
-    """Plots a 3x3 grid of example images
+    """Plots a 3xN grid of example images
     """
     plt.style.use(rootsstyle.style)
 
@@ -30,7 +30,6 @@ def plot_example_images():
         x, y = indices[i]
         ax = axes[x,y]
         ax.axis("off")
-
 
     plt.tight_layout()
     plt.savefig("images/examples.png")

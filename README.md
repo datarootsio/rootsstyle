@@ -51,8 +51,7 @@ with plt.style.context(rootsstyle.style):
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
 ## ROADMAP
-### v0.1.7
-- rootsstyle.barplot_show_values: shows values in bars and (optionally) removes y-axis
+### v0.1.8
 - Formatting of x-tick labels so that there is no overlap (rotate if necessary)
 ### v0.1.X
 - Open-source

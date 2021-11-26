@@ -1,6 +1,9 @@
 import os
 import re
+import logging
+import subprocess
 
+LAST_COMMIT_HASH = "16d187af1e4cb2c1a08c11a95b9295044aab8880"
 LOG_FILE = 'CHANGELOG.md'
 patterns_to_ignore = [
     "- testing gh actions",
@@ -14,23 +17,29 @@ patterns_to_ignore = [
 ]
 patterns_to_ignore = "(" + ")|(".join(patterns_to_ignore) + ")"
 
-def write_git_commit_to_log_file():
-    cmd = f"git log --pretty=format:'- %ad%x09%s' --date=short > {LOG_FILE}"
-    os.system(cmd)
+def read_current_changelog():
+    with open(LOG_FILE, 'r') as f:
+        return f.readlines()
 
-def split_logs_into_version_release():
-    line_pattern = re.compile(r"- (?P<date>[\d]{4}-[\d]{2}-[\d]{2})\s(?P<message>.*)", re.ASCII)
-    pr_merge_pattern = re.compile(r"Merge pull request #[\d]* from datarootsio/v(?P<version>[\d].[\d].[\d])")
+def get_new_commits():
+    cmd = f"git log {LAST_COMMIT_HASH}.. --pretty=format:'- %ad%x09%s' --date=short"
+    git_output = subprocess.check_output(cmd, shell=True).decode('utf-8')
+    return git_output.split('\n')
+
+def cleanup_commits(commits):
+    commit_pattern = re.compile(r"- (?P<date>[\d]{4}-[\d]{2}-[\d]{2})\s(?P<message>.*)", re.ASCII)
+    pr_merge_pattern = re.compile(r"Merge pull request #[\d]* from datarootsio/(?P<version>.*)")
     def create_version_header(date, version):
         return f"""<div align=center>
             <b>
             <p>========================</p>
-            <p>{date}   --   v{version}</p>
+            <p>{date}   --   {version}</p>
             <p>========================</p>
             </b>
         </div>\n\n"""
-    def handle_line(line):
-        m = re.match(line_pattern, line)
+
+    def handle_commit(commit):
+        m = re.match(commit_pattern, commit)
         if m is not None:
             date, message = m.group('date'), m.group('message')
             m_pr = re.match(pr_merge_pattern, message)
@@ -39,18 +48,21 @@ def split_logs_into_version_release():
             else:
                 return f"- {message}\n"
         else:
-            raise ValueError("invalid commit line, not able to match")
+            logging.warning("Commit does not match pattern")
+            return f"{commit}\n"
+
+    # Cleanup the commits and return all commits that do not need to be filtered out
+    for i, commit in enumerate(commits):
+        commits[i]= handle_commit(commit)
+    commits = [c for c in commits if not re.match(patterns_to_ignore, c.strip().lower())]
+    return commits
 
 
-    with open(LOG_FILE, 'r') as f:
-        lines = f.readlines()
-    for i, line in enumerate(lines):
-        lines[i]= handle_line(line)
-    return lines
-
-write_git_commit_to_log_file()
-new_lines = split_logs_into_version_release()
-new_lines = [l for l in new_lines if not re.match(patterns_to_ignore, l.strip().lower())]
-with open(LOG_FILE, 'w') as f:
-    [f.write(line) for line in new_lines]
+if __name__=="__main__":
+    existing_commits = read_current_changelog()
+    new_commits = get_new_commits()
+    new_commits = cleanup_commits(new_commits)
+    new_commits.extend(existing_commits)
+    with open(LOG_FILE, 'w') as f:
+        [f.write(commit) for commit in new_commits]
         
