@@ -12,7 +12,7 @@ lines_to_leave_out = [
 ]
 
 def write_git_commit_to_log_file():
-    cmd = f"git log --pretty=format:'- %ad%x09%s' --date=short > {LOG_FILE}"
+    cmd = f"git log --all --pretty=format:'- %ad%x09%s' --date=short > {LOG_FILE}"
     os.system(cmd)
 
 def split_logs_into_version_release():
