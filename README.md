@@ -10,7 +10,7 @@
 A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEG5WOE2WQF4XBGEE33BVCBNK">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHFWVZCDLHSU374HFTBVINKE">
 </div>
 
 
@@ -43,7 +43,7 @@ with plt.style.context(rootsstyle.style):
 
 ## Color Palette
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEES4YKJJGD4MABU633BU42ZQ" style="height: 550px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEBRXIYOHT3RNRW42Z3BVINMO" style="height: 550px;">
 </div>
 
 
