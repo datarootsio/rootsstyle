@@ -4,6 +4,8 @@
 - Automated commit of updated CHANGELOG.md
 - Merge branch 'v0.1.7' of github.com:datarootsio/rootsstyle into v0.1.7
 - Automated commit of updated CHANGELOG.md
+- Merge branch 'v0.1.7' of github.com:datarootsio/rootsstyle into v0.1.7
+- Automated commit of updated CHANGELOG.md
 - restructuring src code into separate style and functions files
 - create example script for mighty python session
 - Added CHANGELOG
@@ -14,7 +16,7 @@
 <div align=center>
             <b>
             <p>========================</p>
-            <p>2021-11-25  0.1.6</p>
+            <p>2021-11-25   --   v0.1.6</p>
             <p>========================</p>
             </b>
         </div>
@@ -32,7 +34,7 @@
 <div align=center>
             <b>
             <p>========================</p>
-            <p>2021-11-24  0.1.5</p>
+            <p>2021-11-24   --   v0.1.5</p>
             <p>========================</p>
             </b>
         </div>
@@ -49,7 +51,7 @@
 <div align=center>
             <b>
             <p>========================</p>
-            <p>2021-11-24  0.1.4</p>
+            <p>2021-11-24   --   v0.1.4</p>
             <p>========================</p>
             </b>
         </div>
@@ -66,7 +68,7 @@
 <div align=center>
             <b>
             <p>========================</p>
-            <p>2021-11-17  0.1.3</p>
+            <p>2021-11-17   --   v0.1.3</p>
             <p>========================</p>
             </b>
         </div>
