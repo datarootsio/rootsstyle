@@ -19,12 +19,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - name: setup git
-        run: |
-          git --version
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git log --all --pretty=format:'- %ad%x09%s' --date=short
       - run: python scripts/update_changelog.py
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
