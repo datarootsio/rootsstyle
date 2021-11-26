@@ -1,8 +1,9 @@
+- create example script for mighty python session
+- Added CHANGELOG
 - Merge branch 'v0.1.7' of github.com:datarootsio/rootsstyle into v0.1.7
 - fixed a legend issue with labels on barplots
 - Automated commit of reformatting done by black
 - refactored palettes to be matplotlib colormaps. Added gradients for heatmaps
-- updated version
 <div align=center>
             <b>
             <p>========================</p>
@@ -11,15 +12,7 @@
             </b>
         </div>
 
-- testing GH actions
-- testing GH actions
-- testing GH actions
-- testing GH actions
-- testing GH actions
 - merging workflows back together
-- updated GH actions
-- updated GH actions
-- updated GH actions
 - splitting gh actions into multiple files
 - move codecov to separate yml file
 - update utils unused code + push.yml
@@ -27,11 +20,9 @@
 - limited poetry file to python between 3.8 and 3.10
 - remove python 3.11 support since it is not yet supported by the usd GH action
 - added python 3.11 support
-- updated version
 - linting
 - Automated commit of reformatting done by black
 - copied scipy optimize nnls code to remove dependency
-- Update README.md
 <div align=center>
             <b>
             <p>========================</p>
@@ -63,13 +54,10 @@
 - cleaned up poetry environment
 - update README
 - Merge branch 'main' into v0.1.4
-- Update README.md
 - README update
 - updated palette default to represent colors in correct order
 - fix typo in chart title
 - Merge branch 'main' into v0.1.4
-- Update README.md
-- updated version
 <div align=center>
             <b>
             <p>========================</p>
@@ -91,16 +79,13 @@
 - refactoring main.py
 - Merge branch 'main' of github.com:datarootsio/rootsstyle into main
 - merging linelegend with legend
-- Update README.md
 - Merge branch 'main' of github.com:datarootsio/rootsstyle into main
 - change green tone of title and axis, moved green_bright more in the back of the line
-- Update README.md
 - regenerated images
 - adapted push.yml
 - temp revert to pushing main = testing + linting
 - added .flake8 + black in pipeline + adjusted palette to be more in line with branding
 - README updates
-- Update README.md
 - Merge pull request #3 from datarootsio/ylabel
 - added palette
 - adding more colors
@@ -127,7 +112,6 @@
 - PR workflow name change
 - Merge branch 'main' of github.com:datarootsio/rootsstyle into main
 - added linting to push.yml and added pr.yml
-- Update README.md
 - added lineplot legend
 - updated README.md
 - removed requirements.txt since poetry install works fine
