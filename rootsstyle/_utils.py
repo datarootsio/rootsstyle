@@ -2,7 +2,7 @@ import math
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from .scipy_optimize_nnls import nnls
+from ._nnls import nnls
 
 
 # pyplot.legend() -> gca().legend()
