@@ -9,6 +9,20 @@ on:
       - '**'
 
 jobs:
+  update-changelog:
+    if: github.event.pull_request.merged == true
+    name: Update CHANGELOG.md
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - run: python scripts/update_changelog.py
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated commit of updated CHANGELOG.md
+          
   run-linting:
     name: Linting
     runs-on: ubuntu-latest
