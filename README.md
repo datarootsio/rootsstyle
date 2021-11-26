@@ -38,6 +38,7 @@ with plt.style.context(rootsstyle.style):
 #More functionalities
 'Place the legend to the left of the graph': rootsstyle.legend()
 'Horizontal label of y-axis above the yaxis': rootsstyle.ylabel()
+'Show barvalues inside bars and remove y axis': rootsstyle.show_bar_values()
 ```
 
 ## Color Palette
