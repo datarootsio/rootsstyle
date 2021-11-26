@@ -48,6 +48,7 @@ with plt.style.context(rootsstyle.style):
 
 ## ROADMAP
 ### v0.1.7
+- Add Changelogs.txt
 - Add green-to-blue and blue-to-green gradients
 - rootsstyle.barplot_show_values: shows values in bars and (optionally) removes y-axis
 - Formatting of x-tick labels so that there is no overlap (rotate if necessary)
