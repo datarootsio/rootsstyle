@@ -3,7 +3,7 @@ import re
 import logging
 import subprocess
 
-LAST_COMMIT_HASH = "16d187af1e4cb2c1a08c11a95b9295044aab8880"
+LAST_COMMIT_HASH = "51c290b268f463daf50713fbd719ec844a855712" #Merge pull request #8 from datarootsio/v0.1.7
 LOG_FILE = 'CHANGELOG.md'
 patterns_to_ignore = [
     "- testing gh actions",

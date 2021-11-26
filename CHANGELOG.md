@@ -1,4 +1,12 @@
+<div align=center>
+            <b>
+            <p>========================</p>
+            <p>2021-11-26   --   v0.1.7</p>
+            <p>========================</p>
+            </b>
+        </div>
 
+- Added automatic changelog updates on succesfull pr-request. Automatic changelog updates add commit messages of all commits (some filtering applies) between the LAST_COMMIT_HASH defined in scripts/update_changelog.py and the current commit.
 - Added show_bar_values functionality
 - restructuring src code into separate style and functions files
 - create example script for mighty python session
@@ -12,6 +20,7 @@
             <p>========================</p>
             </b>
         </div>
+
 - updated workflows
 - removed scipy dependency by copying nnls code into local file
 <div align=center>
@@ -21,6 +30,7 @@
             <p>========================</p>
             </b>
         </div>
+
 - updated workflow caching to take into account python version
 - Added python 3.10 support
 - updated dependencies to include scipy
@@ -43,6 +53,7 @@
             <p>========================</p>
             </b>
         </div>
+
 - combined example images into single image for README
 - gitignore update
 - fix issue with multi line legends in lineplot
