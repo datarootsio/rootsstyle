@@ -22,3 +22,8 @@
 !tests/**/*.py
 !tests/cpus.csv
 !rootsstyle/**/*.py
+
+#SCRIPTS
+!scripts/examples.ipynb
+!scripts/update_changelog.py
+!scripts/plot_multiplot.py
