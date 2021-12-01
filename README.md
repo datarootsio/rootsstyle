@@ -62,12 +62,5 @@ with plt.style.context(rootsstyle.style):
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
 ## ROADMAP
-### v0.1.8
-- Formatting of x-tick labels so that there is no overlap (rotate if necessary)
-### v0.1.X
-- Open-source
-  - Cleanup repository
-  - Update image-src in README
-  - Publish to PyPi instead of Test PyPi
-- rootsstyle.publish(): allows you to publish an example .png with the corresponding code sample
-- rootsstyle.data_label(): labels a specific datapoint with some text
+### v0.2
+- rootsstyle.publish(): allows you to publish an example .png with the corresponding code sample for other users to utilize as an example plot
