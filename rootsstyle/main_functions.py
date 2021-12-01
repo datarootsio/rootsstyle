@@ -61,10 +61,10 @@ def legend(handles=None, labels=None, title=None):
         ax.legend_ = None
 
     if is_line_plot(ax, labels):
-        legend = _legend_line(ax, labels)
+        _legend_line(ax, labels)
     else:
         # Set legend
-        legend = ax.legend(
+        ax.legend(
             handles=handles,
             labels=labels,
             title=title,
