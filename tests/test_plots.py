@@ -174,7 +174,7 @@ def test_heatmap():
     df_flights = sns.load_dataset("flights")
     df_flights = df_flights.pivot("month", "year", "passengers")
     with plt.style.context(rootsstyle.style):
-        ax = sns.heatmap(data=df_flights, cmap="dataroots-blue-to-green")
+        sns.heatmap(data=df_flights, cmap="dataroots-blue-to-green")
         rootsstyle.ylabel("month")
         plt.title("Passengers in flights")
         plt.yticks(rotation=0)
