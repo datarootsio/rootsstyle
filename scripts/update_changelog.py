@@ -8,12 +8,13 @@ import re
 import logging
 import subprocess
 
-LAST_COMMIT_HASH = "51c290b268f463daf50713fbd719ec844a855712"  # Merge pull request #8 from datarootsio/v0.1.7
+LAST_COMMIT_HASH = "97b875b5354ef50f3ad08a3074ec518d40a7d602"  # Merge pull request #8 from datarootsio/v0.1.7
 LOG_FILE = "CHANGELOG.md"
 patterns_to_ignore = [
     "- testing gh actions",
     "- update[d]? gh actions",
     "- update[d]? readme[.md]?",
+    "- update[d]? changelog[.md]?",
     "- readme[.md]? update[d]?",
     "- update[d]? version",
     "- linting",
