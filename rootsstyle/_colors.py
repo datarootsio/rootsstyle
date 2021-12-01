@@ -30,7 +30,7 @@ palettes = {
     ),
     "dataroots-green-to-blue": LinearSegmentedColormap.from_list(
         name="dataroots-green-to-blue",
-        colors=["#044110", "#7C91D5", "#BFC6E2"],
+        colors=["#022108", "#5387C8", "#BFC6E2"],
         gamma=1.5,
     ),
 }
