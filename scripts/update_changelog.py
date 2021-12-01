@@ -1,4 +1,9 @@
-import os
+    """ A short script to update the CHANGELOG.md file.
+    The script automatically adds all commit messages since the last commit (defined in the script as LAST_COMMIT_HASH).
+    You can then manually update, the new messages if needed. This script is called automatically on a succesfully 
+    merged pr to the main branch.
+    Don't forget to update LAST_COMMIT_HASH value in the script.
+    """
 import re
 import logging
 import subprocess

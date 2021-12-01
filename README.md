@@ -7,7 +7,8 @@
 
 # rootsstyle
 
-A dataroots inspired style for Matplotlib. Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
+A matplotlib styling package for clean, minimal dataroots themed graphs. 
+Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHFWVZCDLHSU374HFTBVINKE">
