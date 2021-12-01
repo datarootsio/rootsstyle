@@ -36,7 +36,7 @@ def is_line_plot(ax, labels=None) -> bool:
     if len(handles) == 0:
         return False  # No lines in plot
     if labels is not None and len(handles) != len(labels):
-        # Some plots (e.g. violin plots) also use Line2D object for some data (e.g. errorlines))
+        # Some plots (e.g. violin/bar plots) also use Line2D object for some data (e.g. errorlines))
         return False
     # Filter scatterplots
     linestyles = [h._linestyle for h in handles]

@@ -63,7 +63,6 @@ def legend(handles=None, labels=None, title=None):
     if is_line_plot(ax, labels):
         _legend_line(ax, labels)
     else:
-        # Set legend
         ax.legend(
             handles=handles,
             labels=labels,
