@@ -17,8 +17,18 @@ Works with any visualization tools that builds upon Matplotlib (seaborn, pandas)
 
 ## Installation
 
-```
+```python
+# pip
+pip install matplotlib
 pip install -i https://test.pypi.org/simple/ rootsstyle
+
+# poetry
+# 1. Add repository to pyproject.toml
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+# 2. Add package and automatically install dependencies
+poetry add rootsstyle
 ```
 
 ## Usage
