@@ -61,24 +61,14 @@ def legend(handles=None, labels=None, title=None):
         ax.legend_ = None
 
     if is_line_plot(ax, labels):
-        legend = _legend_line(ax, labels)
+        _legend_line(ax, labels)
     else:
-        # Set legend
-        legend = ax.legend(
+        ax.legend(
             handles=handles,
             labels=labels,
             title=title,
             loc="center left",
             bbox_to_anchor=(1, 0.5),
-        )
-        [
-            text.set_color(
-                layout_colors["text"],
-            )
-            for text in legend.get_texts()
-        ]
-        legend.get_title().set_color(
-            layout_colors["text"],
         )
     return {"labels": labels, "handles": handles}
 
