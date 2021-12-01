@@ -1,6 +1,27 @@
 <div align=center>
             <b>
             <p>========================</p>
+            <p>2021-12-01   --   v0.1.8</p>
+            <p>========================</p>
+            </b>
+        </div>
+
+- script output update
+<div align=center>
+            <b>
+            <p>========================</p>
+            <p>2021-12-01   --   v0.1.8</p>
+            <p>========================</p>
+            </b>
+        </div>
+
+- set default text color to textgray, added public colorlist as rootsstyle.colors, added example of data point label in scatterplot, added example of ytick rotation in heatmaps
+- updated dataroots-green-to-blue palette
+- documented update_changelog.py script
+- updated changelog
+<div align=center>
+            <b>
+            <p>========================</p>
             <p>2021-11-26   --   v0.1.7</p>
             <p>========================</p>
             </b>
