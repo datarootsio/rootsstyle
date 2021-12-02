@@ -21,7 +21,7 @@
 
 #CODE
 !tests/**/*.py
-!tests/cpus.csv
+!tests/data/*.csv
 !rootsstyle/**/*.py
 
 #SCRIPTS
