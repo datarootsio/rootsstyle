@@ -34,9 +34,10 @@ poetry add rootsstyle
 
 ## Usage
 **Example**
-<div style="display: flex; flex-direction: row; justify-content: space-between;">
-<div style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-<div>
+
+<table>
+<tr>
+<td> 
 
 ```python
 import rootsstyle
@@ -52,15 +53,9 @@ rootsstyle.legend()
 plt.title('Example plot')
 plt.show()
 ```
-</div>
 
-<div style="height: 50%;">
-    <img src="images/example_lineplot.png">
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-<div>
+</td>
+<td> 
 
 ```python
 import rootsstyle
@@ -75,13 +70,14 @@ rootsstyle.show_bar_values()
 plt.title('Example barplot')
 plt.show()
 ```
-</div>
+</td>
+</tr>
+<tr>
+<td><img src="images/example_lineplot.png"></td>
+<td> <img src="images/example_barplot.png"></td>
+</tr>
+</table>
 
-<div style="height: 50%;">
-    <img src="images/example_barplot.png">
-</div>
-</div>
-</div>
 
 **STYLING**
 
