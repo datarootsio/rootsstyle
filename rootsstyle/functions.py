@@ -2,18 +2,39 @@
 - rootsstyle.legend()
 - rootsstyle.ylabel()
 """
-from ._fonts import fonts
-from ._colors import layout_colors, palettes
-from ._utils import is_line_plot, get_dataline_handles, get_linelegend_ypositions
+from ._fonts import (
+    fonts,
+)
+from ._colors import (
+    layout_colors,
+    palettes,
+)
+from ._utils import (
+    is_line_plot,
+    get_dataline_handles,
+    get_linelegend_ypositions,
+)
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
 # Register fonts in global FontManager
-font_entries = [fm.FontEntry(fname=path, name=name) for name, path in fonts.items()]
+font_entries = [
+    fm.FontEntry(
+        fname=path,
+        name=name,
+    )
+    for name, path in fonts.items()
+]
 fm.fontManager.ttflist.extend(font_entries)
 # Register colormaps in global ColorMap manager
-[mpl.cm.register_cmap(cmap_name, cmap) for cmap_name, cmap in palettes.items()]
+[
+    mpl.cm.register_cmap(
+        cmap_name,
+        cmap,
+    )
+    for cmap_name, cmap in palettes.items()
+]
 
 
 # Inspiration: https://github.com/nschloe/dufte
@@ -33,14 +54,35 @@ def _legend_line(ax, labels=None):
     if labels is None or len(labels) != len(handles):
         labels = [h.get_label() for h in handles]
 
-    targets = get_linelegend_ypositions(ax, handles, labels)
+    targets = get_linelegend_ypositions(
+        ax,
+        handles,
+        labels,
+    )
 
-    for label, (x, y), color in zip(labels, targets, colors):
-        plt.text(x, y, label, verticalalignment="center", color=color)
-    return {"labels": labels, "handles": handles}
+    for (label, (x, y), color,) in zip(
+        labels,
+        targets,
+        colors,
+    ):
+        plt.text(
+            x,
+            y,
+            label,
+            verticalalignment="center",
+            color=color,
+        )
+    return {
+        "labels": labels,
+        "handles": handles,
+    }
 
 
-def legend(handles=None, labels=None, title=None):
+def legend(
+    handles=None,
+    labels=None,
+    title=None,
+):
     """Displays the legend to the left of the plot.
     For lineplots, displays each line legend next to the line.
 
@@ -61,37 +103,60 @@ def legend(handles=None, labels=None, title=None):
         ax.legend_ = None
 
     if is_line_plot(ax, labels):
-        _legend_line(ax, labels)
+        _legend_line(
+            ax,
+            labels,
+        )
     else:
         ax.legend(
             handles=handles,
             labels=labels,
             title=title,
             loc="center left",
-            bbox_to_anchor=(1, 0.5),
+            bbox_to_anchor=(
+                1,
+                0.5,
+            ),
         )
-    return {"labels": labels, "handles": handles}
+    return {
+        "labels": labels,
+        "handles": handles,
+    }
 
 
 # Inspiration: https://github.com/nschloe/dufte
-def ylabel(ylabel: str):
+def ylabel(
+    ylabel: str,
+):
     """Adds a ylabel to the plot at the top of the y-axis
 
     Args:
         ylabel (str): the name of the label
     """
     ax = plt.gca()
-    plt.ylabel(ylabel, horizontalalignment="center").set_rotation(0)
+    plt.ylabel(
+        ylabel,
+        horizontalalignment="center",
+    ).set_rotation(0)
     # sits 3% above top tick
     ax.yaxis.set_label_coords(0, 1.03)
 
 
-def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.0f}"):
+def show_bar_values(
+    remove_y_axis=True,
+    fontsize=12,
+    position="below",
+    fmt="{:.0f}",
+):
     ax = plt.gca()
 
     if remove_y_axis:
         plt.tick_params(
-            axis="y", which="both", left=False, right=False, labelleft=False
+            axis="y",
+            which="both",
+            left=False,
+            right=False,
+            labelleft=False,
         )
         plt.grid(False)
         plt.margins(x=0)

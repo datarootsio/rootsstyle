@@ -18,11 +18,11 @@ jobs:
       - run: |
           python -m pip install --no-cache-dir --upgrade pip
           pip install flake8 black
-      - run: black tests/ rootsstyle/ scripts/
+      - run: black ./**/*.py
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automated commit of reformatting done by black
-      - run: flake8 tests/ rootsstyle/ scripts/
+      - run: flake8 
 
   run-tests-and-upload-codecov:
     name: Testing

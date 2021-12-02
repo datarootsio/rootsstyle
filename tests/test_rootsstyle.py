@@ -67,12 +67,7 @@ def test_legend():
 
 def test_ylabel():
     df_penguins = sns.load_dataset("penguins")
-    df_penguins = (
-        df_penguins.groupby(["island", "species"])
-        .size()
-        .to_frame("count")
-        .reset_index()
-    )
+    df_penguins = df_penguins.groupby(["island", "species"]).size().to_frame("count").reset_index()
     with plt.style.context(rootsstyle.style):
         sns.barplot(x="island", y="count", data=df_penguins, hue="species")
         rootsstyle.ylabel("penguins")

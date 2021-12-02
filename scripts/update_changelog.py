@@ -36,12 +36,8 @@ def get_new_commits():
 
 
 def cleanup_commits(commits):
-    commit_pattern = re.compile(
-        r"- (?P<date>[\d]{4}-[\d]{2}-[\d]{2})\s(?P<message>.*)", re.ASCII
-    )
-    pr_merge_pattern = re.compile(
-        r"Merge pull request #[\d]* from datarootsio/(?P<version>.*)"
-    )
+    commit_pattern = re.compile(r"- (?P<date>[\d]{4}-[\d]{2}-[\d]{2})\s(?P<message>.*)", re.ASCII)
+    pr_merge_pattern = re.compile(r"Merge pull request #[\d]* from datarootsio/(?P<version>.*)")
 
     def create_version_header(date, version):
         return f"""<div align=center>
@@ -68,9 +64,7 @@ def cleanup_commits(commits):
     # Cleanup the commits and return all commits that do not need to be filtered out
     for i, commit in enumerate(commits):
         commits[i] = handle_commit(commit)
-    commits = [
-        c for c in commits if not re.match(patterns_to_ignore, c.strip().lower())
-    ]
+    commits = [c for c in commits if not re.match(patterns_to_ignore, c.strip().lower())]
     return commits
 
 

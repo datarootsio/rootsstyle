@@ -7,30 +7,32 @@ import matplotlib.pyplot as plt
 OUTPUT_DIR = "images/plots"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
+
 def test_example_plots():
     plt.style.use(rootsstyle.style)
 
     y = [3, 8, 1, 10]
     y2 = [8, 3, 10, 2]
-    plt.plot(y, label='y')
-    plt.plot(y2, label='y2', linestyle = 'dotted')
-    rootsstyle.ylabel('yvalues')
-    plt.xlabel('x-label')
+    plt.plot(y, label="y")
+    plt.plot(y2, label="y2", linestyle="dotted")
+    rootsstyle.ylabel("yvalues")
+    plt.xlabel("x-label")
     rootsstyle.legend()
-    plt.title('Example lineplot')
-    plt.savefig(f"images/example_lineplot.png")
+    plt.title("Example lineplot")
+    plt.savefig("images/example_lineplot.png")
     assert plt.gcf().number == 1
     plt.close()
 
-    languages = ['C', 'C++', 'Java', 'Python', 'PHP']
-    students = [23,17,35,29,12]
+    languages = ["C", "C++", "Java", "Python", "PHP"]
+    students = [23, 17, 35, 29, 12]
     plt.bar(languages, students)
-    plt.xlabel('Language')
+    plt.xlabel("Language")
     rootsstyle.show_bar_values()
-    plt.title('Example barplot')
-    plt.savefig(f"images/example_barplot.png")
+    plt.title("Example barplot")
+    plt.savefig("images/example_barplot.png")
     assert plt.gcf().number == 1
     plt.close()
+
 
 def test_scatterplot():
     df_penguins = sns.load_dataset("penguins")
@@ -110,15 +112,11 @@ def test_lineplot():
 
     # LOGARITMIC LINEPLOT + MULTILINE LEGENDS
     # https://github.com/karlrupp/microprocessor-trend-data
-    df_cpus = pd.read_csv("tests/cpus.csv")
+    df_cpus = pd.read_csv("tests/data/cpus.csv")
     with plt.style.context(rootsstyle.style):
-        g = sns.lineplot(
-            x="year", y="transistors", data=df_cpus, label="transistors\n[1000s]"
-        )
+        g = sns.lineplot(x="year", y="transistors", data=df_cpus, label="transistors\n[1000s]")
         g = sns.lineplot(x="year", y="watts", data=df_cpus, label="watts")
-        g = sns.lineplot(
-            x="year", y="frequency", data=df_cpus, label="frequency\n[MHz]"
-        )
+        g = sns.lineplot(x="year", y="frequency", data=df_cpus, label="frequency\n[MHz]")
         g = sns.lineplot(x="year", y="cores", data=df_cpus, label="logical\ncores")
         g = sns.lineplot(
             x="year",
