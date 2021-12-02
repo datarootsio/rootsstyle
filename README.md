@@ -4,10 +4,12 @@
 [![Python Versions](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue.svg)](https://www.python.org/downloads/)
 [![codecov](https://codecov.io/gh/datarootsio/rootsstyle/branch/main/graph/badge.svg?token=4agmmGuhtu)](https://codecov.io/gh/datarootsio/rootsstyle)
 
+<div align="center">
 
 # rootsstyle
+</div>
 
-A matplotlib styling package for clean, minimal dataroots themed graphs. 
+A matplotlib styling package for clean, minimal dataroots themed plots. 
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div align="center">
@@ -18,7 +20,6 @@ Works with any visualization tools that builds upon Matplotlib (seaborn, pandas)
 ## Installation
 ### using pip
 ```python
-pip install matplotlib
 pip install -i https://test.pypi.org/simple/ rootsstyle
 ```
 ### using [poetry](https://python-poetry.org/)
@@ -76,7 +77,7 @@ plt.show()
 ```
 </div>
 
-<div id=example_graph style="height: 50%;">
+<div style="height: 50%;">
     <img src="images/example_barplot.png">
 </div>
 </div>
@@ -95,7 +96,7 @@ with plt.style.context(rootsstyle.style):
     # ...
 ```
 <b>FUNCTIONS</b>
-* Place the legend to the right of the graph.<br>For line graphs, place the legend entries left of the corresponding line.
+* Place the legend to the right of the plot.<br>For lineplots, place the legend entries left of the corresponding line.
     ```python 
     rootsstyle.legend(handles=None, labels=None, title=None)
     ```
@@ -122,4 +123,4 @@ see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANG
 
 ## ROADMAP
 ### v0.2
-- <code>rootsstyle.publish()</code>: allows you to publish an example .png with the corresponding code sample for other users to utilize as an example graph.
+- <code>rootsstyle.publish()</code>: allows you to publish an example .png with the corresponding code sample for other users to utilize as an example plot.
