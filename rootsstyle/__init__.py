@@ -1,7 +1,7 @@
-from .main_style import (
+from .style import (
     style,
 )
-from .main_functions import (
+from .functions import (
     legend,
     ylabel,
     show_bar_values,
