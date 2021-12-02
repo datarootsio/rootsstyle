@@ -32,25 +32,41 @@ poetry add rootsstyle
 ```
 
 ## Usage
+* <b>IMPORT</b>
+  
+    ```python
+    import rootsstyle
+    import matplotlib.pyplot as plt
+    ```
+* <b>STYLING</b>
 
-```python
-import rootsstyle
-import matplotlib.pyplot as plt
+    ```python
+    # globally
+    plt.style.use(rootsstyle.style)
 
-# globally
-plt.style.use(rootsstyle.style)
-
-# within context manager
-with plt.style.context(rootsstyle.style):
-    # ...
-```
-
-```python
-#More functionalities
-'Place the legend to the left of the graph': rootsstyle.legend()
-'Horizontal label of y-axis above the yaxis': rootsstyle.ylabel()
-'Show barvalues inside bars and remove y axis': rootsstyle.show_bar_values()
-```
+    # within context manager
+    with plt.style.context(rootsstyle.style):
+        # ...
+    ```
+* <b>FUNCTIONS</b>
+    * Place the legend to the right of the graph.<br>For line graphs, place the legend entries left of the corresponding line.
+        ```python 
+        rootsstyle.legend(handles=None, 
+                            labels=None, 
+                            title=None)
+        ```
+    * Place the y-label above the y-axis and rotate it, so that it is horizontal.
+        ```python 
+        rootsstyle.ylabel(ylabel: str)
+        ```
+    * Show barvalues at each bar. <br>Removes the y-axis (optional).<br>Bar values can be shown just 'below' the top of each bar, or just 'above' each bar.
+        ```python 
+        rootsstyle.show_bar_values(remove_y_axis=True, 
+                                    fontsize=12, 
+                                    position="below", 
+                                    fmt="{:.2f}")
+        ```
+ 
 
 ## Color Palette
 <div align="center">
@@ -63,4 +79,4 @@ see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANG
 
 ## ROADMAP
 ### v0.2
-- rootsstyle.publish(): allows you to publish an example .png with the corresponding code sample for other users to utilize as an example plot
+- <code>rootsstyle.publish()</code>: allows you to publish an example .png with the corresponding code sample for other users to utilize as an example graph.
