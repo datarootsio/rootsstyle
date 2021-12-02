@@ -7,6 +7,30 @@ import matplotlib.pyplot as plt
 OUTPUT_DIR = "images/plots"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
+def test_example_plots():
+    plt.style.use(rootsstyle.style)
+
+    y = [3, 8, 1, 10]
+    y2 = [8, 3, 10, 2]
+    plt.plot(y, label='y')
+    plt.plot(y2, label='y2', linestyle = 'dotted')
+    rootsstyle.ylabel('yvalues')
+    plt.xlabel('x-label')
+    rootsstyle.legend()
+    plt.title('Example lineplot')
+    plt.savefig(f"images/example_lineplot.png")
+    assert plt.gcf().number == 1
+    plt.close()
+
+    languages = ['C', 'C++', 'Java', 'Python', 'PHP']
+    students = [23,17,35,29,12]
+    plt.bar(languages, students)
+    plt.xlabel('Language')
+    rootsstyle.show_bar_values()
+    plt.title('Example barplot')
+    plt.savefig(f"images/example_barplot.png")
+    assert plt.gcf().number == 1
+    plt.close()
 
 def test_scatterplot():
     df_penguins = sns.load_dataset("penguins")
@@ -139,7 +163,7 @@ def test_barplot():
         rootsstyle.ylabel("total bill")
         plt.xlabel("day")
         rootsstyle.legend()
-        rootsstyle.show_bar_values(position="above")
+        rootsstyle.show_bar_values(position="above", fmt="{:.2f}")
         plt.tight_layout()
         plt.savefig(f"{OUTPUT_DIR}/barplot_tips_above.png")
         plt.close()

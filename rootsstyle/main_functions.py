@@ -86,7 +86,7 @@ def ylabel(ylabel: str):
     ax.yaxis.set_label_coords(0, 1.03)
 
 
-def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.2f}"):
+def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.0f}"):
     ax = plt.gca()
 
     if remove_y_axis:
