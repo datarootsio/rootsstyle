@@ -35,7 +35,7 @@ poetry add rootsstyle
 ## Usage
 **Example**
 
-<table style="width:100%;">
+<table>
 <tr>
 <td> 
 
