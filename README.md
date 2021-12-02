@@ -33,8 +33,8 @@ poetry add rootsstyle
 ```
 
 ## Usage
-<b>Example</b>
-<div style="display: flex;">
+**Example**
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
 <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
 <div>
 
@@ -82,7 +82,7 @@ plt.show()
 </div>
 </div>
 </div>
-<b>STYLING</b>
+**STYLING**
 
 ```python
 import rootsstyle
@@ -95,7 +95,7 @@ plt.style.use(rootsstyle.style)
 with plt.style.context(rootsstyle.style):
     # ...
 ```
-<b>FUNCTIONS</b>
+**FUNCTIONS**
 * Place the legend to the right of the plot.<br>For lineplots, place the legend entries left of the corresponding line.
     ```python 
     rootsstyle.legend(handles=None, labels=None, title=None)
