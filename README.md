@@ -33,7 +33,9 @@ poetry add rootsstyle
 ```
 
 ## Usage
-**Example**
+**Examples**
+
+<a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 
 <table>
 <tr>
