@@ -1,2 +1,12 @@
 [flake8]
 max-line-length=127
+exclude =
+    .git,
+    __pycache__,
+    dist,
+    .vscode,
+    .history
+paths = 
+    rootsstyle/,
+    black/,
+    tests/,

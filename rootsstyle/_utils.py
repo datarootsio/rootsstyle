@@ -2,13 +2,17 @@ import math
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from ._nnls import nnls
+from ._nnls import (
+    nnls,
+)
 
 
 # pyplot.legend() -> gca().legend()
 # axes.legend() -> legend._parse_legend_args()
 # legend._parse_legend_args() -> labels!=None and handles==None:
-def get_dataline_handles(ax):
+def get_dataline_handles(
+    ax,
+):
     """Returns the handles that correspond to datalines
 
     Args:
@@ -17,9 +21,7 @@ def get_dataline_handles(ax):
         list[handle]: list of handles that correspond to datalines
     """
     return [
-        h
-        for h in mpl.legend._get_legend_handles([ax])
-        if type(h) == mpl.lines.Line2D and not np.all(np.isnan(h.get_ydata()))
+        h for h in mpl.legend._get_legend_handles([ax]) if type(h) == mpl.lines.Line2D and not np.all(np.isnan(h.get_ydata()))
     ]
 
 
@@ -43,7 +45,11 @@ def is_line_plot(ax, labels=None) -> bool:
     return "None" not in linestyles
 
 
-def get_linelegend_ypositions(ax, handles, labels=None):
+def get_linelegend_ypositions(
+    ax,
+    handles,
+    labels=None,
+):
     """Calculates the positions of the legendentries.
     Ensures that there is no vertical overlap between entires.
     https://github.com/nschloe/dufte?src/dufte/main.py
@@ -58,17 +64,13 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     """
     fontsize_inches = mpl.rcParams["font.size"] / 72
     fig_height_inches = plt.gcf().get_size_inches()[1]
-    yaxis_height_inches = (
-        ax.get_position().y1 - ax.get_position().y0
-    ) * fig_height_inches
+    yaxis_height_inches = (ax.get_position().y1 - ax.get_position().y0) * fig_height_inches
     if ax.get_yscale() == "log":
         yaxis_range = math.log10(ax.get_ylim()[1]) - math.log10(ax.get_ylim()[0])
     else:
         yaxis_range = ax.get_ylim()[1] - ax.get_ylim()[0]
     spacing_between_lines = 1.1
-    line_height = (
-        fontsize_inches / yaxis_height_inches * yaxis_range * spacing_between_lines
-    )
+    line_height = fontsize_inches / yaxis_height_inches * yaxis_range * spacing_between_lines
 
     # Find position heights and adjust so that there is no overlap
     last_y = [h.get_ydata()[~np.isnan(h.get_ydata())][-1] for h in handles]
@@ -78,12 +80,16 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     targets = np.sort(last_y)
     labels = np.array(labels)[idx]
     n = len(targets)
-    lines_away_from_first_label = np.arange(n, dtype=float)
-    for i in range(1, len(labels)):
+    lines_away_from_first_label = np.arange(
+        n,
+        dtype=float,
+    )
+    for i in range(
+        1,
+        len(labels),
+    ):
         distance_to_prev_label = (2 + f"{labels[i-1]}_{labels[i]}".count("\n")) / 2
-        lines_away_from_first_label[i] = (
-            lines_away_from_first_label[i - 1] + distance_to_prev_label
-        )
+        lines_away_from_first_label[i] = lines_away_from_first_label[i - 1] + distance_to_prev_label
 
     y0_min = targets[0] - lines_away_from_first_label[-1] * line_height
     A = np.tril(np.ones([n, n]))
@@ -99,6 +105,15 @@ def get_linelegend_ypositions(ax, handles, labels=None):
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
     xaxis_range = ax.get_xlim()[1] - ax.get_xlim()[0]
-    targets = [(x + xaxis_range * 0.03, y) for x, y in zip(last_x, last_y)]
+    targets = [
+        (
+            x + xaxis_range * 0.03,
+            y,
+        )
+        for x, y in zip(
+            last_x,
+            last_y,
+        )
+    ]
 
     return targets
