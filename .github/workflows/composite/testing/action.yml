@@ -6,9 +6,6 @@ inputs:
     description: "Python version to test with"
     required: true
 
-outputs:
-  coverage_file:
-    description: 
 runs:
   using: "composite"
   steps:
