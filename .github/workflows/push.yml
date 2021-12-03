@@ -23,3 +23,12 @@ jobs:
       - uses: ./.github/workflows/composite/testing
         with:
           python_version: ${{ matrix.python-version }}
+
+      # upload to codecov
+      - name: upload coverage to Codecov
+        if: ${{ matrix.python-version == '3.8' }}
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.xml
+          fail_ci_if_error: true
