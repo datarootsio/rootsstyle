@@ -1,6 +1,23 @@
 <div align=center>
             <b>
             <p>========================</p>
+            <p>2021-12-03   --   v0.1.9</p>
+            <p>========================</p>
+            </b>
+        </div>
+
+- added python 3.7.1 support for Google Colab
+- Set theme jekyll-theme-cayman
+- moved examples.ipynb to examples directory
+- fixed .gitignore to include test data
+- fixed import in rootsstyle/__init__.py
+- moved flake8 and black configurations to .flake8 and pyproject.toml
+- renamed main files
+- added example to README
+- removed scripts from pyproject.toml since this is unnecessary
+<div align=center>
+            <b>
+            <p>========================</p>
             <p>2021-12-01   --   v0.1.8</p>
             <p>========================</p>
             </b>
