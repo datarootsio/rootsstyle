@@ -121,5 +121,14 @@ with plt.style.context(rootsstyle.style):
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
 ## ROADMAP
-### v0.2
+### v0.1.10
+- Automatic versioning with codacy github actions
+- Automatic GH release with information from CHANGELOG.md 
+- Google Colab examples notebook
+
+### v1.0.0
+- Public repo
+- Github Page at datarootsio.github.io/rootsstyle
+
+### v1.1.0
 - <code>rootsstyle.publish()</code>: allows you to publish an example .png with the corresponding code sample for other users to utilize as an example plot.
