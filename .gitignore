@@ -25,6 +25,6 @@
 !rootsstyle/**/*.py
 
 #SCRIPTS
-!scripts/examples.ipynb
+!examples/examples.ipynb
 !scripts/update_changelog.py
 !scripts/plot_multiplot.py

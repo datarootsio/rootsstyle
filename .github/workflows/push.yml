@@ -1,0 +1,11 @@
+name: Push Workflow
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/composite/linting
