@@ -20,6 +20,7 @@ Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def create_all_test_plots():
     """Creates all plotting functions defined in tests/test_plots.py"""
     plot_functions = getmembers(test_plots, isfunction)
@@ -62,7 +63,6 @@ def create_example_grid():
 def create_example_plots():
     """Creates the plots that are shown in the USAGE-EXAMPLES section"""
     plt.style.use(rootsstyle.style)
-
 
     logging.info(f"Creating example lineplot")
     y = [3, 8, 1, 10]
