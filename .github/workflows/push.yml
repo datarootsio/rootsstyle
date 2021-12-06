@@ -11,32 +11,32 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/linting
   
-  # testing-and-codecov:
-  #   needs: linting
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       python-version: ["3.7.1", "3.8", "3.9", "3.10"]
+  testing-and-codecov:
+    needs: linting
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7.1", "3.8", "3.9", "3.10"]
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./.github/workflows/composite/testing
-  #       with:
-  #         python_version: ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/testing
+        with:
+          python_version: ${{ matrix.python-version }}
 
-  #     # upload to codecov
-  #     - name: upload coverage to Codecov
-  #       if: ${{ matrix.python-version == '3.8' }}
-  #       uses: codecov/codecov-action@v2
-  #       with:
-  #         token: ${{ secrets.CODECOV_TOKEN }}
-  #         file: coverage.xml
-  #         fail_ci_if_error: true
+      # upload to codecov
+      - name: upload coverage to Codecov
+        if: ${{ matrix.python-version == '3.8' }}
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.xml
+          fail_ci_if_error: true
   
   # Tag, release and publish
   tag-release-and-publish:
-    #needs: testing-and-codecov
-    #if: github.ref == 'refs/heads/main'
+    needs: testing-and-codecov
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -48,14 +48,15 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: false             #no tags unless major, minor or patch
-          default_prerelease_bump: false
-
-      - run: echo ${{steps.create_tag.outputs.release_type }}
+          default_bump: false #no tags unless major, minor or patch
+          
+      - run: |
+          echo ${{steps.create_tag.outputs.new_version }}
+          echo ${{steps.create_tag.outputs.release_type }}
 
       # Create release from tag
       - name: Create a GitHub release
-        if: ${{ contains(fromJson('["premajor", "preminor", "prepatch"]'), steps.create_tag.outputs.release_type) }}
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
@@ -64,7 +65,7 @@ jobs:
 
       # Publish package to PyPI 
       - uses: ./.github/workflows/composite/publishing
-        if: ${{ contains(fromJson('["premajor", "preminor", "prepatch"]'), steps.create_tag.outputs.release_type) }}
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
           package_version: ${{ steps.create_tag.outputs.new_version }}
           pypi_username: ${{ secrets.PyPI_USERNAME }}
