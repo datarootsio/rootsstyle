@@ -43,8 +43,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      # Create new tag
-      # NOTE: commit messages are parsed semantically: https://github.com/mathieudutour/github-tag-action#bumping
+
+      # Create new tag based on semver
       - name: Create tag
         id: create_tag
         uses: mathieudutour/github-tag-action@v6.0
