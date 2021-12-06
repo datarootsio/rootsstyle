@@ -41,10 +41,19 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage.xml
           fail_ci_if_error: true
+
+  # UPDATE README PLOTS
+  update-visualizations:
+    needs: testing-and-codecov
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/visualizations
   
   # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
   tag-release-publish-changelog:
-    needs: testing-and-codecov
+    needs: update-visualizations
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -85,10 +94,3 @@ jobs:
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
 
 
-  update-visualizations:
-    needs: testing-and-codecov
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - uses: ./.github/workflows/composite/visualizations
