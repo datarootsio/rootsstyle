@@ -7,8 +7,11 @@
 !pyproject.toml
 !poetry.lock
 !.gitignore
-!.github/workflows/**/*.yml
 !.flake8
+
+#WORKFLOWS
+!.github/workflows/**/*.yml
+!.github/workflows/**/*py
 
 #README
 !README.md
@@ -26,5 +29,3 @@
 
 #SCRIPTS
 !examples/examples.ipynb
-!scripts/update_changelog.py
-!scripts/plot_multiplot.py
