@@ -49,16 +49,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       # Create release with tag
       - name: Create a GitHub release
-        if: ${{ steps.create_tag.outputs.release_type == 'major' }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: Automated Changelog will come here
       # Publish      
-      # - uses: ./.github/workflows/composite/publishing
-      #   if: ${{ steps.create_tag.outputs.release_type }} == "major"
-      #   with:
-      #     package_version: ${{ steps.create_tag.outputs.new_tag }}
-      #     pypi_username: ${{ secrets.PyPI_USERNAME }}
-      #     pypi_password: ${{ secrets.PyPI_PASSWORD }}
+      - uses: ./.github/workflows/composite/publishing
+        with:
+          package_version: ${{ steps.create_tag.outputs.new_tag }}
+          pypi_username: ${{ secrets.PyPI_USERNAME }}
+          pypi_password: ${{ secrets.PyPI_PASSWORD }}
