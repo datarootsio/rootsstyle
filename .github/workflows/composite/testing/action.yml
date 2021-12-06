@@ -27,7 +27,9 @@ runs:
     - name: poetry install
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       shell: bash
-      run: poetry install --no-interaction --no-root -vvv
+      run: |
+        poetry config experimental.new-installer false
+        poetry install --no-interaction --no-root -vvv
 
     # RUNNING TESTS
     - name: perform tests
