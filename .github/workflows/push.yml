@@ -51,6 +51,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false #no tags unless major, minor or patch
+          fetch_all_tags: true
           
       - run: |
           echo ${{steps.create_tag.outputs.new_version }}
