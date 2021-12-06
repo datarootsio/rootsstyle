@@ -49,8 +49,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo ${{ steps.git_version.outputs.new_tag }}
-      - run: echo ${{ steps.git_version.outputs.changelog }}
       # Create release with tag
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
@@ -58,9 +56,9 @@ jobs:
           tag: ${{ steps.git_version.outputs.new_tag }}
           name: Release ${{ steps.git_version.outputs.new_tag }}
           body: ${{ steps.git_version.outputs.changelog }}
-      # # Publish      
-      # - uses: ./.github/workflows/composite/publishing
-      #   with:
-      #     package_version: ${{ steps.git_version.outputs.new_tag }}
-      #     pypi_username: ${{ secrets.PyPI_USERNAME }}
-      #     pypi_password: ${{ secrets.PyPI_PASSWORD }}
+      # Publish      
+      - uses: ./.github/workflows/composite/publishing
+        with:
+          package_version: ${{ steps.git_version.outputs.new_tag }}
+          pypi_username: ${{ secrets.PyPI_USERNAME }}
+          pypi_password: ${{ secrets.PyPI_PASSWORD }}
