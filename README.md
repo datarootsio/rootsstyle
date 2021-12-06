@@ -19,7 +19,7 @@ Works with any visualization tools that builds upon Matplotlib (seaborn, pandas)
 
 
 
-## Installation
+# Installation
 ### using pip
 ```python
 pip install -i https://test.pypi.org/simple/ rootsstyle
@@ -34,7 +34,7 @@ url = "https://test.pypi.org/simple/"
 poetry add rootsstyle
 ```
 
-## Usage
+# Usage
 **Examples**
 
 <a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
@@ -125,12 +125,37 @@ with plt.style.context(rootsstyle.style):
 </div>
 
 
+# VERSIONING
 
+A [semantic versioning](https://semver.org/) scheme is used to update the version on the commit messages. This happens automatically on any push to the main branch. Only patches, minor and major changes will generate a tag, release and publishing of the package. We stick to the default [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). To use this system, commit messages should adhere to a couple of rules:
 
-## CHANGELOG
+1. Commits must follow the following syntax
+
+    ```
+    <type>(<scope>): <subject>
+    <BLANK LINE>
+    <body>
+    <BLANK LINE>
+    <footer>
+    ```
+
+2. Type should be one of the following:
+    * feat: A new feature
+    * fix: A bug fix
+    * docs: Documentation only changes
+    * style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+    * refactor: A code change that neither fixes a bug nor adds a feature
+    * perf: A code change that improves performance
+    * test: Adding missing or correcting existing tests
+    * chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+3. Body is used to motivate the change
+4. Footer is used to link to any **issues** that the commit closes and for **breaking changes** (in which case the line should start with *BREAKING CHANGE:*)
+
+# CHANGELOG
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
-## ROADMAP
+# ROADMAP
 ### v0.2.0
 - Automatic versioning with codacy github actions
 - Automatic GH release with information from CHANGELOG.md 
