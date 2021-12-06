@@ -7,6 +7,6 @@ exclude =
     .vscode,
     .history
 paths = 
-    rootsstyle/,
-    black/,
+    rootsstyle/**/,
+    .github/**/,
     tests/,

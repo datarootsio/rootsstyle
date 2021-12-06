@@ -27,6 +27,11 @@ flake8 = "^4.0.1"
 [tool.black]
 line-length = 127
 target-version = ['py38', 'py39', 'py310']
+exclude = '''
+/(
+    | .history
+)/
+'''
 
 
 [build-system]
