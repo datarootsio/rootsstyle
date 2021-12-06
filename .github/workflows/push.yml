@@ -43,8 +43,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       # Create new tag
       # NOTE: commit messages are parsed semantically: https://github.com/mathieudutour/github-tag-action#bumping
       - name: Create tag
@@ -52,8 +50,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: false #no tags unless major, minor or patch
-          fetch_all_tags: true
           
       - run: |
           echo ${{steps.create_tag.outputs.new_version }}
