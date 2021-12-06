@@ -47,6 +47,9 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: false #no tags unless major, minor or patch tag
+          default_prerelease_bump: false #no tags unless major, minor or patch tag
+          append_to_pre_release_tag: ""
       # Create release with tag
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
