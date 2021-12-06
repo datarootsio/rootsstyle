@@ -71,3 +71,30 @@ def test_ylabel():
         assert plt.gca().yaxis.label._rotation == 0
         assert plt.gcf().number == 1
         plt.close()
+
+
+def test_show_bar_values():
+    df_tips = sns.load_dataset("tips")
+    with plt.style.context(rootsstyle.style):
+
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
+        rootsstyle.legend()
+        rootsstyle.show_bar_values(position="below")
+        plt.tight_layout()
+        assert plt.gca().spines["left"].get_visible() == False
+        assert plt.gca().spines["bottom"].get_visible() == False
+        assert plt.gcf().number == 1
+        plt.close()
+
+        sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
+        rootsstyle.ylabel("total bill")
+        plt.xlabel("day")
+        rootsstyle.legend()
+        rootsstyle.show_bar_values(position="above", fmt="{:.2f}")
+        plt.tight_layout()
+        assert plt.gca().spines["left"].get_visible() == False
+        assert plt.gca().spines["bottom"].get_visible() == False
+        assert plt.gcf().number == 1
+        plt.close()
