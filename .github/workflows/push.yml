@@ -50,6 +50,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/visualizations
+      - run: git pull
   
   # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
   tag-release-publish-changelog:
@@ -68,6 +69,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false
 
+      # Update Changelog
+      - name: Update Changelog
+        uses: ./.github/workflows/composite/changelog
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          changes: ${{ steps.create_tag.outputs.changelog }}
+      - run: git pull
+
       # Create release from tag
       - name: Create a GitHub release
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
@@ -76,13 +85,6 @@ jobs:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
-
-      # Update Changelog
-      - name: Update Changelog
-        uses: ./.github/workflows/composite/changelog
-        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
-        with:
-          changes: ${{ steps.create_tag.outputs.changelog }}
 
       # Publish package to PyPI 
       - name: Publish package to PyPI
