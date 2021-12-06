@@ -83,8 +83,8 @@ def test_show_bar_values():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="below")
         plt.tight_layout()
-        assert plt.gca().spines["left"].get_visible() == False
-        assert plt.gca().spines["bottom"].get_visible() == False
+        assert plt.gca().spines["left"].get_visible() is False
+        assert plt.gca().spines["bottom"].get_visible() is False
         assert plt.gcf().number == 1
         plt.close()
 
@@ -94,7 +94,7 @@ def test_show_bar_values():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="above", fmt="{:.2f}")
         plt.tight_layout()
-        assert plt.gca().spines["left"].get_visible() == False
-        assert plt.gca().spines["bottom"].get_visible() == False
+        assert plt.gca().spines["left"].get_visible() is False
+        assert plt.gca().spines["bottom"].get_visible() is False
         assert plt.gcf().number == 1
         plt.close()
