@@ -1,6 +1,8 @@
 import os
+import sys
 import math
 import shutil
+import logging
 import itertools
 import rootsstyle
 from PIL import Image
@@ -13,20 +15,22 @@ from inspect import getmembers, isfunction
 
 OUTPUT_DIR = "images/"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
-
 TEMP_DIR = "temp_images"
 Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def create_all_test_plots():
     """Creates all plotting functions defined in tests/test_plots.py"""
     plot_functions = getmembers(test_plots, isfunction)
-    for _, function in plot_functions:
+    for function_name, function in plot_functions:
+        logging.info(f"Calling {function_name}")
         function(output_dir=TEMP_DIR)
 
 
 def create_example_grid():
     """Creates the grid of plots that is shown at the top of the README file"""
+    logging.info(f"Creating grid of example plots")
     plt.style.use(rootsstyle.style)
 
     images = []
@@ -59,6 +63,8 @@ def create_example_plots():
     """Creates the plots that are shown in the USAGE-EXAMPLES section"""
     plt.style.use(rootsstyle.style)
 
+
+    logging.info(f"Creating example lineplot")
     y = [3, 8, 1, 10]
     y2 = [8, 3, 10, 2]
     plt.plot(y, label="y")
@@ -70,6 +76,7 @@ def create_example_plots():
     plt.savefig(Path(OUTPUT_DIR) / "example_lineplot.png")
     plt.close()
 
+    logging.info(f"Creating example barplot")
     languages = ["C", "C++", "Java", "Python", "PHP"]
     students = [23, 17, 35, 29, 12]
     plt.bar(languages, students)
@@ -81,6 +88,7 @@ def create_example_plots():
 
 
 def create_palette_plot():
+    logging.info(f"Creating image of palettes")
     plt.style.use(rootsstyle.style)
     mpl_cmaps = mpl.colormaps._cmaps
     dataroots_cmaps = dict()
