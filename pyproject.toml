@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootsstyle"
-version = "0.1.9"
+version = "v0.0.1-workflow-rework.1"
 description = "A dataroots inspired theme for matplotlib."
 authors = ["YannouRavoet <yannou.ravoet@dataroots.io>"]
 license = "MIT"
