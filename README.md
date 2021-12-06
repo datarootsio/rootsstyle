@@ -151,8 +151,7 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
 4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes**, in which case the line should start with `BREAKING CHANGE:`.
 
 # CHANGELOG
-see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
-
+The [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file is automatically completed upon any new releases.
 # ROADMAP
 
 ### v1.0.0
