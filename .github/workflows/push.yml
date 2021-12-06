@@ -43,6 +43,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       # Create new tag
       # NOTE: commit messages are parsed semantically: https://github.com/mathieudutour/github-tag-action#bumping
       - name: Create tag
