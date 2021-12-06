@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootsstyle"
-version = "0.0.0"   #placeholder: version is set dynamically
+version = "0.0.0"   #version is set automatically from git tag
 description = "A dataroots inspired theme for matplotlib."
 authors = ["YannouRavoet <yannou.ravoet@dataroots.io>"]
 license = "MIT"
@@ -31,11 +31,10 @@ line-length = 127
 target-version = ['py38', 'py39', 'py310']
 include = 'tests\/.*\.pyi?$|rootsstyle\/.*\.pyi?$|scripts\/.*\.pyi?$'
 
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "semver"
+[tool.poetry-version-plugin]
+source = "git-tag"
+
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

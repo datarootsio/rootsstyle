@@ -33,32 +33,33 @@ jobs:
           file: coverage.xml
           fail_ci_if_error: true
   
-  # TESTING STUFF
-  versioning:
+  # Tag, release and publish
+  tag-release-and-publish:
     needs: testing-and-codecov
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+        # with:
+        #   ref: ${{ github.head_ref }}   # checkout the correct branch name
+        #   fetch-depth: 0                # fetch the whole repo history
+      # Create new version
+      - name: Git version
+        id: git_version
+        uses: mathieudutour/github-tag-action@v6.0
         with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
-      - name: Git Version
-        uses: codacy/git-version@2.2.0
-
-      - uses: actions/setup-python@v2
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{ steps.git_version.outputs.new_tag }}
+      - run: echo ${{ steps.git_version.outputs.changelog }}
+      # Create release with tag
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
         with:
-          python-version: 3.8
-      - run: pip install poetry-dynamic-versioning
-      - uses: snok/install-poetry@v1
+          tag: ${{ steps.git_version.outputs.new_tag }}
+          name: Release ${{ steps.git_version.outputs.new_tag }}
+          body: ${{ steps.git_version.outputs.changelog }}
+      # Publish      
+      - uses: ./.github/workflows/composite/publishing
         with:
-          version: 1.1.10
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-      - uses: actions/cache@v2.1.3
-        id: cached-poetry-dependencies
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ inputs.python_version }}-${{ hashFiles('**/poetry.lock') }}
-      
-      - run: poetry build
+          pypi_username: ${{ secrets.PyPI_USERNAME }}
+          pypi_password: ${{ secrets.PyPI_PASSWORD }}
