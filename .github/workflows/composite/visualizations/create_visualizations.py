@@ -20,6 +20,7 @@ Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def create_all_test_plots():
     """Creates all plotting functions defined in tests/test_plots.py"""
     plot_functions = getmembers(test_plots, isfunction)
