@@ -48,10 +48,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false #no tags unless major, minor or patch tag
-      - run: |
-          echo $(git describe --tags --abbrev=0)
-          echo ${{ steps.create_tag.outputs.new_tag }}
-          echo ${{ steps.create_tag.outputs.new_version }}
+          default_prerelease_bump: false #no tags unless major, minor or patch tag
 
       # Create release with tag
       - name: Create a GitHub release
@@ -65,6 +62,6 @@ jobs:
       - uses: ./.github/workflows/composite/publishing
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
-          package_version: poetry version $(git describe --tags --abbrev=0)
+          package_version: ${{ steps.create_tag.outputs.new_version }}
           pypi_username: ${{ secrets.PyPI_USERNAME }}
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
