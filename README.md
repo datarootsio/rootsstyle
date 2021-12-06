@@ -13,9 +13,7 @@
 A matplotlib styling package for clean, minimal dataroots themed plots. 
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
-</div>
+<img align="center" src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
 
 
 
