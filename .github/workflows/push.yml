@@ -36,7 +36,7 @@ jobs:
           fail_ci_if_error: true
   
   # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
-  tag-release-and-publish:
+  tag-release-publish-changelog:
     needs: testing-and-codecov
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -60,6 +60,7 @@ jobs:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
+
       # Publish package to PyPI 
       - name: Publish package to PyPI
         uses: ./.github/workflows/composite/publishing
@@ -75,3 +76,11 @@ jobs:
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
           changes: "${{ steps.create_tag.outputs.changelog }}"
+
+  update-visualizations:
+    needs: testing-and-codecov
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/visualizations

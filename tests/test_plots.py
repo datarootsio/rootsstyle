@@ -4,34 +4,8 @@ import seaborn as sns
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-OUTPUT_DIR = "images/plots"
-Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
-
-
-def test_example_plots():
-    plt.style.use(rootsstyle.style)
-
-    y = [3, 8, 1, 10]
-    y2 = [8, 3, 10, 2]
-    plt.plot(y, label="y")
-    plt.plot(y2, label="y2", linestyle="dotted")
-    rootsstyle.ylabel("yvalues")
-    plt.xlabel("x-label")
-    rootsstyle.legend()
-    plt.title("Example lineplot")
-    plt.savefig("images/example_lineplot.png")
-    assert plt.gcf().number == 1
-    plt.close()
-
-    languages = ["C", "C++", "Java", "Python", "PHP"]
-    students = [23, 17, 35, 29, 12]
-    plt.bar(languages, students)
-    plt.xlabel("Language")
-    rootsstyle.show_bar_values()
-    plt.title("Example barplot")
-    plt.savefig("images/example_barplot.png")
-    assert plt.gcf().number == 1
-    plt.close()
+TEMP_DIR = "temp_images"
+Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
 
 def test_scatterplot():
@@ -51,7 +25,7 @@ def test_scatterplot():
         plt.text(4550, 185, "Chunky Mike", fontdict={"color": rootsstyle.colors[0]})
         plt.text(5400, 232, "Big Bob", fontdict={"color": rootsstyle.colors[2]})
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/scatterplot.png")
+        plt.savefig(Path(TEMP_DIR) / "scatterplot.png")
         plt.close()
 
 
@@ -72,7 +46,7 @@ def test_lineplot():
         plt.xlabel("model year")
         plt.title("Cars")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_cars.png")
+        plt.savefig(Path(TEMP_DIR) / "lineplot_cars.png")
         plt.close()
 
     # LINEPLOT WITH HUE PALETTE
@@ -91,7 +65,7 @@ def test_lineplot():
         plt.xlabel("month")
         plt.title("Flights")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_green.png")
+        plt.savefig(Path(TEMP_DIR) / "lineplot_green.png")
         plt.close()
 
         sns.lineplot(
@@ -107,7 +81,7 @@ def test_lineplot():
         plt.xlabel("month")
         plt.title("Flights")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_blue.png")
+        plt.savefig(Path(TEMP_DIR) / "lineplot_blue.png")
         plt.close()
 
     # LOGARITMIC LINEPLOT + MULTILINE LEGENDS
@@ -130,7 +104,7 @@ def test_lineplot():
         plt.title("48 Years of Microprocessor Trends")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/lineplot_cpus.png")
+        plt.savefig(Path(TEMP_DIR) / "lineplot_cpus.png")
         plt.close()
 
 
@@ -145,7 +119,7 @@ def test_barplot():
         rootsstyle.legend()
         plt.title("Cars")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/barplot_mpg.png")
+        plt.savefig(Path(TEMP_DIR) / "barplot_mpg.png")
         plt.close()
 
         sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
@@ -154,7 +128,7 @@ def test_barplot():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="below")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_below.png")
+        plt.savefig(Path(TEMP_DIR) / "barplot_tips_below.png")
         plt.close()
 
         sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
@@ -163,7 +137,7 @@ def test_barplot():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="above", fmt="{:.2f}")
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/barplot_tips_above.png")
+        plt.savefig(Path(TEMP_DIR) / "barplot_tips_above.png")
         plt.close()
 
 
@@ -176,7 +150,7 @@ def test_violinplot():
         rootsstyle.ylabel("USD")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/violinplot.png")
+        plt.savefig(Path(TEMP_DIR) / "violinplot.png")
         plt.close()
 
 
@@ -188,7 +162,7 @@ def test_pieplot():
         plt.title("Penguin distribution")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/pieplot.png")
+        plt.savefig(Path(TEMP_DIR) / "pieplot.png")
         plt.close()
 
 
@@ -201,7 +175,7 @@ def test_heatmap():
         plt.title("Passengers in flights")
         plt.yticks(rotation=0)
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/heatmap_blue_to_green.png")
+        plt.savefig(Path(TEMP_DIR) / "heatmap_blue_to_green.png")
         plt.close()
 
         sns.heatmap(data=df_flights, cmap="dataroots-green-to-blue")
@@ -209,5 +183,5 @@ def test_heatmap():
         plt.title("Passengers in flights")
         plt.yticks(rotation=0)
         plt.tight_layout()
-        plt.savefig(f"{OUTPUT_DIR}/heatmap_green_to_blue.png")
+        plt.savefig(Path(TEMP_DIR) / "heatmap_green_to_blue.png")
         plt.close()
