@@ -40,9 +40,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
       # Create new version
       # NOTE: commit messages are parsed semantically: https://github.com/mathieudutour/github-tag-action#bumping
       - name: Create tag
@@ -52,7 +49,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       # Create release with tag
       - name: Create a GitHub release
-        if: ${{ steps.create_tag.outputs.release_type == "major" }}
+        if: ${{ steps.create_tag.outputs.release_type == 'major' }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
