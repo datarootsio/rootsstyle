@@ -1,3 +1,17 @@
+### [0.3.3](https://github.com/datarootsio/rootsstyle/compare/v0.3.2...v0.3.3) (2021-12-06)
+
+
+### Bug Fixes
+
+* **workflow:** added git pull to update before next step ([1403d29](https://github.com/datarootsio/rootsstyle/commit/1403d2962f90bd1c6c52480d098f102451a15c98))
+* **workflow:** added git pull to update before next step ([1334fd5](https://github.com/datarootsio/rootsstyle/commit/1334fd58ec4a1c90f9ef3d5af54c112ab2e898d8))
+
+
+### Documentation
+
+* **visualizations:** Automated update of visualizations used in README ([d5c6d15](https://github.com/datarootsio/rootsstyle/commit/d5c6d15f08540b81a38119fcb20d3416ff301c4d))
+
+
 ### [0.3.1](https://github.com/datarootsio/rootsstyle/compare/v0.3.0...v0.3.1) (2021-12-06)
 
 
