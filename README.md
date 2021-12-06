@@ -39,9 +39,9 @@ poetry add rootsstyle
 
 <a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 
-<table>
+<table width="100%">
 <tr>
-<td style="width: 45%;"> 
+<td width="50%"> 
 
 ```python
 import rootsstyle
@@ -59,7 +59,7 @@ plt.show()
 ```
 
 </td>
-<td style="width: 45%;"> 
+<td width="50%"> 
 
 ```python
 import rootsstyle
@@ -77,8 +77,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td style="width: 45%;"><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
-<td style="width: 45%;"> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
+<td width="50%"><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
+<td width="50%"> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
 </tr>
 </table>
 
@@ -115,10 +115,10 @@ with plt.style.context(rootsstyle.style):
  
 
 **COLOR PALETTE**
-<table>
+<table width="100%">
     <tr>
-        <td style="width:40%;">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
-        <td>
+        <td width="40%" align="center">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
+        <td width="60%" align="center">
             <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 350px;">
         </td>
     </tr>
