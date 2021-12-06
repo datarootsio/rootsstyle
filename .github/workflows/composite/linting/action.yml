@@ -16,7 +16,7 @@ runs:
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Automated commit of reformatting done by black
+        commit_message: "style(black): Automated reformatting done by black"
     - name: test linting with flake8
       shell: bash
       run: flake8

@@ -35,7 +35,7 @@ jobs:
           file: coverage.xml
           fail_ci_if_error: true
   
-  # PERFORM TAGGING, RELEASING AND PUBLISHING
+  # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
   tag-release-and-publish:
     needs: testing-and-codecov
     if: github.ref == 'refs/heads/main'
@@ -61,9 +61,17 @@ jobs:
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
       # Publish package to PyPI 
-      - uses: ./.github/workflows/composite/publishing
+      - name: Publish package to PyPI
+        uses: ./.github/workflows/composite/publishing
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
           package_version: ${{ steps.create_tag.outputs.new_version }}
           pypi_username: ${{ secrets.PyPI_USERNAME }}
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
+          
+      # Update Changelog
+      - name: Update Changelog
+        uses: ./.github/workflows/composite/changelog
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          changes: ${{ steps.create_tag.outputs.changelog }}

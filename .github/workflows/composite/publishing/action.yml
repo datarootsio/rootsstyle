@@ -46,7 +46,7 @@ runs:
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Automated commit of updated versioning in pyproject.toml
+        commit_message: "chore(pyproject.toml): Automated update of version in pyproject.toml"
 
     # BUILD THE PACKAGE
     - name: poetry build
