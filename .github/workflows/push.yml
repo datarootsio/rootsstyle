@@ -11,12 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #https://github.com/stefanzweifel/git-auto-commit-action/issues/2#issuecomment-599721261
+          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #Using PA Token will cause automated commits to trigger workflow runs
       - uses: ./.github/workflows/composite/linting
   
   # PERFORM TESTING
   testing-and-codecov:
     needs: linting
+    if: steps.linting.outputs.changes_detected == 'false' #only continue if no changes are detected
     runs-on: ubuntu-latest
     strategy:
       matrix:

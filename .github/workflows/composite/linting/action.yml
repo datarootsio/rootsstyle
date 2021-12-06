@@ -1,6 +1,10 @@
 name: "Linting code"
 description: "Reformats code with black, pushes back any changes, perform linting check with flake8"
 
+outputs:
+  changes_detected:
+    description: "Returns either 'true' or 'false' if the repository was dirty and files have changed."
+    value: ${{ steps.auto-commit.outputs.changes_detected}}
 
 runs:
   using: "composite"
@@ -18,6 +22,7 @@ runs:
       shell: bash
       run: black .
     - name: push changes back to branch
+      id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "style(black): Automated reformatting done by black"
