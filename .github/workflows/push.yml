@@ -63,6 +63,13 @@ jobs:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
+          
+      # Update Changelog
+      - name: Update Changelog
+        uses: ./.github/workflows/composite/changelog
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          changes: "${{ steps.create_tag.outputs.changelog }}"
 
       # Publish package to PyPI 
       - name: Publish package to PyPI
@@ -73,12 +80,6 @@ jobs:
           pypi_username: ${{ secrets.PyPI_USERNAME }}
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
 
-      # Update Changelog
-      - name: Update Changelog
-        uses: ./.github/workflows/composite/changelog
-        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
-        with:
-          changes: "${{ steps.create_tag.outputs.changelog }}"
 
   update-visualizations:
     needs: testing-and-codecov
