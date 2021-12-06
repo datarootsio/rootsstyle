@@ -4,19 +4,15 @@ description: "Reformats code with black, pushes back any changes, perform lintin
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-python@v2
-    - name: instal pip packages
-      shell: bash
-      run: |
-        python -m pip install --no-cache-dir --upgrade pip
-        pip install flake8 black
-    - name: reformat code with black
-      shell: bash
-      run: black ./**/*.py
+    - uses: psf/black@stable
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "style(black): Automated reformatting done by black"
-    - name: test linting with flake8
-      shell: bash
-      run: flake8
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: flake8 Lint
+      uses: py-actions/flake8@v1
