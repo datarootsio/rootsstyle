@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/workflows/composite/linting
         with:
-          github_token_workflow: ${{ secrets.WORKFLOW_PA_TOKEN }}
+          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #https://github.com/stefanzweifel/git-auto-commit-action/issues/2#issuecomment-599721261
+      - uses: ./.github/workflows/composite/linting
   
   # PERFORM TESTING
   testing-and-codecov:

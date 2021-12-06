@@ -2,11 +2,6 @@ name: "Linting code"
 description: "Reformats code with black, pushes back any changes, perform linting check with flake8"
 
 
-inputs:
-  github_token_workflow:
-    description: A token that also has workflow scope to allow the action to update scripts in the .github/workflows directory"
-    required: true
-
 runs:
   using: "composite"
   steps:
@@ -26,8 +21,6 @@ runs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "style(black): Automated reformatting done by black"
-      env:
-        GITHUB_TOKEN: ${{ inputs.github_token_workflow }}
     # flake8 linting
     - name: test linting with flake8
       shell: bash
