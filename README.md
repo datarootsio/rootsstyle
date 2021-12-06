@@ -13,9 +13,7 @@
 A matplotlib styling package for clean, minimal dataroots themed plots. 
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
-</div>
+<img align="center" src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
 
 
 
@@ -39,9 +37,9 @@ poetry add rootsstyle
 
 <a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 
-<table>
+<table width="100%">
 <tr>
-<td> 
+<td width="50%"> 
 
 ```python
 import rootsstyle
@@ -59,7 +57,7 @@ plt.show()
 ```
 
 </td>
-<td> 
+<td width="50%"> 
 
 ```python
 import rootsstyle
@@ -77,8 +75,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
-<td> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
+<td width="50%"><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
+<td width="50%"> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
 </tr>
 </table>
 
@@ -115,14 +113,14 @@ with plt.style.context(rootsstyle.style):
  
 
 **COLOR PALETTE**
-<div style="display: flex; justify-content: space-between; align-items: center;">
-    <div style="width: 50%; text-align: center;">
-        <p>The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</p>
-    </div>
-    <div>
-        <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 350px;">
-    </div>
-</div>
+<table width="100%">
+    <tr>
+        <td width="40%" align="center">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
+        <td width="60%" align="center">
+            <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" height="350px;">
+        </td>
+    </tr>
+</table>
 
 
 # VERSIONING
@@ -150,15 +148,12 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
     * chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 3. Body (optional) is used to motivate the change
-4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes** (in which case the line should start with *BREAKING CHANGE:*)
+4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes**, in which case the line should start with `BREAKING CHANGE:`.
 
 # CHANGELOG
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
 # ROADMAP
-### v0.2.0
-- Automatic versioning with codacy github actions
-- Automatic GH release with information from CHANGELOG.md 
 
 ### v1.0.0
 - Public repo

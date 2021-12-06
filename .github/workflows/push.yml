@@ -9,9 +9,14 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #https://github.com/stefanzweifel/git-auto-commit-action/issues/2#issuecomment-599721261
+          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #Using PA Token will cause automated commits to trigger workflow runs
       - uses: ./.github/workflows/composite/linting
   
   # PERFORM TESTING
@@ -63,6 +68,13 @@ jobs:
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
 
+      # Update Changelog
+      - name: Update Changelog
+        uses: ./.github/workflows/composite/changelog
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          changes: "${{ steps.create_tag.outputs.changelog }}"
+
       # Publish package to PyPI 
       - name: Publish package to PyPI
         uses: ./.github/workflows/composite/publishing
@@ -72,12 +84,6 @@ jobs:
           pypi_username: ${{ secrets.PyPI_USERNAME }}
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
 
-      # Update Changelog
-      - name: Update Changelog
-        uses: ./.github/workflows/composite/changelog
-        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
-        with:
-          changes: "${{ steps.create_tag.outputs.changelog }}"
 
   update-visualizations:
     needs: testing-and-codecov
