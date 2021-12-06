@@ -77,8 +77,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td><img src="images/example_lineplot.png"></td>
-<td> <img src="images/example_barplot.png"></td>
+<td><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
+<td> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
 </tr>
 </table>
 
