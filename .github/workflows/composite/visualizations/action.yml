@@ -33,6 +33,9 @@ runs:
         source .venv/bin/activate
         python ${{ github.action_path }}/create_visualizations.py
 
+    - name: git pull
+      shell: bash
+      run: git pull
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4
       with:

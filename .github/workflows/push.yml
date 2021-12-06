@@ -50,7 +50,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/visualizations
-      - run: git pull
   
   # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
   tag-release-publish-changelog:
@@ -75,7 +74,6 @@ jobs:
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
           changes: ${{ steps.create_tag.outputs.changelog }}
-      - run: git pull
 
       # Create release from tag
       - name: Create a GitHub release
