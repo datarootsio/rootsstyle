@@ -9,6 +9,11 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.WORKFLOW_PA_TOKEN }} #Using PA Token will cause automated commits to trigger workflow runs
@@ -17,7 +22,6 @@ jobs:
   # PERFORM TESTING
   testing-and-codecov:
     needs: linting
-    if: steps.linting.outputs.changes_detected == 'false' #only continue if no changes are detected
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -63,7 +67,7 @@ jobs:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: ${{ steps.create_tag.outputs.changelog }}
-          
+
       # Update Changelog
       - name: Update Changelog
         uses: ./.github/workflows/composite/changelog
