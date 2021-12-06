@@ -4,7 +4,6 @@ import seaborn as sns
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-
 def test_scatterplot(output_dir=None):
     df_penguins = sns.load_dataset("penguins")
     with plt.style.context(rootsstyle.style):
