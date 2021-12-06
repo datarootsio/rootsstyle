@@ -16,7 +16,7 @@ runs:
         python-version: 3.8
     - name: update changelog
       shell: bash
-      run: python ${{ github.action_path }}/update_changelog.py ${{ inputs.changes }}
+      run: python ${{ github.action_path }}/update_changelog.py """${{ inputs.changes }}"""
 
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4

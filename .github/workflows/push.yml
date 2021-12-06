@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/workflows/composite/changelog
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
-          changes: "${{ steps.create_tag.outputs.changelog }}"
+          changes: ${{ steps.create_tag.outputs.changelog }}
 
       # Publish package to PyPI 
       - name: Publish package to PyPI
