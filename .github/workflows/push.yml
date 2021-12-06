@@ -52,7 +52,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false
       
-      - run: echo ${{ steps.tag_version.outputs.changelog }}
+      - run: echo ${{ steps.create_tag.outputs.changelog }}
 
       # Create release from tag
       - name: Create a GitHub release
@@ -61,7 +61,7 @@ jobs:
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
-          body: Where does this body go?
+          body: ${{ steps.create_tag.outputs.changelog }}
       # Publish package to PyPI 
       - uses: ./.github/workflows/composite/publishing
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
