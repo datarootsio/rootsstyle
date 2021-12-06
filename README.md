@@ -41,7 +41,7 @@ poetry add rootsstyle
 
 <table>
 <tr>
-<td> 
+<td style="width: 45%;"> 
 
 ```python
 import rootsstyle
@@ -59,7 +59,7 @@ plt.show()
 ```
 
 </td>
-<td> 
+<td style="width: 45%;"> 
 
 ```python
 import rootsstyle
@@ -77,8 +77,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
-<td> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
+<td style="width: 45%;"><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
+<td style="width: 45%;"> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
 </tr>
 </table>
 
@@ -115,14 +115,14 @@ with plt.style.context(rootsstyle.style):
  
 
 **COLOR PALETTE**
-<div style="display: flex; justify-content: space-between; align-items: center;">
-    <div style="width: 50%; text-align: center;">
-        <p>The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</p>
-    </div>
-    <div>
-        <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 350px;">
-    </div>
-</div>
+<table>
+    <tr>
+        <td style="width:40%;">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
+        <td>
+            <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 350px;">
+        </td>
+    </tr>
+</table>
 
 
 # VERSIONING
@@ -150,7 +150,7 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
     * chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 3. Body (optional) is used to motivate the change
-4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes** (in which case the line should start with *BREAKING CHANGE:*)
+4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes**, in which case the line should start with `BREAKING CHANGE:`.
 
 # CHANGELOG
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
