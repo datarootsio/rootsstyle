@@ -25,11 +25,13 @@ runs:
       shell: bash
       run: |
         poetry config experimental.new-installer false
-        poetry install --no-interaction -vvv
+        poetry install --no-interaction --no-root -vvv
 
     - name: run visualization script
       shell: bash
-      run: python ${{ github.action_path }}/create_visualizations.py
+      run: |
+        source .venv/bin/activate
+        python ${{ github.action_path }}/create_visualizations.py
 
     - name: push changes back to branch
       uses: stefanzweifel/git-auto-commit-action@v4

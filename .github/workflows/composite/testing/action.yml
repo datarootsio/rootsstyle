@@ -29,7 +29,7 @@ runs:
       shell: bash
       run: |
         poetry config experimental.new-installer false
-        poetry install --no-interaction -vvv
+        poetry install --no-interaction --no-root -vvv
 
     # RUNNING TESTS
     - name: perform tests
