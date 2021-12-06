@@ -4,10 +4,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def test_version():
-    assert rootsstyle.__version__ == "0.1.9"
-
-
 def test_empty_plot():
     with plt.style.context(rootsstyle.style):
         plt.plot([], [])
