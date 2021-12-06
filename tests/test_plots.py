@@ -4,11 +4,8 @@ import seaborn as sns
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-TEMP_DIR = "temp_images"
-Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
-
-def test_scatterplot():
+def test_scatterplot(output_dir=None):
     df_penguins = sns.load_dataset("penguins")
     with plt.style.context(rootsstyle.style):
         sns.scatterplot(
@@ -25,11 +22,12 @@ def test_scatterplot():
         plt.text(4550, 185, "Chunky Mike", fontdict={"color": rootsstyle.colors[0]})
         plt.text(5400, 232, "Big Bob", fontdict={"color": rootsstyle.colors[2]})
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "scatterplot.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "scatterplot.png")
         plt.close()
 
 
-def test_lineplot():
+def test_lineplot(output_dir=None):
     # REGULAR LINEPLOT
     df_cars = sns.load_dataset("mpg")
     df_cars = df_cars.groupby(["origin", "model_year"]).mean().reset_index()
@@ -46,7 +44,8 @@ def test_lineplot():
         plt.xlabel("model year")
         plt.title("Cars")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "lineplot_cars.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "lineplot_cars.png")
         plt.close()
 
     # LINEPLOT WITH HUE PALETTE
@@ -65,7 +64,8 @@ def test_lineplot():
         plt.xlabel("month")
         plt.title("Flights")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "lineplot_green.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "lineplot_green.png")
         plt.close()
 
         sns.lineplot(
@@ -81,7 +81,8 @@ def test_lineplot():
         plt.xlabel("month")
         plt.title("Flights")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "lineplot_blue.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "lineplot_blue.png")
         plt.close()
 
     # LOGARITMIC LINEPLOT + MULTILINE LEGENDS
@@ -104,11 +105,12 @@ def test_lineplot():
         plt.title("48 Years of Microprocessor Trends")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "lineplot_cpus.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "lineplot_cpus.png")
         plt.close()
 
 
-def test_barplot():
+def test_barplot(output_dir=None):
     df_tips = sns.load_dataset("tips")
     df_cars = sns.load_dataset("mpg")
     df_cars["model_year"] = "' " + df_cars["model_year"].astype(str)
@@ -119,7 +121,8 @@ def test_barplot():
         rootsstyle.legend()
         plt.title("Cars")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "barplot_mpg.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "barplot_mpg.png")
         plt.close()
 
         sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
@@ -128,7 +131,8 @@ def test_barplot():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="below")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "barplot_tips_below.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "barplot_tips_below.png")
         plt.close()
 
         sns.barplot(x="day", y="total_bill", hue="sex", data=df_tips, ci=None)
@@ -137,11 +141,12 @@ def test_barplot():
         rootsstyle.legend()
         rootsstyle.show_bar_values(position="above", fmt="{:.2f}")
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "barplot_tips_above.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "barplot_tips_above.png")
         plt.close()
 
 
-def test_violinplot():
+def test_violinplot(output_dir=None):
     df_tips = sns.load_dataset("tips")
     with plt.style.context(rootsstyle.style):
         sns.violinplot(x="day", y="total_bill", hue="smoker", data=df_tips)
@@ -150,11 +155,12 @@ def test_violinplot():
         rootsstyle.ylabel("USD")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "violinplot.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "violinplot.png")
         plt.close()
 
 
-def test_pieplot():
+def test_pieplot(output_dir=None):
     df_penguins = sns.load_dataset("penguins")
     df_penguins = df_penguins.groupby("species").size().to_frame("count").reset_index()
     with plt.style.context(rootsstyle.style):
@@ -162,11 +168,12 @@ def test_pieplot():
         plt.title("Penguin distribution")
         rootsstyle.legend()
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "pieplot.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "pieplot.png")
         plt.close()
 
 
-def test_heatmap():
+def test_heatmap(output_dir=None):
     df_flights = sns.load_dataset("flights")
     df_flights = df_flights.pivot("month", "year", "passengers")
     with plt.style.context(rootsstyle.style):
@@ -175,7 +182,8 @@ def test_heatmap():
         plt.title("Passengers in flights")
         plt.yticks(rotation=0)
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "heatmap_blue_to_green.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "heatmap_blue_to_green.png")
         plt.close()
 
         sns.heatmap(data=df_flights, cmap="dataroots-green-to-blue")
@@ -183,5 +191,6 @@ def test_heatmap():
         plt.title("Passengers in flights")
         plt.yticks(rotation=0)
         plt.tight_layout()
-        plt.savefig(Path(TEMP_DIR) / "heatmap_green_to_blue.png")
+        if output_dir is not None:
+            plt.savefig(Path(output_dir) / "heatmap_green_to_blue.png")
         plt.close()

@@ -9,18 +9,19 @@ from pathlib import Path
 from tests import test_plots
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from tests.test_plots import TEMP_DIR
 from inspect import getmembers, isfunction
 
 OUTPUT_DIR = "images/"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
+TEMP_DIR = "temp_images"
+Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
 def create_all_test_plots():
     """Creates all plotting functions defined in tests/test_plots.py"""
     plot_functions = getmembers(test_plots, isfunction)
     for _, function in plot_functions:
-        function()
+        function(output_dir=TEMP_DIR)
 
 
 def create_example_grid():
