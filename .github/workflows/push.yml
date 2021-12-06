@@ -48,23 +48,18 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false #no tags unless major, minor or patch tag
-          default_prerelease_bump: false #no tags unless major, minor or patch tag
-          append_to_pre_release_tag: "test"
-      - run: |
-          echo ${{ steps.create_tag.outputs.new_tag }}
-          echo ${{ steps.create_tag.outputs.new_version }}
 
       # Create release with tag
       - name: Create a GitHub release
-        if: ${{ steps.create_tag.outputs.release_type == 'major' }}
+        if: ${{ contains(["major", "minor", "patch"], steps.create_tag.outputs.release_type) }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
           name: Release ${{ steps.create_tag.outputs.new_tag }}
-          body: Automated Changelog will come here
+          body: ${{ steps.tag_version.outputs.changelog }}
       # Publish      
       - uses: ./.github/workflows/composite/publishing
-        if: ${{ steps.create_tag.outputs.release_type == 'major' }}
+        if: ${{ contains(["major", "minor", "patch"], steps.create_tag.outputs.release_type) }}
         with:
           package_version: ${{ steps.create_tag.outputs.new_tag }}
           pypi_username: ${{ secrets.PyPI_USERNAME }}
