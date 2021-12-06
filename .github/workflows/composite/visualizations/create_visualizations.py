@@ -64,7 +64,6 @@ def create_example_plots():
     """Creates the plots that are shown in the USAGE-EXAMPLES section"""
     plt.style.use(rootsstyle.style)
 
-
     logging.info("Creating example lineplot")
     y = [3, 8, 1, 10]
     y2 = [8, 3, 10, 2]
