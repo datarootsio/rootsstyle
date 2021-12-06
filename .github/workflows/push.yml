@@ -51,7 +51,7 @@ jobs:
 
       # Create release with tag
       - name: Create a GitHub release
-        if: ${{ contains(["major", "minor", "patch"], steps.create_tag.outputs.release_type) }}
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
@@ -59,8 +59,8 @@ jobs:
           body: ${{ steps.tag_version.outputs.changelog }}
       # Publish      
       - uses: ./.github/workflows/composite/publishing
-        if: ${{ contains(["major", "minor", "patch"], steps.create_tag.outputs.release_type) }}
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
-          package_version: ${{ steps.create_tag.outputs.new_tag }}
+          package_version: poetry version $(git describe --tags --abbrev=0)
           pypi_username: ${{ secrets.PyPI_USERNAME }}
           pypi_password: ${{ secrets.PyPI_PASSWORD }}
