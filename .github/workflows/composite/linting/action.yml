@@ -1,0 +1,22 @@
+name: "Linting code"
+description: "Reformats code with black, pushes back any changes, perform linting check with flake8"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v2
+    - name: instal pip packages
+      shell: bash
+      run: |
+        python -m pip install --no-cache-dir --upgrade pip
+        pip install flake8 black
+    - name: reformat code with black
+      shell: bash
+      run: black ./**/*.py
+    - name: push changes back to branch
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Automated commit of reformatting done by black
+    - name: test linting with flake8
+      shell: bash
+      run: flake8

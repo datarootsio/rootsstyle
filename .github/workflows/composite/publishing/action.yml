@@ -1,0 +1,64 @@
+name: "Publishing package"
+description: "Publishes the package to PyPI"
+
+inputs:
+  package_version:
+    description: "Version of the package"
+    required: true
+  pypi_username:
+    description: "Username to use with upload"
+    required: true
+  pypi_password:
+    description: "Password to use with upload"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    # POETRY INSTALLATION
+    - uses: snok/install-poetry@v1
+      with:
+        version: 1.1.10
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    - name: Add dynamic versioning
+      shell: bash
+      run: pip install poetry-dynamic-versioning
+    - uses: actions/cache@v2.1.3
+      id: cached-poetry-dependencies
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: ${{ runner.os }}-pip-
+    - name: poetry install
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      shell: bash
+      run: poetry install --no-interaction --no-root -vvv --no-dev
+
+    # BUMP VERSION
+    - name: update version in pyproject.toml
+      shell: bash
+      run: poetry version ${{ inputs.package_version }}
+    - name: push changes back to branch
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Automated commit of updated versioning in pyproject.toml
+
+    # BUILD THE PACKAGE
+    - name: poetry build
+      shell: bash
+      run: poetry build 
+
+    # PUBLISH
+    - name: Publish package to PyPI
+      env:
+        USERNAME: ${{ inputs.pypi_username }}
+        PASSWORD: ${{ inputs.pypi_password }}
+      shell: bash
+      run: |
+        poetry config repositories.testpypi https://test.pypi.org/legacy/
+        poetry publish -r testpypi -u  $USERNAME -p $PASSWORD
