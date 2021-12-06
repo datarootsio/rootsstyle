@@ -50,6 +50,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false             #no tags unless major, minor or patch
           default_prerelease_bump: false
+          
       - run: echo ${{steps.create_tag.outputs.release_type }}
 
       # Create release from tag
