@@ -11,6 +11,9 @@
 !README.md
 !CHANGELOG.md
 
+#IMAGES
+!images/*.png
+
 #WORKFLOWS
 !.github/workflows/**/*.yml
 !.github/workflows/**/*py
