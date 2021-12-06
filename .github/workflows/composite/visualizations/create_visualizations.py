@@ -30,7 +30,7 @@ def create_all_test_plots():
 
 def create_example_grid():
     """Creates the grid of plots that is shown at the top of the README file"""
-    logging.info(f"Creating grid of example plots")
+    logging.info("Creating grid of example plots")
     plt.style.use(rootsstyle.style)
 
     images = []
@@ -64,7 +64,7 @@ def create_example_plots():
     plt.style.use(rootsstyle.style)
 
 
-    logging.info(f"Creating example lineplot")
+    logging.info("Creating example lineplot")
     y = [3, 8, 1, 10]
     y2 = [8, 3, 10, 2]
     plt.plot(y, label="y")
@@ -76,7 +76,7 @@ def create_example_plots():
     plt.savefig(Path(OUTPUT_DIR) / "example_lineplot.png")
     plt.close()
 
-    logging.info(f"Creating example barplot")
+    logging.info("Creating example barplot")
     languages = ["C", "C++", "Java", "Python", "PHP"]
     students = [23, 17, 35, 29, 12]
     plt.bar(languages, students)
@@ -88,7 +88,7 @@ def create_example_plots():
 
 
 def create_palette_plot():
-    logging.info(f"Creating image of palettes")
+    logging.info("Creating image of palettes")
     plt.style.use(rootsstyle.style)
     mpl_cmaps = mpl.colormaps._cmaps
     dataroots_cmaps = dict()
