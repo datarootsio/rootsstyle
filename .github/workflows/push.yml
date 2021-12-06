@@ -72,7 +72,6 @@ jobs:
       # Update Changelog
       - name: Update Changelog
         uses: ./.github/workflows/composite/changelog
-        # if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
         with:
-          # changes: "${{ steps.create_tag.outputs.changelog }}"
-          changes: "tests"
+          changes: "${{ steps.create_tag.outputs.changelog }}"
