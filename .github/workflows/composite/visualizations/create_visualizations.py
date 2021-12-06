@@ -15,11 +15,13 @@ from inspect import getmembers, isfunction
 OUTPUT_DIR = "images/"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
+
 def create_all_test_plots():
     """Creates all plotting functions defined in tests/test_plots.py"""
     plot_functions = getmembers(test_plots, isfunction)
     for _, function in plot_functions:
         function()
+
 
 def create_example_grid():
     """Creates the grid of plots that is shown at the top of the README file"""
@@ -50,6 +52,7 @@ def create_example_grid():
     plt.close()
     shutil.rmtree(TEMP_DIR)
 
+
 def create_example_plots():
     """Creates the plots that are shown in the USAGE-EXAMPLES section"""
     plt.style.use(rootsstyle.style)
@@ -73,6 +76,7 @@ def create_example_plots():
     plt.title("Example barplot")
     plt.savefig(Path(OUTPUT_DIR) / "example_barplot.png")
     plt.close()
+
 
 def create_palette_plot():
     plt.style.use(rootsstyle.style)
@@ -105,7 +109,8 @@ def create_palette_plot():
     plt.savefig(Path(OUTPUT_DIR) / "palette.png")
     plt.close()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     create_all_test_plots()
     create_example_grid()
     create_example_plots()
