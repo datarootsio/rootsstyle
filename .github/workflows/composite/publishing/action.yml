@@ -2,6 +2,9 @@ name: "Publishing package"
 description: "Publishes the package to PyPI"
 
 inputs:
+  package_version:
+    description: "Version of the package"
+    required: true
   pypi_username:
     description: "Username to use with upload"
     required: true
@@ -35,6 +38,15 @@ runs:
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       shell: bash
       run: poetry install --no-interaction --no-root -vvv --no-dev
+
+    # BUMP VERSION
+    - name: update version in pyproject.toml
+      shell: bash
+      run: poetry version ${{ inputs.package_version }}
+    - name: push changes back to branch
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Automated commit of updated versioning in pyproject.toml
 
     # BUILD THE PACKAGE
     - name: poetry build
