@@ -156,9 +156,6 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
 see the [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file
 
 # ROADMAP
-### v0.2.0
-- Automatic versioning with codacy github actions
-- Automatic GH release with information from CHANGELOG.md 
 
 ### v1.0.0
 - Public repo
