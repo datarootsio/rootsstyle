@@ -13,7 +13,7 @@ A matplotlib styling package for clean, minimal dataroots themed plots.
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHFWVZCDLHSU374HFTBVINKE">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
 </div>
 
 
@@ -113,7 +113,7 @@ with plt.style.context(rootsstyle.style):
 
 ## Color Palette
 <div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEBRXIYOHT3RNRW42Z3BVINMO" style="height: 550px;">
+    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 550px;">
 </div>
 
 
