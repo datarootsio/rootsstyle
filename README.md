@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/rootsstyle.svg)](https://badge.fury.io/py/rootsstyle)
 [![Python Versions](https://img.shields.io/badge/python->=3.7.1,%20<3.11-blue.svg)](https://www.python.org/downloads/)
 [![codecov](https://codecov.io/gh/datarootsio/rootsstyle/branch/main/graph/badge.svg?token=4agmmGuhtu)](https://codecov.io/gh/datarootsio/rootsstyle)
-
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 <div align="center">
 
@@ -96,6 +96,7 @@ plt.style.use(rootsstyle.style)
 with plt.style.context(rootsstyle.style):
     # ...
 ```
+
 **FUNCTIONS**
 * Place the legend to the right of the plot.<br>For lineplots, place the legend entries left of the corresponding line.
     ```python 
@@ -113,10 +114,17 @@ with plt.style.context(rootsstyle.style):
 
  
 
-## Color Palette
-<div align="center">
-    <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 550px;">
+**COLOR PALETTE**
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="width: 50%; text-align: center;">
+        <p>The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</p>
+    </div>
+    <div>
+        <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" style="height: 350px;">
+    </div>
 </div>
+
+
 
 
 ## CHANGELOG
