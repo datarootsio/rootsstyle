@@ -1,3 +1,16 @@
+### [0.3.1](https://github.com/datarootsio/rootsstyle/compare/v0.3.0...v0.3.1) (2021-12-06)
+
+
+### Bug Fixes
+
+* **workflow_changelog:** fix multi-line input arg for changelog ([e5ab146](https://github.com/datarootsio/rootsstyle/commit/e5ab146eb0db0a92885ce59fc6481cfa62ec8bab))
+
+
+### Documentation
+
+* **visualizations:** Automated update of visualizations used in README ([4c04b8a](https://github.com/datarootsio/rootsstyle/commit/4c04b8aa3dd83b26a07b6c965bceb114250f50c5))
+
+
 ## [0.3.0](https://github.com/datarootsio/rootsstyle/compare/v0.2.4...v0.3.0) (2021-12-06)
   
   
