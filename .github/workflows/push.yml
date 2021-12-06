@@ -36,6 +36,7 @@ jobs:
   # Tag, release and publish
   tag-release-and-publish:
     #needs: testing-and-codecov
+    #if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -49,7 +50,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false             #main branch:     no tags unless major, minor or patch
           default_prerelease_bump: false  #other branches:  no tags unless major, minor or patch
-
+      - run: echo ${{steps.create_tag.outputs.release_type }}
       # Create release with tag
       - name: Create a GitHub release
         if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
