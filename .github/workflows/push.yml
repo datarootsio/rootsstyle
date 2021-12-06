@@ -52,12 +52,12 @@ jobs:
       - run: echo ${{ steps.git_version.outputs.new_tag }}
       - run: echo ${{ steps.git_version.outputs.changelog }}
       # Create release with tag
-      # - name: Create a GitHub release
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: ${{ steps.git_version.outputs.new_tag }}
-      #     name: Release ${{ steps.git_version.outputs.new_tag }}
-      #     body: ${{ steps.git_version.outputs.changelog }}
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.git_version.outputs.new_tag }}
+          name: Release ${{ steps.git_version.outputs.new_tag }}
+          body: ${{ steps.git_version.outputs.changelog }}
       # # Publish      
       # - uses: ./.github/workflows/composite/publishing
       #   with:
