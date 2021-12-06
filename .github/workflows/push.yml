@@ -52,7 +52,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       # Create release with tag
       - name: Create a GitHub release
-        if: ${{ steps.create_tag.outputs.release_type }} == "major"
+        if: ${{ steps.create_tag.outputs.release_type == "major" }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.create_tag.outputs.new_tag }}
