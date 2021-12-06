@@ -8,15 +8,12 @@
 !poetry.lock
 !.gitignore
 !.flake8
+!README.md
+!CHANGELOG.md
 
 #WORKFLOWS
 !.github/workflows/**/*.yml
 !.github/workflows/**/*py
-
-#README
-!README.md
-!CHANGELOG.md
-!images/*.png
 
 #FONTS
 !fonts/**/*.ttf
