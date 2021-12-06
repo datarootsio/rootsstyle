@@ -48,6 +48,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false #no tags unless major, minor or patch tag
+      
+      - run: |
+          echo $(git describe --tags --abbrev=0)
+          echo ${{ steps.create_tag.outputs.new_tag }}
+          echo ${{ steps.create_tag.outputs.new_version }}
 
       # Create release with tag
       - name: Create a GitHub release
