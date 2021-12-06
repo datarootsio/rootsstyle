@@ -44,22 +44,24 @@ jobs:
           ref: ${{ github.head_ref }}   # checkout the correct branch name
           fetch-depth: 0                # fetch the whole repo history
       # Create new version
-      # NOTE: commit messages are parsed semantically: https://semantic-release.gitbook.io/semantic-release/#commit-message-format
-      - name: Git version
-        id: git_version
+      # NOTE: commit messages are parsed semantically: https://github.com/mathieudutour/github-tag-action#bumping
+      - name: Create tag
+        id: create_tag
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       # Create release with tag
       - name: Create a GitHub release
+        if: ${{ steps.create_tag.outputs.release_type }} == "major"
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.git_version.outputs.new_tag }}
-          name: Release ${{ steps.git_version.outputs.new_tag }}
+          tag: ${{ steps.create_tag.outputs.new_tag }}
+          name: Release ${{ steps.create_tag.outputs.new_tag }}
           body: Automated Changelog will come here
-      # # Publish      
+      # Publish      
       # - uses: ./.github/workflows/composite/publishing
+      #   if: ${{ steps.create_tag.outputs.release_type }} == "major"
       #   with:
-      #     package_version: ${{ steps.git_version.outputs.new_tag }}
+      #     package_version: ${{ steps.create_tag.outputs.new_tag }}
       #     pypi_username: ${{ secrets.PyPI_USERNAME }}
       #     pypi_password: ${{ secrets.PyPI_PASSWORD }}
