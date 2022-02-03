@@ -13,7 +13,7 @@
 A matplotlib styling package for clean, minimal dataroots themed plots. 
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
-<img align="center" src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/examples.png?token=AKP7KEHERXOOE7ETW64CLBTBW4TRE">
+<img align="center" src="https://github.com/datarootsio/rootsstyle/blob/main/images/examples.png">
 
 
 
@@ -75,8 +75,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td width="50%"><img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_lineplot.png?token=AKP7KEDRIQGUGZFYRBVPLCTBW5IOE"></td>
-<td width="50%"> <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/example_barplot.png?token=AKP7KEBPWMM7KWMTAW62SZLBW5IPS"></td>
+<td width="50%"><img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_lineplot.png"></td>
+<td width="50%"> <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_barplot.png"></td>
 </tr>
 </table>
 
@@ -117,7 +117,7 @@ with plt.style.context(rootsstyle.style):
     <tr>
         <td width="40%" align="center">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
         <td width="60%" align="center">
-            <img src="https://raw.githubusercontent.com/datarootsio/rootsstyle/main/images/palette.png?token=AKP7KEGUIHVYNEX4ZLD4LHLBW4TSQ" height="350px;">
+            <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/palette.png" height="350px;">
         </td>
     </tr>
 </table>
