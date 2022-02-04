@@ -142,13 +142,9 @@ def ylabel(
     ax.yaxis.set_label_coords(0, 1.03)
 
 
-def show_bar_values(
-    remove_y_axis=True,
-    fontsize=12,
-    position="below",
-    fmt="{:.0f}",
-):
-    ax = plt.gca()
+def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.0f}", ax=None):
+    if ax is None:
+        ax = plt.gca()
 
     if remove_y_axis:
         plt.tick_params(
