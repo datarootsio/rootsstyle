@@ -1,3 +1,28 @@
+## [0.4.0](https://github.com/datarootsio/rootsstyle/compare/v0.3.3...v0.4.0) (2022-02-04)
+
+
+### Features
+
+* **show_bar_values:** added option to perform operation on axes ([0c63673](https://github.com/datarootsio/rootsstyle/commit/0c636737f310775dee282d327c8292706129fcbb))
+
+
+### Styles
+
+* **black:** Automated reformatting done by black ([386c358](https://github.com/datarootsio/rootsstyle/commit/386c358475cf0a1e89d861071edddc6e84e86baa))
+* **black:** Automated reformatting done by black ([7930953](https://github.com/datarootsio/rootsstyle/commit/7930953e6b37d87c5b427b42654d30c767a0047b))
+
+
+### Documentation
+
+* **CHANGELOG:** Automated commit of CHANGELOG.md update ([af7f4cb](https://github.com/datarootsio/rootsstyle/commit/af7f4cb685d3acd4a173e97b7ec89e41cc9e82bd))
+* **README:** changed links to images ([42d9dce](https://github.com/datarootsio/rootsstyle/commit/42d9dce45d37c0fe050681b6ac4ca320cbc75666))
+* **README:** changelog section update ([ebdbf8d](https://github.com/datarootsio/rootsstyle/commit/ebdbf8d22fed9e2e7d6f97672658e7282a205fbc))
+* **README:** update dataroots badge with logo ([00c4fb8](https://github.com/datarootsio/rootsstyle/commit/00c4fb86c822e1875ba0769aa437bed255e1544b))
+* **visualizations:** Automated update of visualizations used in README ([327b9ba](https://github.com/datarootsio/rootsstyle/commit/327b9ba3d3ceb294201a2d65799e58790148a534))
+* **visualizations:** Automated update of visualizations used in README ([db1fc37](https://github.com/datarootsio/rootsstyle/commit/db1fc3701607330bef107b190493e5f84650f084))
+* **visualizations:** Automated update of visualizations used in README ([b8cd8d5](https://github.com/datarootsio/rootsstyle/commit/b8cd8d5d303cf0441bf55003d96cb3a655e596b0))
+
+
 ### [0.3.3](https://github.com/datarootsio/rootsstyle/compare/v0.3.2...v0.3.3) (2021-12-06)
 
 
