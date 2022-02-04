@@ -100,7 +100,7 @@ def get_linelegend_ypositions(
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
     if ax.get_yscale() == "log":
-        last_y = [10 ** y for y in last_y]
+        last_y = [10**y for y in last_y]
 
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
