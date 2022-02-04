@@ -147,8 +147,10 @@ def show_bar_values(
     fontsize=12,
     position="below",
     fmt="{:.0f}",
+    ax = None
 ):
-    ax = plt.gca()
+    if ax is None:
+        ax = plt.gca()
 
     if remove_y_axis:
         plt.tick_params(
