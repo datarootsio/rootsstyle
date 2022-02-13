@@ -17,24 +17,19 @@ Works with any visualization tools that builds upon Matplotlib (seaborn, pandas)
 
 
 # Installation
-### using pip
+### using [pip](https://pypi.org/)
 ```python
-pip install -i https://test.pypi.org/simple/ rootsstyle
+pip install rootsstyle
 ```
 ### using [poetry](https://python-poetry.org/)
 ```python
-# 1. Add repository to pyproject.toml
-[[tool.poetry.source]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-# 2. Add package and automatically resolve dependencies
 poetry add rootsstyle
 ```
 
 # Usage
 **Examples**
 
-<!-- <a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a> -->
+<a href="https://colab.research.google.com/drive/1kn7YLDR4hqI9GVzeiRH9aQTEeS7HPrw7" target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 
 <table width="100%">
 <tr>
@@ -151,9 +146,6 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
 
 # CHANGELOG
 The [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file is automatically updated upon any new releases.
-# ROADMAP
 
-### v1.0.0
-- Public repo
-- Github Page at datarootsio.github.io/rootsstyle
-- Google Colab examples notebook
+# License
+This project is licensed under the terms of the MIT license.
