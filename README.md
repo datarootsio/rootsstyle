@@ -34,7 +34,7 @@ poetry add rootsstyle
 # Usage
 **Examples**
 
-<a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+<!-- <a href="..." target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a> -->
 
 <table width="100%">
 <tr>
@@ -95,7 +95,7 @@ with plt.style.context(rootsstyle.style):
 ```
 
 **FUNCTIONS**
-* Place the legend to the right of the plot.<br>For lineplots, place the legend entries left of the corresponding line.
+* Place the legend to the right of the plot.<br>For lineplots, place the legend entries right of the corresponding line.
     ```python 
     rootsstyle.legend(handles=None, labels=None, title=None)
     ```
@@ -140,7 +140,7 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
     * feat: A new feature
     * fix: A bug fix
     * docs: Documentation only changes
-    * style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+    * style: Changes that do not affect the meaning of the code (formatting, missing semi-colons, etc)
     * refactor: A code change that neither fixes a bug nor adds a feature
     * perf: A code change that improves performance
     * test: Adding missing or correcting existing tests
@@ -150,13 +150,10 @@ A [semantic versioning](https://semver.org/) scheme is used to update the versio
 4. Footer (optional) is used to link to any **issues** that the commit closes and for **breaking changes**, in which case the line should start with `BREAKING CHANGE:`.
 
 # CHANGELOG
-The [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file is automatically completed upon any new releases.
+The [CHANGELOG.md](https://github.com/datarootsio/rootsstyle/blob/main/CHANGELOG.md) file is automatically updated upon any new releases.
 # ROADMAP
 
 ### v1.0.0
 - Public repo
 - Github Page at datarootsio.github.io/rootsstyle
 - Google Colab examples notebook
-
-### v1.1.0
-- <code>rootsstyle.publish()</code>: allows you to publish an example .png with the corresponding code sample for other users to utilize as an example plot.
