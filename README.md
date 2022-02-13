@@ -7,7 +7,6 @@
 <div align="center">
 
 # rootsstyle
-
 </div>
 
 A matplotlib styling package for clean, minimal dataroots themed plots. 
