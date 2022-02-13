@@ -1,4 +1,5 @@
 import math
+from typing import List
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -11,7 +12,7 @@ from ._nnls import (
 # axes.legend() -> legend._parse_legend_args()
 # legend._parse_legend_args() -> labels!=None and handles==None:
 def get_dataline_handles(
-    ax,
+    ax: mpl.axes.Axes,
 ):
     """Returns the handles that correspond to datalines
 
@@ -25,7 +26,7 @@ def get_dataline_handles(
     ]
 
 
-def is_line_plot(ax, labels=None) -> bool:
+def is_line_plot(ax: mpl.axes.Axes, labels: List[str] = None) -> bool:
     """Determines whether the plot is a pure line plot or if it contains other types of data visualizations.
 
     Args:
@@ -46,9 +47,9 @@ def is_line_plot(ax, labels=None) -> bool:
 
 
 def get_linelegend_ypositions(
-    ax,
-    handles,
-    labels=None,
+    ax: mpl.axes.Axes,
+    handles: List[mpl.artist.Artist],
+    labels: List[str] = None,
 ):
     """Calculates the positions of the legendentries.
     Ensures that there is no vertical overlap between entires.
@@ -100,7 +101,7 @@ def get_linelegend_ypositions(
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
     if ax.get_yscale() == "log":
-        last_y = [10**y for y in last_y]
+        last_y = [10 ** y for y in last_y]
 
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]

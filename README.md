@@ -12,7 +12,7 @@
 A matplotlib styling package for clean, minimal dataroots themed plots. 
 Works with any visualization tools that builds upon Matplotlib (seaborn, pandas).
 
-<img align="center" src="https://github.com/datarootsio/rootsstyle/blob/main/images/examples.png">
+<img align="center" src="https://github.com/datarootsio/rootsstyle/blob/main/images/examples.png?raw=true">
 
 
 
@@ -69,8 +69,8 @@ plt.show()
 </td>
 </tr>
 <tr>
-<td width="50%"><img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_lineplot.png"></td>
-<td width="50%"> <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_barplot.png"></td>
+<td width="50%"><img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_lineplot.png?raw=true"></td>
+<td width="50%"> <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/example_barplot.png?raw=true"></td>
 </tr>
 </table>
 
@@ -111,7 +111,7 @@ with plt.style.context(rootsstyle.style):
     <tr>
         <td width="40%" align="center">The color palettes are added to the global matplotlib color registry. You can thus easily use a palette by simply providing the name in the correct location.</td>
         <td width="60%" align="center">
-            <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/palette.png" height="350px;">
+            <img src="https://github.com/datarootsio/rootsstyle/blob/main/images/palette.png?raw=true" height="350px;">
         </td>
     </tr>
 </table>

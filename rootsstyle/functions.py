@@ -14,6 +14,7 @@ from ._utils import (
     get_dataline_handles,
     get_linelegend_ypositions,
 )
+from typing import List
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -39,7 +40,7 @@ fm.fontManager.ttflist.extend(font_entries)
 
 # Inspiration: https://github.com/nschloe/dufte
 # Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
-def _legend_line(ax, labels=None):
+def _legend_line(ax: mpl.axes.Axes, labels: List[str] = None):
     """Displays the legendentries next to the line in the same color as the line
 
     Args:
@@ -79,9 +80,9 @@ def _legend_line(ax, labels=None):
 
 
 def legend(
-    handles=None,
-    labels=None,
-    title=None,
+    handles: List[mpl.artist.Artist] = None,
+    labels: List[str] = None,
+    title: str = None,
 ):
     """Displays the legend to the left of the plot.
     For lineplots, displays each line legend next to the line.
@@ -142,7 +143,9 @@ def ylabel(
     ax.yaxis.set_label_coords(0, 1.03)
 
 
-def show_bar_values(remove_y_axis=True, fontsize=12, position="below", fmt="{:.0f}", ax=None):
+def show_bar_values(
+    remove_y_axis: bool = True, fontsize: int = 12, position: str = "below", fmt: str = "{:.0f}", ax: mpl.axes.Axes = None
+):
     if ax is None:
         ax = plt.gca()
 
