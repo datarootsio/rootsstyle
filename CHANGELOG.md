@@ -1,3 +1,27 @@
+## [0.5.0](https://github.com/datarootsio/rootsstyle/compare/v0.4.0...v0.5.0) (2022-02-13)
+
+
+### Features
+
+* **open_sourcing:** prepping repo for open-sourcing ([3d400d2](https://github.com/datarootsio/rootsstyle/commit/3d400d29a2bf6fe4167774cbc7a089c19adc8d00))
+
+
+### Styles
+
+* **black:** Automated reformatting done by black ([c19ad69](https://github.com/datarootsio/rootsstyle/commit/c19ad698e11fe8011fd3946d195e63f23937df81))
+
+
+### Documentation
+
+* **CHANGELOG:** Automated commit of CHANGELOG.md update ([4e60f12](https://github.com/datarootsio/rootsstyle/commit/4e60f12d662d08cb17685390253281ba1c94431b))
+* **README:** typo's and small changes to README ([ebf6211](https://github.com/datarootsio/rootsstyle/commit/ebf6211186b030b5a943f17c667bf814f8e074e3))
+* **README:** typo's and small changes to README ([0ce45c9](https://github.com/datarootsio/rootsstyle/commit/0ce45c9a5852d174bc35a76880c5b1aa206f712a))
+* **visualizations:** Automated update of visualizations used in README ([8721a89](https://github.com/datarootsio/rootsstyle/commit/8721a89d6623fe9e5a07011244e7024e64c130b8))
+* **visualizations:** Automated update of visualizations used in README ([ab1ebb8](https://github.com/datarootsio/rootsstyle/commit/ab1ebb8095409bce8ed08450ea5db84360b50141))
+* **visualizations:** Automated update of visualizations used in README ([ead1200](https://github.com/datarootsio/rootsstyle/commit/ead120045a68ab60a9f54afb98ef3115bb0945ac))
+* **visualizations:** Automated update of visualizations used in README ([2784358](https://github.com/datarootsio/rootsstyle/commit/2784358ac1f07a2dddac091d55f9cd3c1374d038))
+
+
 ## [0.4.0](https://github.com/datarootsio/rootsstyle/compare/v0.3.3...v0.4.0) (2022-02-04)
 
 
