@@ -1,3 +1,17 @@
+### [0.5.1](https://github.com/datarootsio/rootsstyle/compare/v0.5.0...v0.5.1) (2022-02-13)
+
+
+### Bug Fixes
+
+* **pypi_publish_auth:** fixed username and password pypi secrets to use public account ([22970e3](https://github.com/datarootsio/rootsstyle/commit/22970e34bcac5635d436fc7303820ddd884673ae))
+
+
+### Documentation
+
+* **CHANGELOG:** Automated commit of CHANGELOG.md update ([0681827](https://github.com/datarootsio/rootsstyle/commit/06818279e3527d8a9648d0f3cac5a0e87417a2d3))
+* **visualizations:** Automated update of visualizations used in README ([ee26f06](https://github.com/datarootsio/rootsstyle/commit/ee26f06ed5c02fe4c6c8a7e4ebdcde5b6eca9c0f))
+
+
 ## [0.5.0](https://github.com/datarootsio/rootsstyle/compare/v0.4.0...v0.5.0) (2022-02-13)
 
 
