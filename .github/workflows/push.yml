@@ -1,0 +1,97 @@
+name: Push Workflow
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  # PERFORM LINTING
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_PA_TOKEN }} #Using PA Token will cause automated commits to trigger workflow runs
+      - uses: ./.github/workflows/composite/linting
+  
+  # PERFORM TESTING
+  testing-and-codecov:
+    needs: linting
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/testing
+        with:
+          python_version: ${{ matrix.python-version }}
+
+      # upload to codecov
+      - name: upload coverage to Codecov
+        if: ${{ matrix.python-version == '3.8' }}
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.xml
+          fail_ci_if_error: true
+
+  # UPDATE README PLOTS
+  update-visualizations:
+    needs: testing-and-codecov
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/visualizations
+  
+  # PERFORM TAGGING, RELEASING, PUBLISHING, CHANGELOG UPDATE
+  tag-release-publish-changelog:
+    needs: update-visualizations
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Create new tag based on semver
+      - name: Create tag
+        id: create_tag
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: false
+
+      # Update Changelog
+      - name: Update Changelog
+        uses: ./.github/workflows/composite/changelog
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          changes: ${{ steps.create_tag.outputs.changelog }}
+
+      # Create release from tag
+      - name: Create a GitHub release
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.create_tag.outputs.new_tag }}
+          name: Release ${{ steps.create_tag.outputs.new_tag }}
+          body: ${{ steps.create_tag.outputs.changelog }}
+
+      # Publish package to PyPI 
+      - name: Publish package to PyPI
+        uses: ./.github/workflows/composite/publishing
+        if: ${{ contains(fromJson('["major", "minor", "patch"]'), steps.create_tag.outputs.release_type) }}
+        with:
+          package_version: ${{ steps.create_tag.outputs.new_version }}
+          pypi_username: ${{ secrets.PyPI_USERNAME }}
+          pypi_password: ${{ secrets.PyPI_PASSWORD }}
+
+

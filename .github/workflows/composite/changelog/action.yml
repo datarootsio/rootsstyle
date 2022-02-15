@@ -1,0 +1,28 @@
+name: "Changelog Update"
+description: "Updates the changelog by adding information to the top"
+
+
+inputs:
+  changes:
+    description: "str: All changes added in the new version"
+    required: true
+
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: update changelog
+      shell: bash
+      run: python ${{ github.action_path }}/update_changelog.py """${{ inputs.changes }}"""
+
+    - name: git pull
+      shell: bash
+      run: git pull
+    - name: push changes back to branch
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "docs(CHANGELOG): Automated commit of CHANGELOG.md update"
