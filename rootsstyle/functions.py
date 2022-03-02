@@ -11,11 +11,8 @@ import matplotlib.pyplot as plt
 
 from ._colors import layout_colors, palettes
 from ._fonts import fonts
-from ._utils import (
-    get_dataline_handles,
-    get_linelegend_ypositions,
-    is_line_plot,
-)
+from ._utils import (get_dataline_handles, get_linelegend_ypositions,
+                     is_line_plot)
 
 # Register fonts in global FontManager
 font_entries = [
