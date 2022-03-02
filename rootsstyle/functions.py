@@ -1,4 +1,5 @@
-"""One of the main files of rootsstyle. This file defines the added functionalities:
+"""One of the main files of rootsstyle.
+This file defines the added functionalities:
 - rootsstyle.legend()
 - rootsstyle.ylabel()
 """
@@ -10,8 +11,11 @@ import matplotlib.pyplot as plt
 
 from ._colors import layout_colors, palettes
 from ._fonts import fonts
-from ._utils import (get_dataline_handles, get_linelegend_ypositions,
-                     is_line_plot)
+from ._utils import (
+    get_dataline_handles,
+    get_linelegend_ypositions,
+    is_line_plot,
+)
 
 # Register fonts in global FontManager
 font_entries = [
@@ -32,16 +36,17 @@ fm.fontManager.ttflist.extend(font_entries)
 ]
 
 
-# Inspiration: https://github.com/nschloe/dufte
-# Inspiration: https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
 def _legend_line(ax: mpl.axes.Axes, labels: List[str] = None):
     """Displays the legendentries next to the line in the same color as the line
 
+    Inspirations:
+        https://github.com/nschloe/dufte
+        https://github.com/matplotlib/matplotlib/blob/main/lib/matplotlib/legend.py
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
         labels (list[str], optional): list of labels to use. Defaults to None.
     Returns:
-        dict: a dictionary containing entries for 'labels' and 'handles' used by the legend.
+        dict: dict with entries for 'labels' and 'handles' used by the legend.
     """
     # Removing existing legend (e.g. default of seaborn)
     handles = get_dataline_handles(ax)
@@ -82,9 +87,11 @@ def legend(
     For lineplots, displays each line legend next to the line.
 
     Args:
-        handles (list[mpl.artist.Artist], optional): list of Artists (lines, patches) to be added to the legend.
+        handles (list[mpl.artist.Artist], optional):
+            list of Artists (lines, patches) to be added to the legend.
             Defaults to None.
-        labels (list[str], optional): A list of labels to show next to the artists.
+        labels (list[str], optional):
+            list of labels to show next to the artists.
             Defaults to None.
         title (str, optional): The legend's title.
             Defaults to None.

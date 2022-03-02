@@ -1,21 +1,24 @@
-"""One of the main files of rootsstyle. This file defines the styling aspect enable either
-globally using 'plt.style.use(rootsstyle.style)' or within a context manager using 'plt.style.context(rootsstyle.style)'.
+"""One of the main files of rootsstyle.
+This file defines the styling aspect enable either
+globally using 'plt.style.use(rootsstyle.style)' or
+within a context manager using 'plt.style.context(rootsstyle.style)'.
 """
 import matplotlib as mpl
 
 from ._colors import layout_colors, palettes
 
-# DOCS: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
+# DOCS:
+# https://matplotlib.org/stable/tutorials/introductory/customizing.html
 style = {
-    # ***************************************************************************
-    # * FONT                                                                    *
-    # ***************************************************************************
+    # **********************************************************************
+    # * FONT                                                               *
+    # **********************************************************************
     "font.family": "Arvo",
     "font.size": 10,  # used for line legend
     "text.color": layout_colors["text"],
-    # ***************************************************************************
-    # * TICKS                                                                   *
-    # ***************************************************************************
+    # ***********************************************************************
+    # * TICKS                                                               *
+    # ***********************************************************************
     "xtick.minor.width": 0,
     "ytick.minor.width": 0,
     "xtick.major.width": 0.2,
@@ -24,9 +27,9 @@ style = {
     "ytick.color": layout_colors["text"],
     "xtick.labelsize": 10,
     "ytick.labelsize": 10,
-    # ***************************************************************************
-    # * AXES                                                                    *
-    # ***************************************************************************
+    # ***********************************************************************
+    # * AXES                                                                *
+    # ***********************************************************************
     # DATA COLORS
     "axes.prop_cycle": mpl.cycler(
         color=palettes["dataroots-default"].colors,
@@ -45,13 +48,13 @@ style = {
     "axes.labelsize": 12,
     "axes.labelpad": 6,
     "axes.labelcolor": layout_colors["text"],
-    # ***************************************************************************
-    # * LEGEND                                                                  *
-    # ***************************************************************************
+    # ***********************************************************************
+    # * LEGEND                                                              *
+    # ***********************************************************************
     "legend.frameon": False,
     "legend.fontsize": 10,
-    # ***************************************************************************
-    # * SAVING FIGURES                                                          *
-    # ***************************************************************************
+    # ***********************************************************************
+    # * SAVING FIGURES                                                      *
+    # ***********************************************************************
     "savefig.transparent": True,
 }

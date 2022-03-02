@@ -29,7 +29,8 @@ def get_dataline_handles(
 
 
 def is_line_plot(ax: mpl.axes.Axes, labels: List[str] = None) -> bool:
-    """Determines whether the plot is a pure line plot or if it contains other types of data visualizations.
+    """Determines whether the plot is a pure line plot or
+    if it contains other types of data visualizations.
 
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
@@ -41,7 +42,8 @@ def is_line_plot(ax: mpl.axes.Axes, labels: List[str] = None) -> bool:
     if len(handles) == 0:
         return False  # No lines in plot
     if labels is not None and len(handles) != len(labels):
-        # Some plots (e.g. violin/bar plots) also use Line2D object for some data (e.g. errorlines))
+        # Some plots (e.g. violin/bar plots) also use Line2D object
+        # for some data (e.g. errorlines)
         return False
     # Filter scatterplots
     linestyles = [h._linestyle for h in handles]
@@ -59,11 +61,12 @@ def get_linelegend_ypositions(
 
     Args:
         ax (mpl.axes.Axes): Axes object of the graph
-        handles (list[mpl.lines.Line2D]): list of handles representing the datalines we are making a legend for.
+        handles (list[mpl.lines.Line2D]): list of handles representing
+        the datalines we are making a legend for.
         labels (list[str], optional): list of labels to use.
             Defaults to None.
     Returns:
-        list[(float, float)]: a list of (x,y) coordinates for the legend entries
+        list[(float, float)]: list of (x,y) coordinates for the legend entries
     """
     fontsize_inches = mpl.rcParams["font.size"] / 72
     fig_height_inches = plt.gcf().get_size_inches()[1]
@@ -116,7 +119,7 @@ def get_linelegend_ypositions(
     idx2 = np.argsort(idx)
     last_y = sol[idx2]
     if ax.get_yscale() == "log":
-        last_y = [10**y for y in last_y]
+        last_y = [10 ** y for y in last_y]
 
     # Add x-coordinates to get position next to last datapoint
     last_x = [h.get_xdata()[~np.isnan(h.get_xdata())][-1] for h in handles]
