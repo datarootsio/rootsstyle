@@ -8,9 +8,6 @@ import numpy as np
 from ._nnls import nnls
 
 
-# pyplot.legend() -> gca().legend()
-# axes.legend() -> legend._parse_legend_args()
-# legend._parse_legend_args() -> labels!=None and handles==None:
 def get_dataline_handles(
     ax: mpl.axes.Axes,
 ):
