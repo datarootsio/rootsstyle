@@ -10,17 +10,21 @@ runs:
       shell: bash
       run: |
         python -m pip install --no-cache-dir --upgrade pip
-        pip install flake8 black
+        pip install flake8 black isort
 
-    # black reformatting
+    # black and isort reformatting
     - name: reformat code with black
       shell: bash
       run: black .
+    - name: reformat imports with isort
+      shell: bash
+      run: isort .
     - name: push changes back to branch
       id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: "style(black): Automated reformatting done by black"
+        commit_message: "style(black+isort): Automated reformatting done by black and isort"
+
     # flake8 linting
     - name: test linting with flake8
       shell: bash
