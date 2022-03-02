@@ -138,7 +138,11 @@ def ylabel(
 
 
 def show_bar_values(
-    remove_y_axis: bool = True, fontsize: int = 12, position: str = "below", fmt: str = "{:.0f}", ax: mpl.axes.Axes = None
+    remove_y_axis: bool = True,
+    fontsize: int = 12,
+    position: str = "below",
+    fmt: str = "{:.0f}",
+    ax: mpl.axes.Axes = None,
 ):
     if ax is None:
         ax = plt.gca()

@@ -15,7 +15,9 @@ def test_empty_plot():
 def test_legend():
     df_penguins = sns.load_dataset("penguins")
     df_flights = sns.load_dataset("flights")
-    df_flights["month"] = pd.to_datetime(df_flights["month"], format="%b").dt.month
+    df_flights["month"] = pd.to_datetime(
+        df_flights["month"], format="%b"
+    ).dt.month
     with plt.style.context(rootsstyle.style):
         sns.scatterplot(
             x="body_mass_g",
@@ -54,7 +56,9 @@ def test_legend():
             palette="dataroots-blue",
             legend=False,
         )
-        legend = rootsstyle.legend(labels=list(map(str, list(range(1949, 1961)))))
+        legend = rootsstyle.legend(
+            labels=list(map(str, list(range(1949, 1961))))
+        )
         assert len(legend.items()) == 2
         assert set(legend.keys()) == set(["labels", "handles"])
         assert set(legend["labels"]) == set(map(str, list(range(1949, 1961))))
@@ -64,7 +68,12 @@ def test_legend():
 
 def test_ylabel():
     df_penguins = sns.load_dataset("penguins")
-    df_penguins = df_penguins.groupby(["island", "species"]).size().to_frame("count").reset_index()
+    df_penguins = (
+        df_penguins.groupby(["island", "species"])
+        .size()
+        .to_frame("count")
+        .reset_index()
+    )
     with plt.style.context(rootsstyle.style):
         sns.barplot(x="island", y="count", data=df_penguins, hue="species")
         rootsstyle.ylabel("penguins")

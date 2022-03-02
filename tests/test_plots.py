@@ -21,8 +21,12 @@ def test_scatterplot(output_dir=None):
         rootsstyle.ylabel("flipper length\n[mm]")
         plt.xlabel("body mass [g]")
         plt.title("Penguins")
-        plt.text(4550, 185, "Chunky Mike", fontdict={"color": rootsstyle.colors[0]})
-        plt.text(5400, 232, "Big Bob", fontdict={"color": rootsstyle.colors[2]})
+        plt.text(
+            4550, 185, "Chunky Mike", fontdict={"color": rootsstyle.colors[0]}
+        )
+        plt.text(
+            5400, 232, "Big Bob", fontdict={"color": rootsstyle.colors[2]}
+        )
         plt.tight_layout()
         if output_dir is not None:
             plt.savefig(Path(output_dir) / "scatterplot.png")
@@ -39,7 +43,9 @@ def test_lineplot(output_dir=None):
             y="mpg",
             data=df_cars,
             hue="origin",
-            palette=sns.color_palette("dataroots-default", as_cmap=True).colors[:3],
+            palette=sns.color_palette(
+                "dataroots-default", as_cmap=True
+            ).colors[:3],
         )
         rootsstyle.legend()
         rootsstyle.ylabel("mpg")
@@ -91,10 +97,19 @@ def test_lineplot(output_dir=None):
     # https://github.com/karlrupp/microprocessor-trend-data
     df_cpus = pd.read_csv("tests/data/cpus.csv")
     with plt.style.context(rootsstyle.style):
-        g = sns.lineplot(x="year", y="transistors", data=df_cpus, label="transistors\n[1000s]")
+        g = sns.lineplot(
+            x="year",
+            y="transistors",
+            data=df_cpus,
+            label="transistors\n[1000s]",
+        )
         g = sns.lineplot(x="year", y="watts", data=df_cpus, label="watts")
-        g = sns.lineplot(x="year", y="frequency", data=df_cpus, label="frequency\n[MHz]")
-        g = sns.lineplot(x="year", y="cores", data=df_cpus, label="logical\ncores")
+        g = sns.lineplot(
+            x="year", y="frequency", data=df_cpus, label="frequency\n[MHz]"
+        )
+        g = sns.lineplot(
+            x="year", y="cores", data=df_cpus, label="logical\ncores"
+        )
         g = sns.lineplot(
             x="year",
             y="single_core_performance",
@@ -117,7 +132,9 @@ def test_barplot(output_dir=None):
     df_cars = sns.load_dataset("mpg")
     df_cars["model_year"] = "' " + df_cars["model_year"].astype(str)
     with plt.style.context(rootsstyle.style):
-        sns.barplot(x="model_year", y="mpg", data=df_cars, hue="origin", ci=None)
+        sns.barplot(
+            x="model_year", y="mpg", data=df_cars, hue="origin", ci=None
+        )
         rootsstyle.ylabel("mpg")
         plt.xlabel("model year")
         rootsstyle.legend()
@@ -164,9 +181,15 @@ def test_violinplot(output_dir=None):
 
 def test_pieplot(output_dir=None):
     df_penguins = sns.load_dataset("penguins")
-    df_penguins = df_penguins.groupby("species").size().to_frame("count").reset_index()
+    df_penguins = (
+        df_penguins.groupby("species").size().to_frame("count").reset_index()
+    )
     with plt.style.context(rootsstyle.style):
-        plt.pie(df_penguins["count"], labels=df_penguins["species"], autopct="%.0f%%")
+        plt.pie(
+            df_penguins["count"],
+            labels=df_penguins["species"],
+            autopct="%.0f%%",
+        )
         plt.title("Penguin distribution")
         rootsstyle.legend()
         plt.tight_layout()

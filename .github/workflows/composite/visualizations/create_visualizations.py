@@ -38,13 +38,17 @@ def create_example_grid():
 
     images = []
     for (dirpath, _, filenames) in os.walk(TEMP_DIR):
-        images.extend([os.path.join(dirpath, filename) for filename in filenames])
+        images.extend(
+            [os.path.join(dirpath, filename) for filename in filenames]
+        )
 
     nb_images = len(images)
     nb_cols = 3
     nb_rows = math.ceil(nb_images / 3)
     _, axes = plt.subplots(nrows=nb_rows, ncols=nb_cols, figsize=(30, 30))
-    indices = list(itertools.product(list(range(nb_rows)), list(range(nb_cols))))
+    indices = list(
+        itertools.product(list(range(nb_rows)), list(range(nb_cols)))
+    )
     for i, image in enumerate(images):
         x, y = indices[i]
         ax = axes[x, y]
