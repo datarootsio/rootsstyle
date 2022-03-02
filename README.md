@@ -1,6 +1,6 @@
 [![dataroots](https://dataroots.io/maintained.svg)](https://dataroots.io/)
 [![PyPI version](https://badge.fury.io/py/rootsstyle.svg)](https://badge.fury.io/py/rootsstyle)
-[![Python Versions](https://img.shields.io/badge/python->=3.8,%20<3.11-blue.svg)](https://www.python.org/downloads/)
+[![Python Versions](https://img.shields.io/badge/python->=3.7,%20<3.11-blue.svg)](https://www.python.org/downloads/)
 [![codecov](https://codecov.io/gh/datarootsio/rootsstyle/branch/main/graph/badge.svg?token=4agmmGuhtu)](https://codecov.io/gh/datarootsio/rootsstyle)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
