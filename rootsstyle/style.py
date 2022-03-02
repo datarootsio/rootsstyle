@@ -2,10 +2,8 @@
 globally using 'plt.style.use(rootsstyle.style)' or within a context manager using 'plt.style.context(rootsstyle.style)'.
 """
 import matplotlib as mpl
-from ._colors import (
-    layout_colors,
-    palettes,
-)
+
+from ._colors import layout_colors, palettes
 
 # DOCS: https://matplotlib.org/stable/tutorials/introductory/customizing.html#a-sample-matplotlibrc-file
 style = {

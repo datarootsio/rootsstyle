@@ -1,11 +1,11 @@
 import math
 from typing import List
-import numpy as np
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from ._nnls import (
-    nnls,
-)
+import numpy as np
+
+from ._nnls import nnls
 
 
 # pyplot.legend() -> gca().legend()

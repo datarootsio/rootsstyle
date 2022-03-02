@@ -1,7 +1,4 @@
-from matplotlib.colors import (
-    ListedColormap,
-    LinearSegmentedColormap,
-)
+from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 
 layout_colors = {
     "text": "#969696",

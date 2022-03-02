@@ -1,8 +1,10 @@
-import rootsstyle
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from pathlib import Path
-import matplotlib.pyplot as plt
+
+import rootsstyle
 
 
 def test_scatterplot(output_dir=None):

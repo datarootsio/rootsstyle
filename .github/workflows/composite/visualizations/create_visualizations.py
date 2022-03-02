@@ -1,17 +1,19 @@
-import os
-import sys
-import math
-import shutil
-import logging
 import itertools
-import rootsstyle
-from PIL import Image
-import matplotlib as mpl
-from pathlib import Path
-from tests import test_plots
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+import logging
+import math
+import os
+import shutil
+import sys
 from inspect import getmembers, isfunction
+from pathlib import Path
+
+import matplotlib as mpl
+import matplotlib.patches as patches
+import matplotlib.pyplot as plt
+from PIL import Image
+
+import rootsstyle
+from tests import test_plots
 
 OUTPUT_DIR = "images/"
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)

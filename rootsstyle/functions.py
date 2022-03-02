@@ -2,22 +2,16 @@
 - rootsstyle.legend()
 - rootsstyle.ylabel()
 """
-from ._fonts import (
-    fonts,
-)
-from ._colors import (
-    layout_colors,
-    palettes,
-)
-from ._utils import (
-    is_line_plot,
-    get_dataline_handles,
-    get_linelegend_ypositions,
-)
 from typing import List
+
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
+import matplotlib.pyplot as plt
+
+from ._colors import layout_colors, palettes
+from ._fonts import fonts
+from ._utils import (get_dataline_handles, get_linelegend_ypositions,
+                     is_line_plot)
 
 # Register fonts in global FontManager
 font_entries = [

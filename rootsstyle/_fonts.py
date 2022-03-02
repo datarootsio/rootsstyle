@@ -1,6 +1,4 @@
-from pathlib import (
-    Path,
-)
+from pathlib import Path
 
 _fonts_dir = Path(__file__).parent.parent.joinpath("fonts")
 fonts = {
