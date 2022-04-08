@@ -6,7 +6,7 @@
 
 <div align="center">
 
-# rootsstyle
+<img src="https://github.com/datarootsio/rootsstyle/blob/main/images/rootsstylelogo.png?raw=true" height="350px;">
 </div>
 
 A matplotlib styling package for clean, minimal dataroots themed plots. 
